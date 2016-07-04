@@ -24,6 +24,9 @@ module.exports = function(){
 	//SQL
 	//TODO
 
+	//Cliente
+	var cliente = {};
+
 	//Rotas
 	var routes = {};
 	routes.routes = require(__dirname + '/routes/router.js')(app.express, routes);
