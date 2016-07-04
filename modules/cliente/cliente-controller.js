@@ -4,7 +4,7 @@ module.exports = function (schema){
   return {
     get: function (req, res) {
       Cliente.findAll().then(function(clientes) {
-        return res.json({success: false, message: 'Clientes encontrados.', response: {clientes: clientes}});
+        return res.json({success: true, message: 'Clientes encontrados.', response: {clientes: clientes}});
       });
     },
 

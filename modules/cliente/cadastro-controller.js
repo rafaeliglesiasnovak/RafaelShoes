@@ -21,7 +21,7 @@ module.exports = function (schema){
                 if(!created) return res.json({success: false, message: 'Cliente já cadastrado.'});
 
                 else{
-                  return res.json({success: false, message: 'Cliente cadastrado com sucesso!', response: {cliente: cliente}});
+                  return res.json({success: true, message: 'Cliente cadastrado com sucesso!', response: {cliente: cliente}});
                 }
               });
           }
