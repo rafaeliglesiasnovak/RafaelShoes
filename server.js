@@ -30,7 +30,9 @@ module.exports = function(){
 	//Cliente
 	var cliente = {};
 	cliente.controllers = {};
+	cliente.controllers.cadastro = require(__dirname + '/modules/cliente/cadastro-controller.js')(schema);
 	cliente.controllers.cliente = require(__dirname + '/modules/cliente/cliente-controller.js')(schema);
+
 
 	// Usuario
 	var usuario = {};

@@ -1,7 +1,7 @@
 module.exports = function (schema, bcrypt, jwt, config){
 
   var Account = schema.account;
-  var User = schema.user;
+  var Cliente = schema.user;
 
   return {
     post: function (req, res) {
@@ -29,13 +29,13 @@ module.exports = function (schema, bcrypt, jwt, config){
               // cria token
               var token = jwt.sign(account.toObject(), tokenSecret);
 
-              User.findOne(query).then(function(user){
-                  if(user){
+              Cliente.findOne(query).then(function(cliente){
+                  if(cliente){
                       return res.json({
                       success : true,
                       message : 'sucesso no login.',
                       token : token,
-                      usuario: user
+                      usuario: cliente
                     });
                   }
                   else return res.json({success: false, message: 'Falha na autenticação. Usuário não encontrado.'});
