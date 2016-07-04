@@ -1,6 +1,6 @@
-module.exports = function (moduleCliente){
+module.exports = function (moduleEndereco){
   
-  var controllers = moduleCliente.controllers;
+  var controllers = moduleEndereco.controllers;
 
   return function(router){
     router.post("/cadastrar-endereco", function(req, res){

@@ -32,8 +32,10 @@ module.exports = function(){
 	cliente.controllers = {};
 	cliente.controllers.cadastro = require(__dirname + '/modules/cliente/cadastro-controller.js')(schema);
 	cliente.controllers.cliente = require(__dirname + '/modules/cliente/cliente-controller.js')(schema);
-	cliente.controllers.endereco = require(__dirname + '/modules/cliente/endereco-controller.js')(schema);
 
+	// Endereco
+	var endereco = {};
+	endereco.controllers.endereco = require(__dirname + '/modules/cliente/endereco-controller.js')(schema);
 
 	// Usuario
 	var usuario = {};
