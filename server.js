@@ -20,12 +20,22 @@ module.exports = function(){
 	app.jwt 			= require('jsonwebtoken');
 	//
 	app._				= require('lodash');
+	// Arquivo de configuracoes
+  	app.config = require('./config')();
 
 	//SQL
 	//TODO
+	var schema = {};
 
 	//Cliente
 	var cliente = {};
+	cliente.controllers = {};
+	cliente.controllers.cliente = require(__dirname + '/modules/cliente/cliente-controller.js')(schema);
+
+	// Usuario
+	var usuario = {};
+	usuario.controllers = {};
+	usuario.controllers.login = require(__dirname + '/modules/usuario/login-controller.js')(schema, app.bcrypt, app.jwt, app.config);
 
 	//Rotas
 	var routes = {};
