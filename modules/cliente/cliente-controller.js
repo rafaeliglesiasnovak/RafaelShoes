@@ -5,8 +5,27 @@ module.exports = function (schema){
     get: function (req, res) {
       Cliente.findAll().then(function(clientes) {
         return res.json({success: false, message: 'Clientes encontrados.', response: {clientes: clientes}});
-      })
+      });
+    },
 
+    delete: function (res, res){
+      var id = res.body.id;
+
+      Cliente.destroy({
+        where: {
+          id: id
+        }
+      });
+    },
+
+    editar: function (req, res){
+      var cliente = req.body;
+
+      Cliente.update(cliente, {
+        where: {
+          id: cliente.id
+        }
+      });
     }
   }
 }
