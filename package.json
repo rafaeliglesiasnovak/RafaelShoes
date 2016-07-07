@@ -10,16 +10,18 @@
   "license": "MIT",
   "dependencies": {
     "bcrypt": "^0.8.5",
-    "bcryptjs":"^2.3.0",
+    "bcryptjs": "^2.3.0",
     "body-parser": "^1.13.3",
     "cradle": "^0.6.9",
     "ejs": "^2.3.4",
     "express": "^4.13.3",
-    "jsonwebtoken":"^5.7.0",
-    "lodash":"^4.13.1",
+    "jsonwebtoken": "^5.7.0",
+    "lodash": "^4.13.1",
     "method-override": "^2.3.5",
     "morgan": "^1.6.1",
     "mysql": "^2.9.0",
-    "nodemon": "^1.9.1"
+    "nodemon": "^1.9.1",
+    "pg": "^6.0.1",
+    "sequelize": "^3.23.4"
   }
 }
