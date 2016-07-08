@@ -1,5 +1,5 @@
 module.exports = function(Sequelize, sequelize){
-	var User = sequelize.define('Cliente', {
+	var Cliente = sequelize.define('Cliente', {
 		CPF_Cli: {
     		type: Sequelize.INTEGER,
     		primaryKey: true
@@ -13,6 +13,6 @@ module.exports = function(Sequelize, sequelize){
   		Sexo_Cli: Sequelize.STRING
 	});
 
-	return User;
+	return Cliente;
 
 }
