@@ -26,14 +26,16 @@ module.exports = function(){
 	//SQL
 	var Sequelize = require('sequelize');
 	var sequelize = new Sequelize('pcs2034', 'rafael', 'rafaelshoes', {
-  		host: 'pcs2034.cu6gpxc772wb.us-west-2.rds.amazonaws.com',
-  		dialect: 'mysql',
-  		port:3306,
-
+  		host: 'pcs.cu6gpxc772wb.us-west-2.rds.amazonaws.com',
+  		dialect: 'postgres',
+  		port:5432,
   		pool: {
     		max: 5,
     		min: 1,
     		idle: 1000
+  		},
+  		dialectOptions: {
+    		ssl: 'Amazon RDS'
   		}
 	});
 	sequelize
