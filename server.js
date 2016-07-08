@@ -47,7 +47,14 @@ module.exports = function(){
 			console.log('Unable to connect to the database:', err);
 		});
 
+	//Schema
 	var schema = {};
+	schema.cliente = require(__dirname + '/models/cliente.js')(Sequelize, sequelize);
+
+	//Teste
+	var teste = {};
+	teste.controllers = {};
+	teste.controllers.db = require(__dirname + '/modules/teste/teste-controller.js')(schema);
 
 	//Cliente
 	var cliente = {};
@@ -69,6 +76,7 @@ module.exports = function(){
 	var routes = {};
 	routes.routes = require(__dirname + '/routes/router.js')(app.express, routes);
 	routes.v1 = {};
+	routes.v1.teste = require(__dirname + '/routes/v1/teste.js')(teste);
 	routes.view = {};
 	routes.view.view = require(__dirname + '/routes/view/view.js')(app.path);
 
