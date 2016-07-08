@@ -51,6 +51,14 @@ module.exports = function(){
 	var schema = {};
 	schema.cliente = require(__dirname + '/models/cliente.js')(Sequelize, sequelize);
 
+	sequelize
+	  .sync()
+	  .then(function(err) {
+	    console.log('It worked!');
+	  }, function (err) { 
+	    console.log('An error occurred while creating the table:', err);
+	  });
+
 	//Teste
 	var teste = {};
 	teste.controllers = {};
