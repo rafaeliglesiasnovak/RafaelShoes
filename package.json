@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Rafael Augusto Brandão (brandaorafael), Rafael Iglesias Novak (rafaeliglesiasnovak)",
+  "author": "Rafael Augusto Brandão (brandaorafael), Rafael Iglesias Novak (rafaeliglesiasnovak), Rafael Camargos Santos (rafaelcamargossantos)",
   "license": "MIT",
   "dependencies": {
     "bcrypt": "^0.8.5",

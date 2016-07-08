@@ -24,13 +24,9 @@ module.exports = function(){
   	app.config = require('./config')();
 
 	//SQL
-
-	//TODO
-	var schema = {};
-
 	var Sequelize = require('sequelize');
-	var sequelize = new Sequelize('mysql', 'root', 'r5y7f3a1', {
-  		host: 'bighead.poli.usp.br',
+	var sequelize = new Sequelize('pcs2034', 'rafael', 'rafaelshoes', {
+  		host: 'pcs2034.cu6gpxc772wb.us-west-2.rds.amazonaws.com',
   		dialect: 'mysql',
   		port:3306,
 
@@ -40,17 +36,6 @@ module.exports = function(){
     		idle: 1000
   		}
 	});
- 
-	// var sequelize = new Sequelize('d7dcs092f8v6hc', 'lqvrlbjwsaelro','Rc8qZGNQbAYx0cUZaxiVZVciJ9', {
- //      dialect:  'postgres',
- //      protocol: 'postgres',
- //      dialectOptions:{
- //      	ssl: true
- //      }
- //    })
-
-	// var sequelize = new Sequelize('postgres://lqvrlbjwsaelro:Rc8qZGNQbAYx0cUZaxiVZVciJ9@ec2-54-243-249-65.compute-1.amazonaws.com:5432/d7dcs092f8v6hc');
-
 	sequelize
 		.authenticate()
 		.then(function(err) {
@@ -60,31 +45,7 @@ module.exports = function(){
 			console.log('Unable to connect to the database:', err);
 		});
 
-	// console.log("Tentando ROdar o DB");
-	// var pg = require('pg');
-	// pg.connect('postgres://lqvrlbjwsaelro:Rc8qZGNQbAYx0cUZaxiVZVciJ9@ec2-54-243-249-65.compute-1.amazonaws.com:5432/d7dcs092f8v6hc?ssl=true', function(err, client, done) {
-	//     if (err) return console.log(err);
-	//     client.query('SELECT * FROM pg_catalog.pg_tables', function(err, result) {
-	//         done();
-	//         if(err) return console.error(err);
-	//         console.log(result.rows);
-	//     });
-	// });
-
-// var pg = require('pg');
-
-// pg.defaults.ssl = true;
-// pg.connect('postgres://lqvrlbjwsaelro:Rc8qZGNQbAYx0cUZaxiVZVciJ9@ec2-54-243-249-65.compute-1.amazonaws.com:5432/d7dcs092f8v6hc?ssl=true', function(err, client) {
-//   if (err) throw err;
-//   console.log('Connected to postgres! Getting schemas...');
-
-//   client
-//     .query('SELECT table_schema,table_name FROM information_schema.tables;')
-//     .on('row', function(row) {
-//       console.log(JSON.stringify(row));
-//     });
-// });
-
+	var schema = {};
 
 	//Cliente
 	var cliente = {};
@@ -94,7 +55,8 @@ module.exports = function(){
 
 	// Endereco
 	var endereco = {};
-	endereco.controllers.endereco = require(__dirname + '/modules/cliente/endereco-controller.js')(schema);
+	endereco.controllers = {};
+	endereco.controllers.endereco = require(__dirname + '/modules/endereco/endereco-controller.js')(schema);
 
 	// Usuario
 	var usuario = {};
