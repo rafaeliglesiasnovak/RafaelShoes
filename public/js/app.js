@@ -1,4 +1,4 @@
-angular.module('bigode', [])
+angular.module('RafaelShoes', [])
 
 .factory('sessionInjector', [function() {  
     var sessionInjector = {
@@ -34,20 +34,10 @@ angular.module('bigode', [])
 .controller("appController", ["$rootScope", function($rootScope){
 	var appCtrl = this;
 
-	localStorage.isBillOpened = false;
-	$rootScope.isBillOpened = false;
-
 	$rootScope.api = "http://localhost:3000/"
 
-	$rootScope.isBillOpened = localStorage.isBillOpened;
-
-	if(localStorage.isBillOpened == "true"){
-		localStorage.stage = 1;
-		$rootScope.stage = localStorage.stage;
-	} else {
-		localStorage.stage = 0;
-		$rootScope.stage = localStorage.stage;
-	}
+    console.log("appcontroller");
+    $rootScope.viewFlag = 1;
 
 }])
 ;
