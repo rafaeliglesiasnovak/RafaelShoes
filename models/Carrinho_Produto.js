@@ -7,20 +7,18 @@ module.exports = function(Sequelize, sequelize, schema){
       ID_Prod: {
         type: Sequelize.INTEGER,
         references: {
-            model: Produto,
-            key: 'ID_Prod',
-            deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
-              
-            }
+          model: Produto,
+          key: 'ID_Prod',
+          deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE 
+        }
       },
       ID_Carrinho: {
         type: Sequelize.INTEGER,
         references: {
-            model: Carrinho,
-            key: 'ID_Carrinho',
-            deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
-              
-            }
+          model: Carrinho,
+          key: 'ID_Carrinho',
+          deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE  
+        }
       },
       Qtd_Prod: Sequelize.INTEGER
 	});

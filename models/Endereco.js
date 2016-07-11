@@ -4,17 +4,16 @@ module.exports = function(Sequelize, sequelize, schema){
 
 	var Endereco = sequelize.define('Endereco', {
 		ID_End: {
-    		type: Sequelize.INTEGER,
-    		primaryKey: true
-  		},
+  		type: Sequelize.INTEGER,
+  		primaryKey: true
+		},
   	CPF_Cli: {
-        type: Sequelize.INTEGER,
-        references: {
-            model: Cliente,
-            key: 'CPF_Cli',
-            deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
-              
-          }
+      type: Sequelize.INTEGER,
+      references: {
+        model: Cliente,
+        key: 'CPF_Cli',
+        deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE   
+      }
     },
     CEP_End: Sequelize.INTEGER,
     Num_End: Sequelize.INTEGER,

@@ -8,13 +8,12 @@ module.exports = function(Sequelize, sequelize, schema){
     		primaryKey: true
   		},
   	CPF_Cli: {
-        type: Sequelize.INTEGER,
-        references: {
-            model: Cliente,
-            key: 'CPF_Cli',
-            deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
-              
-            }
+      type: Sequelize.INTEGER,
+      references: {
+        model: Cliente,
+        key: 'CPF_Cli',
+        deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE 
+      }
    }
 	});
 
