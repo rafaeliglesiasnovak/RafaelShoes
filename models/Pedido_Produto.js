@@ -13,11 +13,11 @@ module.exports = function(Sequelize, sequelize, schema){
               
             }
       },
-      ID_Produto: {
+      ID_Prod: {
         type: Sequelize.INTEGER,
         references: {
             model: Produto,
-            key: 'ID_Produto',
+            key: 'ID_Prod',
             deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
               
             }
