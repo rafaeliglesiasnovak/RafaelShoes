@@ -25,17 +25,17 @@ module.exports = function(){
 
 	//SQL
 	var Sequelize = require('sequelize');
-	var sequelize = new Sequelize('pcs2034', 'rafael', 'rafaelshoes', {
-  		host: 'pcs.cu6gpxc772wb.us-west-2.rds.amazonaws.com',
-  		dialect: 'postgres',
-  		port:5432,
+	var sequelize = new Sequelize(app.config.db().db, app.config.db().user, app.config.db().psswrd, {
+  		host: app.config.db().host,
+  		dialect: app.config.db().dialect,
+  		port: app.config.db().port,
   		pool: {
     		max: 5,
     		min: 1,
     		idle: 1000
   		},
   		dialectOptions: {
-    		ssl: 'Amazon RDS'
+    		ssl: app.config.db().ssl
   		}
 	});
 	sequelize
@@ -47,7 +47,32 @@ module.exports = function(){
 			console.log('Unable to connect to the database:', err);
 		});
 
+	//Schema
 	var schema = {};
+	schema.Cliente = require(__dirname + '/models/Cliente.js')(Sequelize, sequelize);
+	schema.Endereco = require(__dirname + '/models/Endereco.js')(Sequelize, sequelize, schema);
+	schema.Funcionario = require(__dirname + '/models/Funcionario.js')(Sequelize, sequelize);
+	schema.Pedido = require(__dirname + '/models/Pedido.js')(Sequelize, sequelize, schema);
+	schema.Alerta = require(__dirname + '/models/Alerta.js')(Sequelize, sequelize, schema);
+	schema.Carrinho = require(__dirname + '/models/Carrinho.js')(Sequelize, sequelize, schema);
+	schema.NotaFiscal = require(__dirname + '/models/Nota_Fiscal.js')(Sequelize, sequelize, schema);
+	schema.Produto = require(__dirname + '/models/Produto.js')(Sequelize, sequelize);
+	schema.CarrinhoProduto = require(__dirname + '/models/Carrinho_Produto.js')(Sequelize, sequelize, schema);
+	schema.PedidoFuncionario = require(__dirname + '/models/Pedido_Funcionario.js')(Sequelize, sequelize, schema);
+	schema.PedidoProduto = require(__dirname + '/models/Pedido_Produto.js')(Sequelize, sequelize, schema);
+
+	sequelize
+	  .sync()
+	  .then(function(err) {
+	    console.log('It worked!');
+	  }, function (err) { 
+	    console.log('An error occurred while creating the table:', err);
+	  });
+
+	//Teste
+	var teste = {};
+	teste.controllers = {};
+	teste.controllers.db = require(__dirname + '/modules/teste/teste-controller.js')(schema);
 
 	//Cliente
 	var cliente = {};
@@ -69,6 +94,7 @@ module.exports = function(){
 	var routes = {};
 	routes.routes = require(__dirname + '/routes/router.js')(app.express, routes);
 	routes.v1 = {};
+	routes.v1.teste = require(__dirname + '/routes/v1/teste.js')(teste);
 	routes.view = {};
 	routes.view.view = require(__dirname + '/routes/view/view.js')(app.path);
 
