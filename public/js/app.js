@@ -36,8 +36,23 @@ angular.module('RafaelShoes', [])
 
 	$rootScope.api = "http://localhost:3000/"
 
-    console.log("appcontroller");
     $rootScope.viewFlag = 1;
+
+    // constantes das paginas
+    $rootScope.home = 1;
+    $rootScope.detalhe = 2;
+    $rootScope.login = 3;
+    $rootScope.cadastro = 4;
+    $rootScope.produtos = 5;
+
+    appCtrl.goTo = function(id){
+        $rootScope.viewFlag = id;
+    }
+
+    appCtrl.goToCategoria = function(idProduto){
+        // Salvar produto no service
+        $rootScope.viewFlag = $rootScope.produtos;
+    }
 
 }])
 ;

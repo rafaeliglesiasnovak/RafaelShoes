@@ -5,7 +5,13 @@ app.directive('detalhe', ["$rootScope", function($rootScope) {
   	restrict: 'E',
   	link: function($scope){
 
-      $scope.rootScope = $rootScope;
+  		$scope.goToDetalhe = function(){
+		    // TODO: passar produto para service
+		    $rootScope.viewFlag = $rootScope.detalhe;
+		  }
+
+
+    	$scope.rootScope = $rootScope;
   	},
     templateUrl: 'views/directives/detalhe.html'
   };

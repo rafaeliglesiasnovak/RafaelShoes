@@ -1,58 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script type="application/x-javascript"> addEventListener("load", function() {setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-        <title>Rafael Shoes</title>
-        <meta charset utf="8">
 
-        <!--Scripts-->
-        <!-- AngularJS 1.5.5 -->
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
-        <!-- app.js -->
-        <script src="js/app.js"></script>
-        <!-- directives -->
-        <script src="js/directives/home-controller.js"></script>
-        <script src="js/directives/detalhe-controller.js"></script>
-        <!--shop-kart-js-->
-        <script src="js/lib/simpleCart.min.js"></script>
-        <!--default-js-->
-        <script src="js/lib/jquery-2.1.4.min.js"></script>
-        <!--bootstrap-js-->
-        <script src="js/lib/bootstrap.min.js"></script>
-        <!-- FlexSlider -->
-        <script src="js/lib/imagezoom.js"></script>
-        <script defer src="js/lib/jquery.flexslider.js"></script>
-        <script>
-        $(window).load(function() {
-            $('.flexslider').flexslider({
-              animation: "slide",
-              controlNav: "thumbnails"
-            });
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="application/x-javascript">
+    addEventListener("load", function() {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    }
+    </script>
+    <title>Rafael Shoes</title>
+    <meta charset utf="8">
+    <!--Scripts-->
+    <!-- AngularJS 1.5.5 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <!-- app.js -->
+    <script src="js/app.js"></script>
+    <!-- directives -->
+    <script src="js/directives/home-controller.js"></script>
+    <script src="js/directives/detalhe-controller.js"></script>
+    <script src="js/directives/login-controller.js"></script>
+    <script src="js/directives/cadastro-controller.js"></script>
+    <script src="js/directives/produtos-controller.js"></script>
+    <script src="js/directives/item-lista-produtos-controller.js"></script>
+    <!--shop-kart-js-->
+    <script src="js/lib/simpleCart.min.js"></script>
+    <!--default-js-->
+    <script src="js/lib/jquery-2.1.4.min.js"></script>
+    <!--bootstrap-js-->
+    <script src="js/lib/bootstrap.min.js"></script>
+    <!-- FlexSlider -->
+    <script src="js/lib/imagezoom.js"></script>
+    <script defer src="js/lib/jquery.flexslider.js"></script>
+    <script>
+    $(window).load(function() {
+        $('.flexslider').flexslider({
+            animation: "slide",
+            controlNav: "thumbnails"
         });
-        </script>
+    });
+    </script>
+    <!--css-->
+    <!--bootstrap-->
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <!--coustom css-->
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <!-- FlexSlider -->
+    <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Fredoka+One' rel='stylesheet' type='text/css'>
+</head>
 
-        <!--css-->
-        <!--bootstrap-->
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <!--coustom css-->
-        <link href="css/style.css" rel="stylesheet" type="text/css"/>
-        <!-- FlexSlider -->
-        <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+<body ng-app="RafaelShoes" ng-controller="appController as appCtrl">
+    <!-- Header -->
+    <div class="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <a ng-click="appCtrl.goTo(home)">Rafael Shoes</a>
+                </div>
+                <div class="login-bars">
+                    <a class="btn btn-default log-bar" ng-click="appCtrl.goTo(cadastro)" role="button">Cadastre-se</a>
+                    <a class="btn btn-default log-bar" ng-click="appCtrl.goTo(login)" role="button">Login</a>
+                    <div class="cart box_1">
+                        <a href="checkout.html">
+                            <h3>
+                            <div class="total">
+                            <span class="simpleCart_total"></span>(<span id="simpleCart_quantity" class="simpleCart_quantity"></span>)</div></h3>
+                        </a>
+                        <p><a href="javascript:;" class="simpleCart_empty">Carrinho Vazio</a></p>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="collapse navbar-collapse collapse-pdng" id="bs-example-navbar-collapse-1" style="margin: auto;">
+                <ul class="nav navbar-nav nav-font" style="padding-left: 55px;padding-top: 5px;">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Adultos<b class="caret"></b></a>
+                        <ul class="dropdown-menu multi-column columns-3">
+                            <div class="row">
+                                <div class="col-sm-4 menu-img-pad">
+                                    <ul class="multi-column-dropdown">
+                                        <li><a ng-click="appCtrl.goToCategoria()">Corrida</a></li>
+                                        <li><a ng-click="appCtrl.goToCategoria()">Esportes</a></li>
+                                        <li class="divider"></li>
+                                        <li><a ng-click="appCtrl.goToCategoria()">Casual</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-4 menu-img-pad">
+                                    <a href="#"><img src="images/menu2.jpg" alt="/" class="img-rsponsive men-img-wid" /></a>
+                                </div>
+                                <div class="col-sm-4 menu-img-pad">
+                                    <a href="#"><img src="images/menu3.jpg" alt="/" class="img-rsponsive men-img-wid" /></a>
+                                </div>
+                            </div>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Crianças<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a ng-click="appCtrl.goToCategoria()">Tenis</a></li>
+                            <li class="divider"></li>
+                            <li><a ng-click="appCtrl.goToCategoria()">Outros Produtos</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html">Contato</a></li>
+                    <div class="clearfix"></div>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <!--/.navbar-collapse-->
+            <div class="clearfix"></div>
+            </nav>
+            <!--/.navbar-->
+            <div class="clearfix"></div>
+        </div>
+        <!--/.content--->
+    </div>
+    <!--header-bottom-->
+    </div>
+    </div>
+    <!-- conteudo da pagina -->
+    <home ng-if="viewFlag == 1"> </home>
+    <detalhe ng-if="viewFlag == 2"> </detalhe>
+    <login ng-if="viewFlag == 3"> </login>
+    <cadastro ng-if="viewFlag == 4"> </cadastro>
+    <produtos ng-if="viewFlag == 5"> </produtos>
 
-		<!-- Fonts -->
-		<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-        <link href='//fonts.googleapis.com/css?family=Fredoka+One' rel='stylesheet' type='text/css'>
-    </head>
+    <!-- Footer -->
+    <div class="footer-grid">
+    <div class="container">
+        <div class="col-md-2 re-ft-grd">
+            <h3>Categorias</h3>
+            <ul class="categories">
+                <li><a href="#">Adultos</a></li>
+                <li><a href="#">Crianças</a></li>
 
-    <body ng-app="RafaelShoes" ng-controller="appController as appCtrl">
+            </ul>
+        </div>
+        <div class="col-md-2 re-ft-grd">
+            <h3>Meus Produtos</h3>
+            <ul class="shot-links">
+                <li><a href="#">Entregas</a></li>
+                <li><a href="#">Devolução</a></li>
+            </ul>
+        </div>
+        <div class="col-md-2 re-ft-grd">
+            <h3>Rafael Shoes</h3>
+            <ul class="shot-links">
+                <li><a href="#">Contato</a></li>
+                <li><a href="#">Termos & Condições</a></li>
+            </ul>
+        </div>
+        <div class="col-md-6 re-ft-grd">
+            <h3>Social</h3>
+            <ul class="social">
+                <li><a href="http://wwww.facebook.com" target="_blank" class="fb">facebook</a></li>
+                <li><a href="http://www.twitter.com" target="_blank" class="twt">twitter</a></li>
+                <li><a href="http://www.google.com/" target="_blank" class="gpls">g+ plus</a></li>
+                <div class="clearfix"></div>
+            </ul>
+        </div>
+<div class="clearfix"></div>
+    </div>
+    <div class="copy-rt">
+        <div class="container">
+    <p>&copy;   2016 - PCS 2034 - Rights Reserved. </a></p>
+        </div>
+    </div>
+</div>
+</body>
 
-
-		<home ng-if="viewFlag == 1"> </home>
-
-        <detalhe ng-if="viewFlag == 2"> </detalhe>
-
-    </body>
-    
 </html>
