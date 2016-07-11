@@ -1,4 +1,7 @@
-module.exports = function(Sequelize, sequelize){
+module.exports = function(Sequelize, sequelize, schema){
+
+  var Pedido = schema.Pedido;
+  
 	var Nota_Fiscal = sequelize.define('Nota_Fiscal', {
 		ID_Nota: {
     		type: Sequelize.INTEGER,
@@ -12,7 +15,7 @@ module.exports = function(Sequelize, sequelize){
             deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
               
             }
-      }
+      },
 
       Data_Nota: Sequelize.DATE,
 	});

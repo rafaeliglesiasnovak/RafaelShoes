@@ -1,4 +1,8 @@
-module.exports = function(Sequelize, sequelize){
+module.exports = function(Sequelize, sequelize, schema){
+
+  var Pedido = schema.Pedido;
+  var Funcionario = schema.Funcionario;
+
 	var Alerta = sequelize.define('Alerta', {
 		ID_Alerta: {
     		type: Sequelize.INTEGER,
@@ -12,7 +16,7 @@ module.exports = function(Sequelize, sequelize){
             deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
               
             }
-      }
+      },
       ID_Func: {
         type: Sequelize.INTEGER,
         references: {

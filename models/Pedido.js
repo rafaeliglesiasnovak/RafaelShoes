@@ -1,4 +1,9 @@
-module.exports = function(Sequelize, sequelize){
+module.exports = function(Sequelize, sequelize, schema){
+
+  var Cliente = schema.Cliente;
+  var Endereco = schema.Endereco;
+  var Funcionario = schema.Funcionario;
+
 	var Pedido = sequelize.define('Pedido', {
 		ID_Pedido: {
     		type: Sequelize.INTEGER,
@@ -12,7 +17,7 @@ module.exports = function(Sequelize, sequelize){
             deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
               
             }
-      }
+      },
       ID_End: {
         type: Sequelize.INTEGER,
         references: {
@@ -21,7 +26,7 @@ module.exports = function(Sequelize, sequelize){
             deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
               
             }
-      }
+      },
       ID_Func: {
         type: Sequelize.INTEGER,
         references: {
@@ -30,8 +35,7 @@ module.exports = function(Sequelize, sequelize){
             deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
               
             }
-      }
-
+      },
       Tipo_Entrega: Sequelize.STRING,
       Prazo_Entrega: Sequelize.STRING,
       Forma_Entrega: Sequelize.STRING,

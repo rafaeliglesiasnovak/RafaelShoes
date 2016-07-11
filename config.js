@@ -8,5 +8,16 @@ module.exports = function (){
 		saltRounds : function(){
 			return 4;
 		},
+		db : function(){
+			return {
+				db: 'pcs2034',
+				user: 'rafael',
+				psswrd: 'rafaelshoes',
+				host: 'pcs.cu6gpxc772wb.us-west-2.rds.amazonaws.com',
+				port: 5432,
+				dialect: 'postgres',
+				ssl: 'Amazon RDS'
+			};
+		},
 	};
 }

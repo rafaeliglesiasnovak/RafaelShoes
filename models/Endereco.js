@@ -1,4 +1,7 @@
-module.exports = function(Sequelize, sequelize){
+module.exports = function(Sequelize, sequelize, schema){
+
+  var Cliente = schema.Cliente;
+
 	var Endereco = sequelize.define('Endereco', {
 		ID_End: {
     		type: Sequelize.INTEGER,
@@ -11,15 +14,15 @@ module.exports = function(Sequelize, sequelize){
             key: 'CPF_Cli',
             deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
               
-            }
-      }
-      CEP_End: Sequelize.INTEGER,
-      Num_End: Sequelize.INTEGER,
-      Comp_End: Sequelize.STRING,
-      Log_End: Sequelize.STRING,
-      Pais_End: Sequelize.STRING,
-      Cid_End: Sequelize.STRING,
-      Est_End: Sequelize.STRINGs
+          }
+    },
+    CEP_End: Sequelize.INTEGER,
+    Num_End: Sequelize.INTEGER,
+    Comp_End: Sequelize.STRING,
+    Log_End: Sequelize.STRING,
+    Pais_End: Sequelize.STRING,
+    Cid_End: Sequelize.STRING,
+    Est_End: Sequelize.STRING
 	});
 
 	return Endereco;

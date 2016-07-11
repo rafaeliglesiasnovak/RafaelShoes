@@ -1,4 +1,7 @@
-module.exports = function(Sequelize, sequelize){
+module.exports = function(Sequelize, sequelize, schema){
+
+  var Cliente = schema.Cliente;
+  
 	var Carrinho = sequelize.define('Carrinho', {
 		ID_Carrinho: {
     		type: Sequelize.INTEGER,
