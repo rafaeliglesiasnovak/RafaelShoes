@@ -7,7 +7,10 @@ app.directive('cadastro', ["$rootScope", function($rootScope) {
 
       $scope.rootScope = $rootScope;
 
+      $scope.usuario = {};
+
       $scope.cadastrar = function(){
+        
         // TODO: fazer cadastro
         $rootScope.viewFlag = 1;
       }
