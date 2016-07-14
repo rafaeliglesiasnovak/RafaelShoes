@@ -1,14 +1,14 @@
 module.exports = function (schema, bcrypt, jwt, config){
 
-  var Account = schema.account;
-  var Cliente = schema.user;
+  var Account = schema.Account;
+  var Cliente = schema.Cliente;
 
   return {
     post: function (req, res) {
-      var email = req.body.email;
+      var Login = req.body.Login;
 
       // Procura usuario no banco
-      var query = { where: {email: email} };
+      var query = { where: {Login: Login} };
 
       Account.findOne(query).then(function(account) {
         if (!account) {
@@ -28,6 +28,8 @@ module.exports = function (schema, bcrypt, jwt, config){
               var tokenSecret = config.apiSecret();
               // cria token
               var token = jwt.sign(account.toObject(), tokenSecret);
+              
+              query = { where: {Email_Cli: Login} };
 
               Cliente.findOne(query).then(function(cliente){
                   if(cliente){

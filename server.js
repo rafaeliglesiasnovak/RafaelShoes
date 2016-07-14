@@ -20,6 +20,8 @@ module.exports = function(){
 	app.jwt 			= require('jsonwebtoken');
 	//
 	app._				= require('lodash');
+	//
+	app.crypto			= require('crypto');
 	// Arquivo de configuracoes
   	app.config = require('./config')();
 
@@ -36,7 +38,9 @@ module.exports = function(){
   		},
   		dialectOptions: {
     		ssl: app.config.db().ssl
-  		}
+  		},
+  		quoteIdentifiers:false,
+  		omitNull: true
 	});
 	sequelize
 		.authenticate()
@@ -60,6 +64,7 @@ module.exports = function(){
 	schema.CarrinhoProduto = require(__dirname + '/models/Carrinho_Produto.js')(Sequelize, sequelize, schema);
 	schema.PedidoFuncionario = require(__dirname + '/models/Pedido_Funcionario.js')(Sequelize, sequelize, schema);
 	schema.PedidoProduto = require(__dirname + '/models/Pedido_Produto.js')(Sequelize, sequelize, schema);
+	schema.Account = require(__dirname + '/models/Account.js')(Sequelize, sequelize, schema);
 
 	sequelize
 	  .sync()
@@ -77,7 +82,7 @@ module.exports = function(){
 	//Cliente
 	var cliente = {};
 	cliente.controllers = {};
-	cliente.controllers.cadastro = require(__dirname + '/modules/cliente/cadastro-controller.js')(schema);
+	cliente.controllers.cadastro = require(__dirname + '/modules/cliente/cadastro-controller.js')(schema, app.bcrypt, app.crypto);
 	cliente.controllers.cliente = require(__dirname + '/modules/cliente/cliente-controller.js')(schema);
 
 	// Endereco
@@ -95,6 +100,10 @@ module.exports = function(){
 	routes.routes = require(__dirname + '/routes/router.js')(app.express, routes);
 	routes.v1 = {};
 	routes.v1.teste = require(__dirname + '/routes/v1/teste.js')(teste);
+	routes.v1.cadastro = require(__dirname + '/routes/v1/cadastro.js')(cliente);
+	routes.v1.cliente = require(__dirname + '/routes/v1/cliente.js')(cliente);
+	routes.v1.endereco = require(__dirname + '/routes/v1/endereco.js')(endereco);
+	routes.v1.usuario = require(__dirname + '/routes/v1/usuario.js')(cliente);
 	routes.view = {};
 	routes.view.view = require(__dirname + '/routes/view/view.js')(app.path);
 
