@@ -18,7 +18,7 @@ module.exports = function (schema, bcrypt, jwt, config){
         } 
         else if (account) {
           // compara passwords (com criptografia)
-          bcrypt.compare(req.body.password, account.password, function(err, match) {
+          bcrypt.compare(req.body.Senha, account.Senha, function(err, match) {
             if(!match){
               // passwords nao batem
               return res.json({success: false, message: 'Falha na autenticação. Senha incorreta.'});
@@ -27,7 +27,7 @@ module.exports = function (schema, bcrypt, jwt, config){
                 // account e password batem
               var tokenSecret = config.apiSecret();
               // cria token
-              var token = jwt.sign(account.toObject(), tokenSecret);
+              var token = jwt.sign(account.Login, tokenSecret);
               
               query = { where: {Email_Cli: Login} };
 

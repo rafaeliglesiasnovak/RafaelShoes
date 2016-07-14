@@ -103,7 +103,7 @@ module.exports = function(){
 	routes.v1.cadastro = require(__dirname + '/routes/v1/cadastro.js')(cliente);
 	routes.v1.cliente = require(__dirname + '/routes/v1/cliente.js')(cliente);
 	routes.v1.endereco = require(__dirname + '/routes/v1/endereco.js')(endereco);
-	routes.v1.usuario = require(__dirname + '/routes/v1/usuario.js')(cliente);
+	routes.v1.usuario = require(__dirname + '/routes/v1/usuario.js')(usuario);
 	routes.view = {};
 	routes.view.view = require(__dirname + '/routes/view/view.js')(app.path);
 

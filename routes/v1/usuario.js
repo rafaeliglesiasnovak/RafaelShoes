@@ -1,6 +1,6 @@
-module.exports = function (moduleCliente){
+module.exports = function (moduleUsuario){
   
-  var controllers = moduleCliente.controllers;
+  var controllers = moduleUsuario.controllers;
 
   return function(router){
     router.post("/login", function(req, res){

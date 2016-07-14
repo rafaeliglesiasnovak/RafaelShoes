@@ -7,10 +7,8 @@ module.exports = function (schema, bcrypt, crypto){
       var account = req.body.account;
       var cliente = req.body.cliente;
 
-      var md5 = crypto.createHash('md5').update(account.Senha).digest("hex");
-
       // encrypta senha
-      bcrypt.hash(md5, 4, function(err, hash) {
+      bcrypt.hash(account.Senha, 4, function(err, hash) {
         account.Senha = hash;
 
         Cliente

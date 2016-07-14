@@ -1,0 +1,169 @@
+{
+	"id": "e70aede4-1959-7dae-03d8-f38b1a9e1c1a",
+	"name": "RafaelShoes",
+	"description": "",
+	"order": [],
+	"folders": [
+		{
+			"id": "18e909dd-2531-9198-aaee-b9eb94fe0e93",
+			"name": "Cliente",
+			"description": "",
+			"order": [
+				"457e6c47-0122-118e-f31c-0e39b7a9f87c",
+				"df52d307-9580-d7a0-6895-acda9ba14885",
+				"64b82243-069a-a2b8-fc3a-b1764048c97e",
+				"ff57e542-181e-fdf9-8dd1-e664a584171b",
+<<<<<<< f39e9500b884bccaa1eaec7406e18fd26332bc78
+				"03a31dd5-33dd-13a1-f6f6-0d5dbf877323",
+				"f4ca0d96-d5ae-9126-caa5-15c87af68834"
+=======
+<<<<<<< f4cbcec108fe1c84369965ca94590476b9ab8d85
+				"03a31dd5-33dd-13a1-f6f6-0d5dbf877323"
+=======
+				"03a31dd5-33dd-13a1-f6f6-0d5dbf877323",
+				"f4ca0d96-d5ae-9126-caa5-15c87af68834"
+>>>>>>> login working
+>>>>>>> login working
+			],
+			"owner": "377097"
+		}
+	],
+	"timestamp": 1468242211768,
+	"owner": "377097",
+	"remoteLink": "",
+	"public": false,
+	"published": false,
+	"requests": [
+		{
+			"id": "03a31dd5-33dd-13a1-f6f6-0d5dbf877323",
+			"headers": "",
+			"url": "{{server}}cliente/cadastro?Login=brandao.rafael@hotmail.com",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1468462240909,
+			"name": "Get Account",
+			"description": "",
+			"collectionId": "e70aede4-1959-7dae-03d8-f38b1a9e1c1a",
+			"responses": []
+		},
+		{
+			"id": "457e6c47-0122-118e-f31c-0e39b7a9f87c",
+			"headers": "Content-Type: application/json\n",
+			"url": "{{server}}cliente/cadastrar",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1468461816209,
+			"name": "Cadastrar",
+			"description": "",
+			"collectionId": "e70aede4-1959-7dae-03d8-f38b1a9e1c1a",
+			"responses": [],
+			"rawModeData": "{\n    \"account\":{\n        \"CPF_Cli\": 40,\n        \"Login\": \"40@hotmail.com\",\n        \"Senha\": \"senha\",\n        \"Is_Cli\": \"true\"\n    },\n    \"cliente\":{\n        \"CPF_Cli\": 40,\n        \"Nome_Cli\": \"Rafael Brandão\",\n        \"Email_Cli\": \"40@hotmail.com\"\n    }\n}"
+		},
+		{
+			"id": "64b82243-069a-a2b8-fc3a-b1764048c97e",
+			"headers": "Content-Type: application/json\n",
+			"url": "{{server}}cliente/editar",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "e70aede4-1959-7dae-03d8-f38b1a9e1c1a",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Editar",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1468452105721,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "18e909dd-2531-9198-aaee-b9eb94fe0e93",
+			"rawModeData": "{\n    \"cliente\":{\n        \"CPF_Cli\": 111,\n        \"Nome_Cli\": \"Rafael Augusto Brandão\",\n        \"Email_Cli\": \"robson@hotmail.com\"\n    }\n}"
+		},
+		{
+			"id": "df52d307-9580-d7a0-6895-acda9ba14885",
+			"headers": "",
+			"url": "{{server}}cliente/get?CPF_Cli=111",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1468451771801,
+			"name": "Get",
+			"description": "",
+			"collectionId": "e70aede4-1959-7dae-03d8-f38b1a9e1c1a",
+			"responses": []
+		},
+		{
+<<<<<<< f39e9500b884bccaa1eaec7406e18fd26332bc78
+=======
+<<<<<<< f4cbcec108fe1c84369965ca94590476b9ab8d85
+=======
+>>>>>>> login working
+			"id": "f4ca0d96-d5ae-9126-caa5-15c87af68834",
+			"headers": "Content-Type: application/json\n",
+			"url": "{{server}}login",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "e70aede4-1959-7dae-03d8-f38b1a9e1c1a",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Login",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1468522869986,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "18e909dd-2531-9198-aaee-b9eb94fe0e93",
+			"rawModeData": "{\n    \"Login\": \"tt\",\n    \"Senha\": \"senha\"\n}"
+		},
+		{
+<<<<<<< f39e9500b884bccaa1eaec7406e18fd26332bc78
+=======
+>>>>>>> login working
+>>>>>>> login working
+			"id": "ff57e542-181e-fdf9-8dd1-e664a584171b",
+			"headers": "",
+			"url": "{{server}}cliente/deletar?CPF_Cli=1212",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "DELETE",
+			"collectionId": "e70aede4-1959-7dae-03d8-f38b1a9e1c1a",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Deletar",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1468452821872,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "18e909dd-2531-9198-aaee-b9eb94fe0e93",
+			"rawModeData": ""
+		}
+	]
+}
