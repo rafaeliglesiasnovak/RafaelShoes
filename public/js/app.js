@@ -1,7 +1,7 @@
 angular.module('RafaelShoes', [
     'satellizer',
     'LocalStorageModule',
-    'angular-md5'
+    'angular-md5',
     ])
 
 .factory('sessionInjector', [function() {  

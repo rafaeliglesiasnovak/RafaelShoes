@@ -17,39 +17,43 @@
 			 <form style="float: left;     width: 1200px;">
 				<ul>
 					<li class="text-info">Nome: </li>
-					<input type="text" value="">
+					<input type="text" value="" ng-model="usuario.nome">
                 </ul>
                 <ul>
 					<li class="text-info">Sobrenome: </li>
-					<input type="text" value="">
+					<input type="text" value="" ng-model="usuario.sobrenome">
 				 </ul>				 
 				<ul>
 					<li class="text-info">Email: </li>
-					<li><input type="text" value=""></li>
-					</ul>
+					<li><input type="text" value="" ng-model="usuario.email"></li>
+				</ul>
+				<ul>
+					<li class="text-info">CPF: </li>
+					<li><input type="text" value="" ng-model="usuario.cpf"></li>
+				</ul>
 				<ul>
 					<li class="text-info">Senha: </li>
-					<li><input type="password" value=""></li>
+					<li><input type="password" value="" ng-model="usuario.senha"></li>
 				</ul>
 				<ul>
 					<li class="text-info">Número do Celular:</li>
-					<li><input type="tel" value=""></li>
+					<li><input type="tel" value="" ng-model="usuario.celular"></li>
 				</ul>	
                 <ul>
                     <li class="text-info">Telefone Residencial:</li>
-                    <li><input type="tel" value=""></li>
+                    <li><input type="tel" value="" ng-model="usuario.telefone"></li>
                 </ul>			
                 <ul>
                     <li class="text-info">Data de Nascimento:</li>
-                    <li><input type="date" value=""></li>
+                    <li><input type="date" value="" ng-model="usuario.nascimento"></li>
                 </ul>
                 <ul>
                     <li class="text-info">Sexo:</li>
-                    <li><input type="radio" name="sexo" value="Masculino"> Masculino
+                    <li><input type="radio" name="sexo" value="Masculino" ng-model="usuario.sexo" ng-value="Masculino"> Masculino
                     <!-- Espaço no HTML --> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <!-- Espaço no HTML -->
-                    <input type="radio" name="sexo" value="Feminino"> Feminino   </li>
+                    <input type="radio" name="sexo" value="Feminino" ng-model="usuario.sexo" ng-value="Feminino"> Feminino   </li>
                 </ul>		
-				<input type="submit" value="Cadastrar">
+				<input type="submit" value="Cadastrar" ng-click="cadastrar()">
 				<p class="click">Clicando em Cadastrar você concorda com nossos <a href="#">Termos & Condições.</a></p> 
 			</form>
 		</div>
