@@ -1,0 +1,188 @@
+<div class="head-bread">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a ng-click="goTo(home)">Home</a></li>
+            <li><a ng-click="goTo(produtos)">Produtos</a></li>
+            <li class="active">Detalhes</li>
+        </ol>
+    </div>
+</div>
+<div class="showcase-grid">
+    <div class="container">
+        <div class="col-md-8 showcase">
+            <div class="flexslider">
+                  <ul class="slides">
+                    <li data-thumb="images/show.jpg">
+                        <div class="thumb-image"> <img src="images/show.jpg" data-imagezoom="true" class="img-responsive"> </div>
+                    </li>
+                    <li data-thumb="images/show1.jpg">
+                         <div class="thumb-image"> <img src="images/show1.jpg" data-imagezoom="true" class="img-responsive"> </div>
+                    </li>
+                    <li data-thumb="images/show2.jpg">
+                       <div class="thumb-image"> <img src="images/show2.jpg" data-imagezoom="true" class="img-responsive"> </div>
+                    </li>
+                    <li data-thumb="images/show3.jpg">
+                       <div class="thumb-image"> <img src="images/show3.jpg" data-imagezoom="true" class="img-responsive"> </div>
+                    </li>
+                  </ul>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="col-md-4 showcase">
+            <div class="showcase-rt-top">
+                <div class="pull-left shoe-name">
+                    <h3>Nike Air Max 2015</h3>
+                    <p>Men's running shoes</p>
+                    <h4>R$ 190,00</h4>
+                </div>
+                <div class="pull-left rating-stars">
+                    <ul>
+<!--     <li><a href="#" class="active"><span class="glyphicon glyphicon-star star-stn" aria-hidden="true"></span></a></li>
+<li><a href="#" class="active"><span class="glyphicon glyphicon-star star-stn" aria-hidden="true"></span></a></li>
+<li><a href="#" class="active"><span class="glyphicon glyphicon-star star-stn" aria-hidden="true"></span></a></li>
+<li><a href="#"><span class="glyphicon glyphicon-star star-stn" aria-hidden="true"></span></a></li>
+<li><a href="#"><span class="glyphicon glyphicon-star star-stn" aria-hidden="true"></span></a></li> -->
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <hr class="featurette-divider">
+            <div class="shocase-rt-bot">
+                <div class="float-qty-chart">
+                <ul>
+                    <li class="qty">
+                        <h3>Tamanho</h3>
+                        <select class="form-control siz-chrt">
+                          <option>38</option>
+                          <option>39</option>
+                          <option>40</option>
+                          <option>41</option>
+                          <option>42</option>
+                        </select>
+                    </li>
+                    <li class="qty">
+                        <h4>Quantidade</h4>
+                        <select class="form-control qnty-chrt">
+                          <option>1</option>
+                          <option>2</option>
+                          <option>3</option>
+                          <option>4</option>
+                          <option>5</option>
+                          <option>6</option>
+                          <option>7</option>
+                        </select>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+                </div>
+                <ul>
+                    <li class="ad-2-crt simpleCart_shelfItem">
+                        <a class="btn item_add" href="#" role="button">Adicionar ao carrinho</a>
+                        <a class="btn" href="#" role="button">Comprar</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="showcase-last">
+                <h3>Detalhes do Produto</h3>
+                <ul>
+                    <li>Escrever qualquer coisa!</li>
+                </ul>
+            </div>
+        </div>
+<div class="clearfix"></div>
+    </div>
+</div>
+
+<div class="specifications">
+    <div class="container">
+      <h3>Item Details</h3> 
+        <div class="detai-tabs">
+            <!-- Nav tabs -->
+            <ul class="nav nav-pills tab-nike" role="tablist">
+            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Destaques</a></li>
+            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Descrição</a></li>
+            <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Termos & condições</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="home">
+            <p>Qualquer detalhe</p> 
+            </div>
+            <div role="tabpanel" class="tab-pane" id="profile">
+            <p>Qualquer descrição
+            </div>
+            <div role="tabpanel" class="tab-pane" id="messages">
+            Qualquer termo e condição
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="you-might-like">
+    <div class="container">
+        <h3 class="you-might">Produtos sugeridos especialmente do Rafael para você!</h3>
+        <div class="col-md-4 grid-stn simpleCart_shelfItem">
+             <!-- normal -->
+                <div class="ih-item square effect3 bottom_to_top">
+                    <div class="bottom-2-top">
+            <div class="img"><img src="images/grid4.jpg" alt="/" class="img-responsive gri-wid"></div>
+                    <div class="info">
+                        <div class="pull-left styl-hdn">
+                            <h3>01</h3>
+                        </div>
+                        <div class="pull-right styl-price">
+                            <p><a  href="#" class="item_add"><span class="glyphicon glyphicon-shopping-cart grid-cart" aria-hidden="true"></span> <span class=" item_price">R$190</span></a></p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div></div>
+                </div>
+            <!-- end normal -->
+            <div class="quick-view">
+                <a ng-click="goToDetalhe()">Visualizar</a>
+            </div>
+        </div>
+        <div class="col-md-4 grid-stn simpleCart_shelfItem">
+            <!-- normal -->
+                <div class="ih-item square effect3 bottom_to_top">
+                    <div class="bottom-2-top">
+            <div class="img"><img src="images/grid6.jpg" alt="/" class="img-responsive gri-wid"></div>
+                    <div class="info">
+                        <div class="pull-left styl-hdn">
+                            <h3>02</h3>
+                        </div>
+                        <div class="pull-right styl-price">
+<p><a  href="#" class="item_add"><span class="glyphicon glyphicon-shopping-cart grid-cart" aria-hidden="true"></span> <span class=" item_price">R$190</span></a></p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div></div>
+                </div>
+            <!-- end normal -->
+            <div class="quick-view">
+                <a ng-click="goToDetalhe()">Visualizar</a>
+            </div>
+        </div>
+        <div class="col-md-4 grid-stn simpleCart_shelfItem">
+            <!-- normal -->
+                <div class="ih-item square effect3 bottom_to_top">
+                    <div class="bottom-2-top">
+            <div class="img"><img src="images/grid3.jpg" alt="/" class="img-responsive gri-wid"></div>
+                    <div class="info">
+                        <div class="pull-left styl-hdn">
+                            <h3>03</h3>
+                        </div>
+                        <div class="pull-right styl-price">
+<p><a  href="#" class="item_add"><span class="glyphicon glyphicon-shopping-cart grid-cart" aria-hidden="true"></span> <span class=" item_price">R$190</span></a></p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div></div>
+                </div>
+            <!-- end normal -->
+            <div class="quick-view">
+                <a ng-click="goToDetalhe()">Visualizar</a>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>

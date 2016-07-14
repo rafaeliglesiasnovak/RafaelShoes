@@ -1,0 +1,71 @@
+<div class="header-end">
+    <div class="container">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+          </ol>
+
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img src="./images/shoe3.jpg" alt="...">
+                <div class="carousel-caption car-re-posn">
+                    <h3>AirMax</h3>
+                    <h4>O Mostro</h4>
+                    <span class="color-bar"></span>
+                </div>
+            </div>
+            <div class="item">
+              <img src="./images/shoe1.jpg" alt="...">
+                <div class="carousel-caption car-re-posn">
+                    <h3>AirMax</h3>
+                    <h4>Ta saindo</h4>
+                    <span class="color-bar"></span>
+                </div>
+            </div>
+            <div class="item">
+              <img src="./images/shoe2.jpg" alt="...">
+                <div class="carousel-caption car-re-posn">
+                    <h3>AirMax</h3>
+                    <h4>Da Jaula</h4>
+                    <span class="color-bar"></span>
+                </div>
+            </div>
+          </div>
+
+          <!-- Controls -->
+          <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left car-icn" aria-hidden="true"></span>
+            <span class="sr-only">Voltar</span>
+          </a>
+          <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right car-icn" aria-hidden="true"></span>
+            <span class="sr-only">Proximo</span>
+          </a>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<div class="shop-grid">
+    <div class="container"> 
+        <itemproduto ng-repeat="produto in produtos1"></itemproduto>
+    </div>
+    <div class="container"> 
+        <itemproduto ng-repeat="produto in produtos2"></itemproduto>
+    </div>
+        
+    <div class="clearfix"></div>
+</div>
+</div>
+<div class="sub-news">
+    <div class="container">
+        <form>
+            <h3>Receba nossas promoções</h3>
+        <input type="text" class="sub-email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}">
+        <a class="btn btn-default subs-btn" href="#" role="button">Inscrever!</a>
+        </form>
+    </div>
+</div>

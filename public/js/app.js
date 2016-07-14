@@ -1,4 +1,4 @@
-angular.module('bigode', [])
+angular.module('RafaelShoes', [])
 
 .factory('sessionInjector', [function() {  
     var sessionInjector = {
@@ -34,20 +34,25 @@ angular.module('bigode', [])
 .controller("appController", ["$rootScope", function($rootScope){
 	var appCtrl = this;
 
-	localStorage.isBillOpened = false;
-	$rootScope.isBillOpened = false;
-
 	$rootScope.api = "http://localhost:3000/"
 
-	$rootScope.isBillOpened = localStorage.isBillOpened;
+    $rootScope.viewFlag = 1;
 
-	if(localStorage.isBillOpened == "true"){
-		localStorage.stage = 1;
-		$rootScope.stage = localStorage.stage;
-	} else {
-		localStorage.stage = 0;
-		$rootScope.stage = localStorage.stage;
-	}
+    // constantes das paginas
+    $rootScope.home = 1;
+    $rootScope.detalhe = 2;
+    $rootScope.login = 3;
+    $rootScope.cadastro = 4;
+    $rootScope.produtos = 5;
+
+    appCtrl.goTo = function(id){
+        $rootScope.viewFlag = id;
+    }
+
+    appCtrl.goToCategoria = function(idProduto){
+        // Salvar produto no service
+        $rootScope.viewFlag = $rootScope.produtos;
+    }
 
 }])
 ;
