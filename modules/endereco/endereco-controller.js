@@ -1,6 +1,6 @@
 module.exports = function (schema){
-  var Cliente = schema.cliente;
-  var Endereco = schema.endereco;
+  var Cliente = schema.Cliente;
+  var Endereco = schema.Endereco;
 
   return {
     post: function(req, res){
@@ -16,11 +16,11 @@ module.exports = function (schema){
     },
 
     get: function (req, res) {
-      var cliente_id = req.params.cliente_id;
+      var CPF_Cli = req.params.CPF_Cli;
 
       Endereco.findAll({
         where: {
-          cliente_id: cliente_id
+          CPF_Cli: CPF_Cli
         }
       }).then(function(enderecos) {
         return res.json({success: true, message: 'Endereços encontrados.', response: {enderecos: enderecos}});
@@ -28,11 +28,11 @@ module.exports = function (schema){
     },
 
     deletar: function (res, res){
-      var id = res.body.id;
+      var ID_End = res.body.ID_End;
 
       Endereco.destroy({
         where: {
-          id: id
+          ID_End: ID_End
         }
       });
     },
@@ -42,7 +42,7 @@ module.exports = function (schema){
 
       Endereco.update(endereco, {
         where: {
-          id: endereco.id
+          ID_End: endereco.ID_End
         }
       });
     }
