@@ -1,7 +1,7 @@
 <div class="head-bread">
         <div class="container">
             <ol class="breadcrumb">
-                <li><a ng-click="goTo(home)">Home</a></li>
+                <li><a ng-click="goTo(home)" role="button">Home</a></li>
                 <li class="active">Login</li>
             </ol>
         </div>
@@ -23,13 +23,13 @@
                          <input type="submit" value="Login" ng-click="login()">
 
                      </form>
-                    <a href="#">Esqueci minha senha</a>
+                    <a ng-click="goTo(esquecisenha)" role="button">Esqueci minha senha</a>
             </div>
             <div class="col-md-6 login-right">
                     <h3>Criar uma conta na Rafael Shoes</h3>
                     <div class="strip"></div>
                     <p>Crie uma conta na Rafael Shoes e aproveita as melhores ofertas de Tenis da Internet.</p>
-                    <a ng-click="goTo(cadastro)"" class="button">Cadastrar</a>
+                    <a ng-click="goTo(cadastro)" role="button" class="button">Cadastrar</a>
             </div>
             <div class="clearfix"></div>
         </div>

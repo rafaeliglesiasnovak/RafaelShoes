@@ -51,6 +51,10 @@ angular.module('RafaelShoes', [
     $rootScope.produtos = 5;
     $rootScope.contato = 6;
     $rootScope.carrinho = 7;
+    $rootScope.esquecisenha = 8;
+    $rootScope.minhaconta = 9;
+    $rootScope.sobreRafael = 10;
+
 
     appCtrl.goTo = function(id){
         $rootScope.viewFlag = id;

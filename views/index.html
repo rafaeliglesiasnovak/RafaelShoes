@@ -29,6 +29,9 @@
     <script src="js/directives/item-lista-produtos-controller.js"></script>
     <script src="js/directives/contato-controller.js"></script>
     <script src="js/directives/carrinho-controller.js"></script>
+    <script src="js/directives/esquecisenha-controller.js"></script>
+    <script src="js/directives/minhaconta-controller.js"></script>
+    <script src="js/directives/sobreRafael-controller.js"></script>
     
     <!-- services -->
     <script src="js/services/cadastro-service.js"></script>
@@ -85,7 +88,7 @@
                             <div class="total">
                             <span class="simpleCart_total"></span>(<span id="simpleCart_quantity" class="simpleCart_quantity"></span>)</div></h3>
                         </a>
-                        <!-- <p><a href="javascript:;" class="simpleCart_empty">Limpar Carrinho</a></p> Função Limpar Carrinho -->
+                        <!-- <p><a href="javascript:;" class="simpleCart_empty">Limpar Carrinho</a></p> Função Limpar Carrinho  -->
                         <div class="clearfix"> </div>
                     </div>
                 </div>
@@ -99,10 +102,10 @@
                             <div class="row">
                                 <div class="col-sm-4 menu-img-pad">
                                     <ul class="multi-column-dropdown">
-                                        <li><a ng-click="appCtrl.goToCategoria()">Corrida</a></li>
-                                        <li><a ng-click="appCtrl.goToCategoria()">Esportes</a></li>
+                                        <li><a ng-click="appCtrl.goToCategoria()" role="button">Corrida</a></li>
+                                        <li><a ng-click="appCtrl.goToCategoria()" role="button">Esportes</a></li>
                                         <li class="divider"></li>
-                                        <li><a ng-click="appCtrl.goToCategoria()">Casual</a></li>
+                                        <li><a ng-click="appCtrl.goToCategoria()" role="button">Casual</a></li>
                                     </ul>
                                 </div>
                                 <div class="col-sm-4 menu-img-pad">
@@ -115,11 +118,11 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Crianças<b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Crianças<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a ng-click="appCtrl.goToCategoria()">Tenis</a></li>
+                            <li><a ng-click="appCtrl.goToCategoria()" role="button">Tenis</a></li>
                             <li class="divider"></li>
-                            <li><a ng-click="appCtrl.goToCategoria()">Outros Produtos</a></li>
+                            <li><a ng-click="appCtrl.goToCategoria()" role="button">Outros Produtos</a></li>
                         </ul>
                     </li>
                     <li><a ng-click="appCtrl.goTo(contato)" role="button">Contato</a></li>
@@ -146,6 +149,10 @@
     <produtos ng-if="viewFlag == 5"> </produtos>
     <contato ng-if="viewFlag == 6"> </contato>
     <carrinho ng-if="viewFlag == 7"> </carrinho>
+    <esquecisenha ng-if="viewFlag == 8"> </esquecisenha>
+    <minhaconta ng-if="viewFlag == 9"> </minhaconta>
+    <sobreRafael ng-if="viewFlag == 10"> </sobreRafael>
+
 
     <!-- Footer -->
     <div class="footer-grid">
@@ -169,7 +176,7 @@
             <h3>Rafael Shoes</h3>
             <ul class="shot-links">
                 <li><a ng-click="appCtrl.goTo(contato)" role="button">Contato</a></li>
-                <li><a href="#">Termos & Condições</a></li>
+                <li><a ng-click="appCtrl.goTo(sobreRafael)" role="button">Sobre Rafael Shoes</a></li>
             </ul>
         </div>
         <div class="col-md-6 re-ft-grd">
