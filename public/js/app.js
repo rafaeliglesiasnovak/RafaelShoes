@@ -1,4 +1,8 @@
-angular.module('RafaelShoes', [])
+angular.module('RafaelShoes', [
+    'satellizer',
+    'LocalStorageModule',
+    'angular-md5'
+    ])
 
 .factory('sessionInjector', [function() {  
     var sessionInjector = {
@@ -12,8 +16,9 @@ angular.module('RafaelShoes', [])
     return sessionInjector;
 }])
 
-.config(['$httpProvider', function($httpProvider) {  
+.config(['$httpProvider', '$authProvider', function($httpProvider, $authProvider) {  
     $httpProvider.interceptors.push('sessionInjector');
+    $authProvider.loginUrl = '/v1/login'; //end point do login
 }])
 
 .filter('numberFixedLen', function () {
