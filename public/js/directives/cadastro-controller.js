@@ -1,6 +1,6 @@
 var app = angular.module('RafaelShoes');
 
-app.directive('cadastro', ["$rootScope", function($rootScope) {
+app.directive('cadastro', ["$rootScope", "CadastroService", function($rootScope, CadastroService) {
   return {
   	restrict: 'E',
   	link: function($scope){
@@ -10,9 +10,14 @@ app.directive('cadastro', ["$rootScope", function($rootScope) {
       $scope.usuario = {};
 
       $scope.cadastrar = function(){
-        
-        // TODO: fazer cadastro
-        $rootScope.viewFlag = 1;
+        CadastroService.cadastrar($scope.usuario)
+          .success(function(data) {
+            $rootScope.viewFlag = 1;
+            // TODO fazer login
+          })
+          .error(function(err) {
+                // TODO: tratar erro
+          });
       }
 
       $scope.goTo = function(id){
