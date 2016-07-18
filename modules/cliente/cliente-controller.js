@@ -23,19 +23,19 @@ module.exports = function (schema){
           CPF_Cli: CPF_Cli
         }
       }).then(function(){
-        return res.json({success: true, message: 'Clientes excluido com sucesso.'});
+        return res.json({success: true, message: 'Cliente excluido com sucesso.'});
       });
     },
 
     editar: function (req, res){
       var cliente = req.body.cliente;
 
-      Cliente.update(cliente, {
-        where: {
-          CPF_Cli: cliente.CPF_Cli
-        }
-      }).then(function(){
-        return res.json({success: true, message: 'Clientes editado com sucesso.'});
+      var query = {where: {CPF_Cli: cliente.CPF_Cli}};
+
+      Cliente.update(cliente, query).then(function(cliente){
+        Cliente.findAll(query).then(function(clientes) {
+          return res.json({success: true, message: 'Cliente editado com sucesso.', response: {clientes: clientes}});
+        });
       });
     }
   }

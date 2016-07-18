@@ -5,4 +5,47 @@
                 <li class="active">Minha Conta</li>
             </ol>
         </div>
+        <div class="container">
+	        <div>Olá {{nome}}</div>
+	        <a role="button" class="btn btn-default" ng-click="logout()">LOGOUT</a>
+	        <div class="reg-form">
+				<div class="container">
+					<div class="reg">
+				        <p>Editar Perfil</p>
+				        <form style="float: left;     width: 1200px;">
+							<ul>
+								<li class="text-info">Nome: </li>
+								<input type="text" value="usuario.nome" ng-model="usuario.nome">
+			                </ul>
+			                <ul>
+								<li class="text-info">Sobrenome: </li>
+								<input type="text" value="usuario.sobrenome" ng-model="usuario.sobrenome">
+							 </ul>				 
+							<ul>
+								<li class="text-info">Email: </li>
+								<li><input type="text" value="usuario.email" ng-model="usuario.email"></li>
+							</ul>
+							<ul>
+								<li class="text-info">Número do Celular:</li>
+								<li><input type="tel" value="usuario.celular" ng-model="usuario.celular"></li>
+							</ul>	
+			                <ul>
+			                    <li class="text-info">Telefone Residencial:</li>
+			                    <li><input type="tel" value="usuario.telefone" ng-model="usuario.telefone"></li>
+			                </ul>			
+			                <ul>
+			                    <li class="text-info">Data de Nascimento:</li>
+			                    <li><input type="date" value="usuario.nascimento" ng-model="usuario.nascimento"></li>
+			                </ul>
+			                <ul>
+			                    <li class="text-info">Sexo:</li>
+			                    <li><input type="radio" name="sexo" value="usuario.sexo" ng-model="usuario.sexo" ng-value="Masculino"> Masculino
+			                    <!-- Espaço no HTML --> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <!-- Espaço no HTML -->
+			                    <input type="radio" name="sexo" value="Feminino" ng-model="usuario.sexo" ng-value="Feminino"> Feminino   </li>
+			                </ul>		
+							<input type="submit" value="Salvar Alterações" ng-click="editar()">
+						</form>
+					</div>
+				</div>
+        </div>
     </div>

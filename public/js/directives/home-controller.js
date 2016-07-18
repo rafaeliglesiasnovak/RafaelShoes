@@ -1,13 +1,16 @@
 var app = angular.module('RafaelShoes');
 
-app.directive('home', ["$rootScope", function($rootScope) {
+app.directive('home', ["$rootScope", "localStorageService", function($rootScope, localStorageService) {
   return {
   	restrict: 'E',
   	link: function($scope){
 
-      console.log('controller item');
-
       $scope.rootScope = $rootScope;
+
+      var email = localStorageService.get('email');
+      if(email){
+        $rootScope.isLogado = true;
+      }
 
       $scope.goToDetalhe = function(){
         // TODO: passar produto para service

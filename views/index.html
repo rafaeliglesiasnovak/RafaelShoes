@@ -36,6 +36,7 @@
     <!-- services -->
     <script src="js/services/cadastro-service.js"></script>
     <script src="js/services/login-service.js"></script>
+    <script src="js/services/perfil-service.js"></script>
     <!-- md5 -->
     <script src="/js/lib/angular-md5.js"></script>
     <!-- local storage -->
@@ -80,9 +81,23 @@
                 <div class="logo">
                     <a ng-click="appCtrl.goTo(home)" role="button">Rafael Shoes</a>
                 </div>
-                <div class="login-bars">
+                <!-- Login bars deslogado -->
+                <div class="login-bars" ng-if="isLogado == false">
                     <a class="btn btn-default log-bar" ng-click="appCtrl.goTo(cadastro)" role="button">Cadastre-se</a>
                     <a class="btn btn-default log-bar" ng-click="appCtrl.goTo(login)" role="button">Login</a>
+                    <div class="cart box_1">
+                        <a role="button" ng-click="appCtrl.goTo(carrinho)">Carrinho
+                            <h3>
+                            <div class="total">
+                            <span class="simpleCart_total"></span>(<span id="simpleCart_quantity" class="simpleCart_quantity"></span>)</div></h3>
+                        </a>
+                        <!-- <p><a href="javascript:;" class="simpleCart_empty">Limpar Carrinho</a></p> Função Limpar Carrinho  -->
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+                <!-- login bars logado -->
+                <div class="login-bars" ng-if="isLogado == true">
+                    <a class="btn btn-default log-bar" ng-click="appCtrl.goTo(minhaconta)" role="button">Meu Perfil</a>
                     <div class="cart box_1">
                         <a role="button" ng-click="appCtrl.goTo(carrinho)">Carrinho
                             <h3>
