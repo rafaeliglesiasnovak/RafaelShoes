@@ -42,6 +42,7 @@ angular.module('RafaelShoes', [
 	$rootScope.api = "http://localhost:3000/"
 
     $rootScope.viewFlag = 1;
+    $rootScope.isLogado = false;
 
     // constantes das paginas
     $rootScope.home = 1;

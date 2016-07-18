@@ -1,7 +1,7 @@
 var app = angular.module('RafaelShoes');
 
-app.directive('login', ['$rootScope', 'localStorageService', 'md5', '$auth',
-  function($rootScope, localStorageService, md5, $auth) {
+app.directive('login', ['$rootScope', 'localStorageService', 'md5', 'LoginService',
+  function($rootScope, localStorageService, md5, LoginService) {
   return {
   	restrict: 'E',
   	link: function($scope){
@@ -17,25 +17,7 @@ app.directive('login', ['$rootScope', 'localStorageService', 'md5', '$auth',
         credentials.Login = $scope.email;
         credentials.Senha = md5.createHash($scope.senha || '');
 
-        // Use Satellizer's $auth service to login
-        $auth.login(credentials)
-            .then(function(data) {
-              var usuario = data.data.usuario;
-
-              localStorageService.set('cpf', usuario.CPF_Cli);
-              localStorageService.set('nome', usuario.Nome_Cli);
-              localStorageService.set('celular', usuario.Tel_Cel_Cli);
-              localStorageService.set('telefone', usuario.Tel_Res_Cli);
-              localStorageService.set('data_nascimento', usuario.Dt_Nascimento_Cli);
-              localStorageService.set('sexo', usuario.Sexo_Cli);
-              localStorageService.set('email', usuario.Email_Cli);
-
-              $rootScope.viewFlag = 1;
-
-              })
-            .catch(function(err) {
-                console.dir(err);
-            });
+        LoginService.login(credentials);
         }
       
       $scope.goTo = function(id){
