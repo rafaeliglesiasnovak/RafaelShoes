@@ -1,6 +1,7 @@
 var app = angular.module('RafaelShoes');
 
-app.directive('home', ["$rootScope", "localStorageService", function($rootScope, localStorageService) {
+app.directive('home', ["$rootScope", "localStorageService", "ProdutoService", 
+    function($rootScope, localStorageService, ProdutoService) {
   return {
   	restrict: 'E',
   	link: function($scope){
@@ -12,8 +13,9 @@ app.directive('home', ["$rootScope", "localStorageService", function($rootScope,
         $rootScope.isLogado = true;
       }
 
-      $scope.goToDetalhe = function(){
+      $scope.goToDetalhe = function(produto){
         // TODO: passar produto para service
+        ProdutoService.selectProduto(produto);
         $rootScope.viewFlag = $rootScope.detalhe;
       }
 
@@ -21,8 +23,40 @@ app.directive('home', ["$rootScope", "localStorageService", function($rootScope,
         $rootScope.viewFlag = id;
       }
 
-      $scope.produtos1 = [1,2,3];
-      $scope.produtos2 = [4,5,6];
+      var produto1 = {
+        nome: "Nike Air",
+        img: "images/grid3.jpg",
+        preco: "R$200,00"
+      };
+      var produto2 = {
+        nome: "Nike Air",
+        img: "images/grid4.jpg",
+        preco: "R$230,00"
+      };
+      var produto3 = {
+        nome: "Nike Air",
+        img: "images/grid5.jpg",
+        preco: "R$190,00"
+      };
+      var produto4 = {
+        nome: "Nike Air",
+        img: "images/grid6.jpg",
+        preco: "R$180,00"
+      };
+      var produto5 = {
+        nome: "Nike Air",
+        img: "images/grid7.jpg",
+        preco: "R$250,00"
+      };
+      var produto6 = {
+        nome: "Nike Air",
+        img: "images/grid8.jpg",
+        preco: "R$280,00"
+      };
+
+      $scope.produtos1 = [produto1, produto2, produto3];
+
+      $scope.produtos2 = [produto4, produto5, produto6];
   	},
     templateUrl: 'views/directives/home.html'
   };

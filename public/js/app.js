@@ -36,7 +36,7 @@ angular.module('RafaelShoes', [
     };
 })
 
-.controller("appController", ["$rootScope", function($rootScope){
+.controller("appController", ["$rootScope", "CarinhoService",  function($rootScope, CarinhoService){
 	var appCtrl = this;
 
 	$rootScope.api = "http://localhost:3000/"
@@ -55,6 +55,10 @@ angular.module('RafaelShoes', [
     $rootScope.esquecisenha = 8;
     $rootScope.minhaconta = 9;
     $rootScope.sobreRafael = 10;
+
+    $rootScope.addProduto = function(produto){
+        CarinhoService.addProduto(produto);
+    }
 
 
     appCtrl.goTo = function(id){
