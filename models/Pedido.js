@@ -7,7 +7,8 @@ module.exports = function(Sequelize, sequelize, schema){
 	var Pedido = sequelize.define('Pedido', {
 		ID_Pedido: {
   		type: Sequelize.INTEGER,
-  		primaryKey: true
+  		primaryKey: true,
+      autoIncrement: true
 		},
   	CPF_Cli: {
       type: Sequelize.INTEGER,

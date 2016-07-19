@@ -2,9 +2,9 @@ module.exports = function(Sequelize, sequelize){
 	var Produto = sequelize.define('Produto', {
 		ID_Prod: {
   		type: Sequelize.INTEGER,
-  		primaryKey: true
-		},
-
+  		primaryKey: true,
+      autoIncrement: true
+	},
     Nome_Prod: Sequelize.STRING,
     Desc_Prod: Sequelize.STRING,
     Fornecedor_Prod: Sequelize.STRING,

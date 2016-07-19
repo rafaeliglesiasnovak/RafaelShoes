@@ -5,7 +5,8 @@ module.exports = function(Sequelize, sequelize, schema){
 	var Carrinho = sequelize.define('Carrinho', {
 		ID_Carrinho: {
     		type: Sequelize.INTEGER,
-    		primaryKey: true
+    		primaryKey: true,
+      autoIncrement: true
   		},
   	CPF_Cli: {
       type: Sequelize.INTEGER,

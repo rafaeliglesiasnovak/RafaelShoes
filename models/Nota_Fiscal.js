@@ -5,7 +5,8 @@ module.exports = function(Sequelize, sequelize, schema){
 	var Nota_Fiscal = sequelize.define('Nota_Fiscal', {
 		ID_Nota: {
   		type: Sequelize.INTEGER,
-  		primaryKey: true
+  		primaryKey: true,
+      autoIncrement: true
 		},
     ID_Pedido: {
       type: Sequelize.INTEGER,
