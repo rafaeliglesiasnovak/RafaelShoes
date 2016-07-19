@@ -6,7 +6,8 @@ module.exports = function(Sequelize, sequelize, schema){
 	var Alerta = sequelize.define('Alerta', {
 		ID_Alerta: {
   		type: Sequelize.INTEGER,
-  		primaryKey: true
+  		primaryKey: true,
+      autoIncrement: true
 		},
     ID_Pedido: {
       type: Sequelize.INTEGER,

@@ -13,16 +13,14 @@ module.exports = function(Sequelize, sequelize, schema){
       type: Sequelize.INTEGER,
       references: {
         model: Cliente,
-        key: 'CPF_Cli',
-        deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
+        key: 'CPF_Cli'
       } 
     },
     ID_Func: {
       type: Sequelize.INTEGER,
       references: {
         model: Funcionario,
-        key: 'ID_Func',
-        deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE 
+        key: 'ID_Func'
       }
     },
     Login: Sequelize.STRING,

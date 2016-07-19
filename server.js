@@ -67,6 +67,7 @@ module.exports = function(){
 	schema.Account = require(__dirname + '/models/Account.js')(Sequelize, sequelize, schema);
 
 	sequelize
+	  //.sync({force: true})
 	  .sync()
 	  .then(function(err) {
 	    console.log('It worked!');
