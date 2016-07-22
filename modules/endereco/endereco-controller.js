@@ -49,10 +49,12 @@ module.exports = function (schema){
     editar: function (req, res){
       var endereco = req.body;
 
-      Endereco.update(endereco, {
-        where: {
-          ID_End: endereco.ID_End
-        }
+      var query = { where: { ID_End: endereco.ID_End } };
+
+      Endereco.update(endereco, query).then(function(endereco){
+        Endereco.findAll(query).then(function(enderecoDb) {
+          return res.json({success: true, message: 'Endereço editado com sucesso.', response: {endereco: enderecoDb}});
+        });
       });
     }
   }

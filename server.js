@@ -22,6 +22,8 @@ module.exports = function(){
 	app._				= require('lodash');
 	//
 	app.crypto			= require('crypto');
+	//https://github.com/expressjs/multer
+	app.multer  = require('multer');
 	// Arquivo de configuracoes
   	app.config = require('./config')();
 
@@ -67,7 +69,7 @@ module.exports = function(){
 	schema.Account = require(__dirname + '/models/Account.js')(Sequelize, sequelize, schema);
 
 	sequelize
-	  //.sync({force: true})
+	  // .sync({force: true})
 	  .sync()
 	  .then(function(err) {
 	    console.log('It worked!');
@@ -79,6 +81,20 @@ module.exports = function(){
 	var teste = {};
 	teste.controllers = {};
 	teste.controllers.db = require(__dirname + '/modules/teste/teste-controller.js')(schema);
+
+	//Middleware
+	var middleware = {};
+	var storage = app.multer.diskStorage({
+	  destination: function (req, file, cb) {
+	    cb(null, __dirname + '/public/images/produto/')
+	  },
+	  filename: function (req, file, cb) {
+	    app.crypto.pseudoRandomBytes(16, function (err, raw) {
+	      cb(null, raw.toString('hex') + app.path.extname(file.originalname));
+	    });
+	  }
+	});
+	middleware.upload = app.multer({ storage: storage });
 
 	//Cliente
 	var cliente = {};
@@ -96,6 +112,11 @@ module.exports = function(){
 	usuario.controllers = {};
 	usuario.controllers.login = require(__dirname + '/modules/usuario/login-controller.js')(schema, app.bcrypt, app.jwt, app.config);
 
+	// Produto
+	var produto = {};
+	produto.controllers = {};
+	produto.controllers.produto = require(__dirname + '/modules/produto/produto-controller.js')(schema);
+
 	//Rotas
 	var routes = {};
 	routes.routes = require(__dirname + '/routes/router.js')(app.express, routes);
@@ -105,6 +126,7 @@ module.exports = function(){
 	routes.v1.cliente = require(__dirname + '/routes/v1/cliente.js')(cliente);
 	routes.v1.endereco = require(__dirname + '/routes/v1/endereco.js')(endereco);
 	routes.v1.usuario = require(__dirname + '/routes/v1/usuario.js')(usuario);
+	routes.v1.produto = require(__dirname + '/routes/v1/produto.js')(produto, middleware.upload);
 	routes.view = {};
 	routes.view.view = require(__dirname + '/routes/view/view.js')(app.path);
 
