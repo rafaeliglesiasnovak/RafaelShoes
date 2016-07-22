@@ -14,6 +14,7 @@ module.exports = function(Sequelize, sequelize){
     Alt_Prod: Sequelize.FLOAT,
     Preco_Prod: Sequelize.FLOAT,
     Estoque_Prod: Sequelize.INTEGER,
+    Imagem_Prod: Sequelize.STRING
 	});
 
 	return Produto;
