@@ -117,6 +117,11 @@ module.exports = function(){
 	produto.controllers = {};
 	produto.controllers.produto = require(__dirname + '/modules/produto/produto-controller.js')(schema);
 
+	// Carrinho
+	var carrinho = {};
+	carrinho.controllers = {};
+	carrinho.controllers.carrinho = require(__dirname + '/modules/carrinho/carrinho-controller.js')(schema);
+
 	//Rotas
 	var routes = {};
 	routes.routes = require(__dirname + '/routes/router.js')(app.express, routes);
@@ -127,6 +132,7 @@ module.exports = function(){
 	routes.v1.endereco = require(__dirname + '/routes/v1/endereco.js')(endereco);
 	routes.v1.usuario = require(__dirname + '/routes/v1/usuario.js')(usuario);
 	routes.v1.produto = require(__dirname + '/routes/v1/produto.js')(produto, middleware.upload);
+	routes.v1.carrinho = require(__dirname + '/routes/v1/carrinho.js')(carrinho);
 	routes.view = {};
 	routes.view.view = require(__dirname + '/routes/view/view.js')(app.path);
 

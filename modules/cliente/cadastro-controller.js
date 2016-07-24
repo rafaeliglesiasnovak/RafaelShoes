@@ -1,6 +1,7 @@
 module.exports = function (schema, bcrypt, crypto){
   var Cliente = schema.Cliente;
   var Account = schema.Account;
+  var Carrinho = schema.Carrinho;
 
   return {
     cadastrar: function (req, res) {
@@ -25,7 +26,9 @@ module.exports = function (schema, bcrypt, crypto){
                   if(!created) return res.json({success: false, message: 'Email já cadastrado.'});
 
                   else{
-                    return res.json({success: true, message: 'Cliente cadastrado com sucesso!', response: {cliente: clienteDb}});
+                    Carrinho.create({CPF_Cli: account.CPF_Cli}).then(function(carrinhoDb){
+                      return res.json({success: true, message: 'Cliente cadastrado com sucesso!', response: {cliente: clienteDb}});
+                    });
                   }
                 });
             }
