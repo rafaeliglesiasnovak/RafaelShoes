@@ -13,7 +13,7 @@ module.exports = function (){
 				db: 'pcs2034',
 				user: 'rafael',
 				psswrd: 'rafaelshoes',
-				host: 'pcs2034.cu6gpxc772wb.us-west-2.rds.amazonaws.com',
+				host: 'engsoft.cu6gpxc772wb.us-west-2.rds.amazonaws.com',
 				port: 3306,
 				dialect: 'mysql',
 				ssl: 'Amazon RDS'

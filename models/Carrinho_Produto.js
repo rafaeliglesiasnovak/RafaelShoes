@@ -1,7 +1,7 @@
 module.exports = function(Sequelize, sequelize, schema){
 
   var Produto = schema.Produto;
-  var Carrinho = schema.Carrinho;
+  var Cliente = schema.Cliente;
   
 	var Carrinho_Produto = sequelize.define('Carrinho_Produto', {
       ID_Prod: {
@@ -12,11 +12,11 @@ module.exports = function(Sequelize, sequelize, schema){
           deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE 
         }
       },
-      ID_Carrinho: {
+      CPF_Cli: {
         type: Sequelize.INTEGER,
         references: {
-          model: Carrinho,
-          key: 'ID_Carrinho',
+          model: Cliente,
+          key: 'CPF_Cli',
           deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE  
         }
       },
