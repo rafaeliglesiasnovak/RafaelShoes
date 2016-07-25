@@ -60,13 +60,16 @@ module.exports = function(){
 	schema.Funcionario = require(__dirname + '/models/Funcionario.js')(Sequelize, sequelize);
 	schema.Pedido = require(__dirname + '/models/Pedido.js')(Sequelize, sequelize, schema);
 	schema.Alerta = require(__dirname + '/models/Alerta.js')(Sequelize, sequelize, schema);
-	schema.Carrinho = require(__dirname + '/models/Carrinho.js')(Sequelize, sequelize, schema);
 	schema.NotaFiscal = require(__dirname + '/models/Nota_Fiscal.js')(Sequelize, sequelize, schema);
 	schema.Produto = require(__dirname + '/models/Produto.js')(Sequelize, sequelize);
 	schema.CarrinhoProduto = require(__dirname + '/models/Carrinho_Produto.js')(Sequelize, sequelize, schema);
-	schema.PedidoFuncionario = require(__dirname + '/models/Pedido_Funcionario.js')(Sequelize, sequelize, schema);
 	schema.PedidoProduto = require(__dirname + '/models/Pedido_Produto.js')(Sequelize, sequelize, schema);
 	schema.Account = require(__dirname + '/models/Account.js')(Sequelize, sequelize, schema);
+	schema.PedidoFuncionarioQnt = require(__dirname + '/models/Pedido_Funcionario_Qnt.js')(Sequelize, sequelize, schema);
+
+	// Schema Assotiations
+	schema.Pedido.hasOne(schema.NotaFiscal, {foreignKey: 'ID_Pedido'});
+	schema.Pedido.hasMany(schema.PedidoProduto, {foreignKey: 'ID_Pedido'});
 
 	sequelize
 	  // .sync({force: true})

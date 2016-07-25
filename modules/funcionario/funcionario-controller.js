@@ -1,8 +1,8 @@
 module.exports = function (schema, bcrypt, crypto){
   var Cliente = schema.Cliente;
   var Account = schema.Account;
-  var Carrinho = schema.Carrinho;
   var Funcionario = schema.Funcionario;
+  var PedidoFuncionarioQnt = schema.PedidoFuncionarioQnt;
 
   return {
     cadastrar: function (req, res) {
@@ -23,19 +23,20 @@ module.exports = function (schema, bcrypt, crypto){
               if(!created) return res.json({success: false, message: 'Funcionario já cadastrado.'});
 
               else{
+                PedidoFuncionarioQnt.create({ID_Func: funcionarioDb.ID_Func, Qnt_Pedidos: 0}).then(function(db){
+                  account.ID_Func = funcionarioDb.ID_Func;
 
-                account.ID_Func = funcionarioDb.ID_Func;
+                  Account
+                    .findOrCreate({where: {Login: account.Login}, defaults: account})
+                    .spread(function(accountDb, created) {
 
-                Account
-                  .findOrCreate({where: {Login: account.Login}, defaults: account})
-                  .spread(function(accountDb, created) {
+                      if(!created) return res.json({success: false, message: 'Email já cadastrado.'});
 
-                    if(!created) return res.json({success: false, message: 'Email já cadastrado.'});
-
-                    else{
-                      return res.json({success: true, message: 'Funcionario cadastrado com sucesso!', response: {funcionario: funcionarioDb}});
-                    }
-                  });
+                      else{
+                        return res.json({success: true, message: 'Funcionario cadastrado com sucesso!', response: {funcionario: funcionarioDb}});
+                      }
+                    });
+                });
               }
             });
         });
