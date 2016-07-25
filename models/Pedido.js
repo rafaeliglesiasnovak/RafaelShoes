@@ -38,7 +38,8 @@ module.exports = function(Sequelize, sequelize, schema){
     Prazo_Entrega: Sequelize.STRING,
     Forma_Entrega: Sequelize.STRING,
     Status_Pag: Sequelize.STRING,
-    Forma_Pag: Sequelize.STRING
+    Forma_Pag: Sequelize.STRING,
+    Status_Pedido: Sequelize.STRING
 	});
 
 	return Pedido;
