@@ -48,6 +48,7 @@
     <script src="js/directives/alterarcliente-controller.js"></script>
     <script src="js/directives/meuspedidos-controller.js"></script>
     <script src="js/directives/devolucao-controller.js"></script>
+    <script src="js/directives/checkout-controller.js"></script>
     
     <!-- services -->
     <script src="js/services/cadastro-service.js"></script>
@@ -109,7 +110,6 @@
                             <div class="total">
                             <span class="simpleCart_total"></span>(<span id="simpleCart_quantity" class="simpleCart_quantity"></span>)</div></h3>
                         </a>
-                        <!-- <p><a href="javascript:;" class="simpleCart_empty">Limpar Carrinho</a></p> Função Limpar Carrinho  -->
                         <div class="clearfix"> </div>
                     </div>
                 </div>
@@ -122,16 +122,14 @@
                             <div class="total">
                             <span class="simpleCart_total"></span>(<span id="simpleCart_quantity" class="simpleCart_quantity"></span>)</div></h3>
                         </a>
-                        <!-- <p><a href="javascript:;" class="simpleCart_empty">Limpar Carrinho</a></p> Função Limpar Carrinho  -->
                         <div class="clearfix"> </div>
                     </div>
                 </div>
                 <div class="clearfix"></div>
             </div>
             <div class="collapse navbar-collapse collapse-pdng" id="bs-example-navbar-collapse-1" style="margin: auto;">
-                <ul class="nav navbar-nav nav-font" style="padding-left: 115px;padding-top: 5px;">
-                    <li><a ng-click="appCtrl.goTo(produtos)" role="button">Tenis</a></li>
-                    <!-- <li><a ng-click="appCtrl.goTo(sapatos)" role="button">Sapatos</a></li> -->
+                <ul class="nav navbar-nav nav-font" style="padding-left: 105px;padding-top: 5px;">
+                    <li><a ng-click="appCtrl.goTo(produtos)" role="button">Produtos</a></li>
                     <li><a ng-click="appCtrl.goTo(contato)" role="button">Contato</a></li>
                     <div class="clearfix"></div>
                 </ul>
@@ -175,6 +173,7 @@
     <alterarcliente ng-if="viewFlag == 24"> </alterarcliente>
     <meuspedidos ng-if="viewFlag == 25"> </meuspedidos>
     <devolucao ng-if="viewFlag == 26"> </devolucao>
+    <checkout ng-if="viewFlag == 27"> </checkout>
 
 
     <!-- Footer -->
@@ -183,8 +182,7 @@
         <div class="col-md-2 re-ft-grd">
             <h3>Categorias</h3>
             <ul class="categories">
-                <li><a ng-click="appCtrl.goTo(produtos)" role="button">Tenis</a></li>
-
+                <li><a ng-click="appCtrl.goTo(produtos)" role="button">Produtos</a></li>
             </ul>
         </div>
         <div class="col-md-2 re-ft-grd">
