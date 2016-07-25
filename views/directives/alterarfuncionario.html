@@ -1,0 +1,37 @@
+    <div class="head-bread">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><a ng-click="goTo(home)" role="button">Home</a></li>
+                <li><a ng-click="goTo(adm)" role="button">Administrador</a></li>
+                <li class="active">Alterar Funcionario</li>
+            </ol>
+        </div>
+        <div class="container">
+	        <div>Olá {{nome}}</div>
+	        <a role="button" class="btn btn-default" ng-click="logout()">LOGOUT</a>
+	        <div class="reg-form">
+				<div class="container">
+					<div class="reg">
+ 						<form style="float: left;     width: 1200px;">
+							<ul>
+								<li class="text-info">ID Funcionario:</li>
+								<input type="text" required>
+			                </ul>
+			                <ul>
+								<li class="text-info">Nome:</li>
+								<input type="text" required>
+							 </ul>
+			                <ul>
+								<li class="text-info">Email:</li>
+								<input type="email" required>
+							 </ul>								 				 
+							<ul>
+								<li class="text-info">Cargo:</li>
+								<li><input type="text" required></li>
+							</ul>
+							<input type="submit" value="Alterar Funcionario" ng-click="editar()">
+						</form>  
+					</div>
+				</div>
+        </div>
+    </div>

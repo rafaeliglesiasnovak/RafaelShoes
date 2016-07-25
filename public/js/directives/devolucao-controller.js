@@ -1,6 +1,6 @@
 var app = angular.module('RafaelShoes');
 
-app.directive('sobrerafael', ["$rootScope", function($rootScope) {
+app.directive('devolucao', ["$rootScope", function($rootScope) {
   return {
   	restrict: 'E',
   	link: function($scope){
@@ -16,6 +16,6 @@ app.directive('sobrerafael', ["$rootScope", function($rootScope) {
         $rootScope.viewFlag = id;
       }
   	},
-    templateUrl: 'views/directives/sobrerafael.html'
+    templateUrl: 'views/directives/devolucao.html'
   };
 }]);

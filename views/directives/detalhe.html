@@ -35,15 +35,6 @@
                     <p>Men's running shoes</p>
                     <h4>R$ 190,00</h4>
                 </div>
-                <div class="pull-left rating-stars">
-                    <ul>
-<!--     <li><a href="#" class="active"><span class="glyphicon glyphicon-star star-stn" aria-hidden="true"></span></a></li>
-<li><a href="#" class="active"><span class="glyphicon glyphicon-star star-stn" aria-hidden="true"></span></a></li>
-<li><a href="#" class="active"><span class="glyphicon glyphicon-star star-stn" aria-hidden="true"></span></a></li>
-<li><a href="#"><span class="glyphicon glyphicon-star star-stn" aria-hidden="true"></span></a></li>
-<li><a href="#"><span class="glyphicon glyphicon-star star-stn" aria-hidden="true"></span></a></li> -->
-                    </ul>
-                </div>
                 <div class="clearfix"></div>
             </div>
             <hr class="featurette-divider">
@@ -78,7 +69,7 @@
                 <ul>
                     <li class="ad-2-crt simpleCart_shelfItem">
                         <a class="btn item_add" href="#" role="button">Adicionar ao carrinho</a>
-                        <a class="btn" href="#" role="button">Comprar</a>
+                        <a class="btn" ng-click="appCtrl.goTo(carrinho)" role="button" role="button">Comprar</a>
                     </li>
                 </ul>
             </div>
@@ -140,7 +131,7 @@
                 </div>
             <!-- end normal -->
             <div class="quick-view">
-                <a ng-click="goToDetalhe()">Visualizar</a>
+                <a ng-click="goToDetalhe()" role="button">Visualizar</a>
             </div>
         </div>
         <div class="col-md-4 grid-stn simpleCart_shelfItem">
@@ -160,7 +151,7 @@
                 </div>
             <!-- end normal -->
             <div class="quick-view">
-                <a ng-click="goToDetalhe()">Visualizar</a>
+                <a ng-click="goToDetalhe()" role="button">Visualizar</a>
             </div>
         </div>
         <div class="col-md-4 grid-stn simpleCart_shelfItem">
@@ -180,7 +171,7 @@
                 </div>
             <!-- end normal -->
             <div class="quick-view">
-                <a ng-click="goToDetalhe()">Visualizar</a>
+                <a ng-click="goToDetalhe()" role="button">Visualizar</a>
             </div>
         </div>
         <div class="clearfix"></div>

@@ -11,7 +11,7 @@
     <div class="check">
         <div class="container">	 
             <div class="col-md-3 cart-total">
-                <a class="continue" href="produtos.html">Continuar Comprando</a>
+                <a class="continue" ng-click="goTo(produtos)" role="button">Continuar Comprando</a>
                 <div class="price-details">
                     <h3>Detalhes</h3>
                     <span>Total</span>
@@ -33,6 +33,7 @@
             </div>
             <div class="col-md-9 cart-items">
                 <h1>Meu Carrinho</h1>
+                <a href="javascript:;" class="simpleCart_empty">Limpar Carrinho</a>
                     <script>$(document).ready(function(c) {
                         $('.close1').on('click', function(c){
                             $('.cart-header').fadeOut('slow', function(c){

@@ -54,7 +54,24 @@ angular.module('RafaelShoes', [
     $rootScope.carrinho = 7;
     $rootScope.esquecisenha = 8;
     $rootScope.minhaconta = 9;
-    $rootScope.sobreRafael = 10;
+    $rootScope.sobrerafael = 10;
+    $rootScope.adm = 11;
+    $rootScope.cadastrarproduto = 12;
+    $rootScope.buscarproduto = 13;
+    $rootScope.removerproduto = 14;
+    $rootScope.alterarproduto = 15;
+    $rootScope.cadastrarfuncionario = 16;
+    $rootScope.buscarfuncionario = 17;
+    $rootScope.removerfuncionario = 18;
+    $rootScope.alterarfuncionario = 19;
+    $rootScope.buscarcliente = 20;
+    $rootScope.removercliente = 21;
+    $rootScope.supervisor = 22;
+    $rootScope.funcionario = 23;
+    $rootScope.alterarcliente = 24;
+    $rootScope.meuspedidos = 25;
+    $rootScope.devolucao = 26;
+
 
     $rootScope.addProduto = function(produto){
         CarinhoService.addProduto(produto);

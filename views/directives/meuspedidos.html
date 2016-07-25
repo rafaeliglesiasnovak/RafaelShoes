@@ -2,14 +2,17 @@
         <div class="container">
             <ol class="breadcrumb">
                 <li><a ng-click="appCtrl.goTo(home)" role="button">Home</a></li>
-                <li class="active">Sobre Rafael Shoes</li>
+                <li><a ng-click="appCtrl.goTo(minhaconta)" role="button">Minha Conta</a></li>
+                <li class="active">Meus Pedidos</li>
             </ol>
         </div>
         <div class="container">
+	        <div>Olá {{nome}}</div>
+	        <a role="button" class="btn btn-default" ng-click="logout()">LOGOUT</a>
 	        <div class="reg-form">
 				<div class="container">
 					<div class="reg">
-				        <p>Criado em 2016, Rafael Shoes é a melhor loja de vendas de tênis e sapatos do Brasil.</p>   
+				        <p>Meus Pedidos:</p>   
 					</div>
 				</div>
         </div>
