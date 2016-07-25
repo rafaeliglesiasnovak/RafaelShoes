@@ -14,18 +14,18 @@ module.exports = function(){
 	app.bodyParser     	= require('body-parser');
 	//https://github.com/expressjs/method-override
 	app.methodOverride 	= require('method-override');
-	//
+	//https://www.npmjs.com/package/bcryptjs
 	app.bcrypt 			= require('bcryptjs');
-	//
+	//https://github.com/auth0/node-jsonwebtoken
 	app.jwt 			= require('jsonwebtoken');
-	//
+	//https://lodash.com/
 	app._				= require('lodash');
-	//
+	//https://nodejs.org/api/crypto.html
 	app.crypto			= require('crypto');
 	//https://github.com/expressjs/multer
-	app.multer  = require('multer');
+	app.multer  		= require('multer');
 	// Arquivo de configuracoes
-  	app.config = require('./config')();
+  	app.config 			= require('./config')();
 
 	//SQL
 	var Sequelize = require('sequelize');
@@ -127,6 +127,11 @@ module.exports = function(){
 	funcionario.controllers = {};
 	funcionario.controllers.funcionario = require(__dirname + '/modules/funcionario/funcionario-controller.js')(schema, app.bcrypt, app.crypto);
 
+	// Pedido
+	var pedido = {};
+	pedido.controllers = {};
+	pedido.controllers.pedido = require(__dirname + '/modules/pedido/pedido-controller.js')(schema);
+
 	//Rotas
 	var routes = {};
 	routes.routes = require(__dirname + '/routes/router.js')(app.express, routes);
@@ -139,6 +144,7 @@ module.exports = function(){
 	routes.v1.produto = require(__dirname + '/routes/v1/produto.js')(produto, middleware.upload);
 	routes.v1.carrinho = require(__dirname + '/routes/v1/carrinho.js')(carrinho);
 	routes.v1.funcionario = require(__dirname + '/routes/v1/funcionario.js')(funcionario);
+	routes.v1.pedido = require(__dirname + '/routes/v1/pedido.js')(pedido);
 	routes.view = {};
 	routes.view.view = require(__dirname + '/routes/view/view.js')(app.path);
 
