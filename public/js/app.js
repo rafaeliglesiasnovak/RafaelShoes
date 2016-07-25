@@ -71,6 +71,7 @@ angular.module('RafaelShoes', [
     $rootScope.alterarcliente = 24;
     $rootScope.meuspedidos = 25;
     $rootScope.devolucao = 26;
+    $rootScope.checkout = 27;
 
 
     $rootScope.addProduto = function(produto){
