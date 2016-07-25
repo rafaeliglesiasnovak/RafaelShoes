@@ -122,6 +122,11 @@ module.exports = function(){
 	carrinho.controllers = {};
 	carrinho.controllers.carrinho = require(__dirname + '/modules/carrinho/carrinho-controller.js')(schema);
 
+	// Funcionario
+	var funcionario = {};
+	funcionario.controllers = {};
+	funcionario.controllers.funcionario = require(__dirname + '/modules/funcionario/funcionario-controller.js')(schema, app.bcrypt, app.crypto);
+
 	//Rotas
 	var routes = {};
 	routes.routes = require(__dirname + '/routes/router.js')(app.express, routes);
@@ -133,6 +138,7 @@ module.exports = function(){
 	routes.v1.usuario = require(__dirname + '/routes/v1/usuario.js')(usuario);
 	routes.v1.produto = require(__dirname + '/routes/v1/produto.js')(produto, middleware.upload);
 	routes.v1.carrinho = require(__dirname + '/routes/v1/carrinho.js')(carrinho);
+	routes.v1.funcionario = require(__dirname + '/routes/v1/funcionario.js')(funcionario);
 	routes.view = {};
 	routes.view.view = require(__dirname + '/routes/view/view.js')(app.path);
 

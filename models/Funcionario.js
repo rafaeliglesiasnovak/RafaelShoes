@@ -6,7 +6,6 @@ module.exports = function(Sequelize, sequelize){
       	autoIncrement: true
 		},
 		Nome_Func: Sequelize.STRING,
-		Senha_Func: Sequelize.STRING,
 		Setor_Func: Sequelize.STRING,
 		Email_Func: Sequelize.STRING,
 		Cargo_Func: Sequelize.STRING
