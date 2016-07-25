@@ -32,6 +32,11 @@
     <script src="js/directives/esquecisenha-controller.js"></script>
     <script src="js/directives/minhaconta-controller.js"></script>
     <script src="js/directives/sobreRafael-controller.js"></script>
+    <script src="js/directives/adm-controller.js"></script>
+    <script src="js/directives/cadastrarproduto-controller.js"></script>
+    <script src="js/directives/buscarproduto-controller.js"></script>
+    <script src="js/directives/removerproduto-controller.js"></script>
+    <script src="js/directives/alterarproduto-controller.js"></script>
     
     <!-- services -->
     <script src="js/services/cadastro-service.js"></script>
@@ -169,6 +174,11 @@
     <esquecisenha ng-if="viewFlag == 8"> </esquecisenha>
     <minhaconta ng-if="viewFlag == 9"> </minhaconta>
     <sobreRafael ng-if="viewFlag == 10"> </sobreRafael>
+    <adm ng-if="viewFlag == 11"> </adm>
+    <cadastrarproduto ng-if="viewFlag == 12"> </cadastrarproduto>
+    <buscarproduto ng-if="viewFlag == 13"> </buscarproduto>
+    <removerproduto ng-if="viewFlag == 14"> </removerproduto>
+    <alterarproduto ng-if="viewFlag == 15"> </alterarproduto>
 
 
     <!-- Footer -->
@@ -185,7 +195,7 @@
         <div class="col-md-2 re-ft-grd">
             <h3>Meus Produtos</h3>
             <ul class="shot-links">
-                <li><a href="#">Entregas</a></li>
+                <li><a ng-click="appCtrl.goTo(adm)" role="button">Entregas</a></li>
                 <li><a href="#">Devolução</a></li>
             </ul>
         </div>

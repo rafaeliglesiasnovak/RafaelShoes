@@ -55,6 +55,12 @@ angular.module('RafaelShoes', [
     $rootScope.esquecisenha = 8;
     $rootScope.minhaconta = 9;
     $rootScope.sobreRafael = 10;
+    $rootScope.adm = 11;
+    $rootScope.cadastrarproduto = 12;
+    $rootScope.buscarproduto = 13;
+    $rootScope.removerproduto = 14;
+    $rootScope.alterarproduto = 15;
+
 
     $rootScope.addProduto = function(produto){
         CarinhoService.addProduto(produto);
