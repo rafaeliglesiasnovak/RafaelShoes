@@ -42,58 +42,10 @@
                             });	  
                         });
                    </script>
-                <div class="cart-header">
-        <div class="close1"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div>
-                    <div class="cart-sec simpleCart_shelfItem">
-                            <div class="cart-item cyc">
-                                <img src="images/grid8.jpg" class="img-responsive" alt=""/>
-                            </div>
-                           <div class="cart-item-info">
-                                <ul class="qty">
-                                    <li><p>Tamanho : 42</p></li>
-                                    <li><p>Quantidade : 1</p></li>
-                                    <li><p>Preço : R$190</p></li>
-                                </ul>
-                                <div class="delivery">
-                                     <p>Preço Total: R$190.00</p>
-                                     <!-- <span>Delivered in 2-3 bussiness days</span> -->
-                                     <div class="clearfix"></div>
-                                </div>	
-                           </div>
-                           <div class="clearfix"></div>
-
-                      </div>
-                 </div>
-                 <script>$(document).ready(function(c) {
-                        $('.close2').on('click', function(c){
-                                $('.cart-header2').fadeOut('slow', function(c){
-                            $('.cart-header2').remove();
-                        });
-                        });	  
-                        });
-                 </script>
-                <div class="cart-header2">
-        <div class="close2"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div>
-                        <div class="cart-sec simpleCart_shelfItem">
-                            <div class="cart-item cyc">
-                                 <img src="images/grid7.jpg" class="img-responsive" alt=""/>
-                            </div>
-                            <div class="cart-item-info">
-                                <ul class="qty">
-                                    <li><p>Tamanho : 37</p></li>
-                                    <li><p>Quantidade : 2</p></li>
-                                    <li><p>Preço: R$190</p></li>
-                                </ul>
-                                <div class="delivery">
-                                    <p>Preço Total : R$380.00</p>
-                                    <!-- <span>Delivered in 2-3 bussiness days</span> -->
-                                    <div class="clearfix"></div>
-                                </div>	
-                           </div>
-                           <div class="clearfix"></div>					
-                        </div>
-                </div>			
+                <div class="container"> 
+                    <itemCarrinho ng-repeat="produto in produtos"></itemCarrinho>
+                </div>                    
+                <div class="clearfix"></div>
             </div>
-            <div class="clearfix"> </div>
+                
         </div>
-    </div>

@@ -26,32 +26,32 @@ app.directive('home', ["$rootScope", "localStorageService", "ProdutoService",
       var produto1 = {
         nome: "Nike Air",
         img: "images/grid3.jpg",
-        preco: "R$200,00"
+        preco: "R$200.00"
       };
       var produto2 = {
         nome: "Nike Air",
         img: "images/grid4.jpg",
-        preco: "R$230,00"
+        preco: "R$230.00"
       };
       var produto3 = {
         nome: "Nike Air",
         img: "images/grid5.jpg",
-        preco: "R$190,00"
+        preco: "R$190.00"
       };
       var produto4 = {
         nome: "Nike Air",
         img: "images/grid6.jpg",
-        preco: "R$180,00"
+        preco: "R$180.00"
       };
       var produto5 = {
         nome: "Nike Air",
         img: "images/grid7.jpg",
-        preco: "R$250,00"
+        preco: "R$250.00"
       };
       var produto6 = {
         nome: "Nike Air",
         img: "images/grid8.jpg",
-        preco: "R$280,00"
+        preco: "R$280.00"
       };
 
       $scope.produtos1 = [produto1, produto2, produto3];

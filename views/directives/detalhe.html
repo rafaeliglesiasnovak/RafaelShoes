@@ -10,14 +10,14 @@
 <div class="showcase-grid">
     <div class="container">
         <div class="col-md-8 showcase">
-            <div class="thumb-image"> <img src="images/show.jpg" data-imagezoom="true" class="img-responsive"> </div>
+            <div class="thumb-image"> <img src="{{produto.img}}" data-imagezoom="true" class="img-responsive"> </div>
         </div>
         <div class="col-md-4 showcase">
             <div class="showcase-rt-top">
                 <div class="pull-left shoe-name">
-                    <h3>Nike Air Max 2015</h3>
-                    <p>Men's running shoes</p>
-                    <h4>R$ 190,00</h4>
+                    <h3>{{produto.nome}}</h3>
+                    <p>{{produto.descricao}}</p>
+                    <h4>{{produto.preco}}</h4>
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -52,8 +52,8 @@
                 </div>
                 <ul>
                     <li class="ad-2-crt simpleCart_shelfItem">
-                        <a class="btn item_add" role="button">Adicionar ao carrinho</a><span class=" item_price">R$190 </span>
-                        <a class="btn" ng-click="appCtrl.goTo(carrinho)" role="button" role="button">Comprar</a>
+                        <a class="btn item_add" ng-click="adicionarAoCarrinho(produto)" href="#" role="button">Adicionar ao carrinho</a><span class=" item_price">R$190 </span>
+                        <a class="btn" ng-click="goToCarrinho(produto)" role="button" role="button">Comprar</a>
                     </li>
                 </ul>
             </div>

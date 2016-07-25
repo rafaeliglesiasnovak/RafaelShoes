@@ -1,23 +1,26 @@
 var app = angular.module('RafaelShoes');
 
 // each function returns a promise object 
-app.factory('CarinhoService', ['$http', 'localStorageService', 'md5', function($http, localStorageService, md5) {
-    var CarinhoService = {
+app.factory('CarrinhoService', ['$http', 'localStorageService', 'md5', function($http, localStorageService, md5) {
+    var CarrinhoService = {
         // removeProduto : removeProduto,
         addProduto : addProduto,
-        clearCarrinho : clearCarrinho
-        
+        clearCarrinho : clearCarrinho,
+        getCarrinho : getCarrinho
     };
 
-    return CarinhoService;
+    return CarrinhoService;
 
-    var carrinho = [];
+    var carrinho = new Array();
 
-    function getCarrinho(){
+    function getCarrinho(){ 
         return carrinho;
     }
 
     function addProduto(produto) {
+        if(!carrinho){
+            carrinho = new Array();
+        }
         carrinho.push(produto);
     };
 

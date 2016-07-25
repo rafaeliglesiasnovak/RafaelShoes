@@ -1,15 +1,21 @@
 var app = angular.module('RafaelShoes');
 
-app.directive('detalhe', ["$rootScope", function($rootScope) {
+app.directive('detalhe', ["$rootScope", "ProdutoService", "CarrinhoService",
+ function($rootScope, ProdutoService, CarrinhoService) {
   return {
   	restrict: 'E',
   	link: function($scope){
 
-  		$scope.goToDetalhe = function(){
-		    // TODO: passar produto para service
-		    $rootScope.viewFlag = $rootScope.detalhe;
-		  }
+      $scope.produto = ProdutoService.getProduto();
 
+      $scope.adicionarAoCarrinho = function(produto){
+        CarrinhoService.addProduto(produto);
+      }
+
+      $scope.goToCarrinho = function(produto){
+        CarrinhoService.addProduto(produto);
+        $rootScope.viewFlag = $rootScope.carrinho;
+      }
 
     	$scope.rootScope = $rootScope;
   	},
