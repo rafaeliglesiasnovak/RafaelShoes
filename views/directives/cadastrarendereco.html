@@ -1,0 +1,49 @@
+    <div class="head-bread">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><a ng-click="goTo(home)" role="button">Home</a></li>
+                <li><a ng-click="goTo(minhaconta)" role="button">Minha Conta</a></li>
+                <li class="active">Cadastrar Endereço</li>
+            </ol>
+        </div>
+        <div class="container">
+	        <div>Olá {{nome}}</div>
+	        <a role="button" class="btn btn-default" ng-click="logout()">LOGOUT</a>
+	        <div class="reg-form">
+				<div class="container">
+					<div class="reg">
+ 						<form style="float: left;     width: 1200px;">
+							<ul>
+								<li class="text-info">CEP:</li>
+								<input type="text" required>
+			                </ul>
+			                <ul>
+								<li class="text-info">Endereço: </li>
+								<input type="text">
+							 </ul>				 
+							<ul>
+								<li class="text-info">Número: </li>
+								<li><input type="number"></li>
+							</ul>
+							<ul>
+								<li class="text-info">Complemento:</li>
+								<li><input type="text"></li>
+							</ul>	
+			                <ul>
+			                    <li class="text-info">Cidade:</li>
+			                    <li><input type="text"></li>
+			                </ul>			
+			                <ul>
+			                    <li class="text-info">Estado:</li>
+			                    <li><input type="text" step=".01"></li>
+			                </ul>
+			            	<ul>
+			                    <li class="text-info">País:</li>
+			                    <li><input type="text" step=".01"></li>
+			                </ul>
+							<input type="submit" value="Cadastrar Endereço" ng-click="editar()">
+						</form>  
+					</div>
+				</div>
+        </div>
+    </div>

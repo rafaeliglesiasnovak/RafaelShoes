@@ -50,6 +50,9 @@
     <script src="js/directives/devolucao-controller.js"></script>
     <script src="js/directives/checkout-controller.js"></script>
     <script src="js/directives/item-carrinho-controller.js"></script>
+    <script src="js/directives/cadastrarendereco-controller.js"></script>
+    <script src="js/directives/alterarendereco-controller.js"></script>
+    <script src="js/directives/removerendereco-controller.js"></script>
     
     <!-- services -->
     <script src="js/services/cadastro-service.js"></script>
@@ -175,6 +178,9 @@
     <meuspedidos ng-if="viewFlag == 25"> </meuspedidos>
     <devolucao ng-if="viewFlag == 26"> </devolucao>
     <checkout ng-if="viewFlag == 27"> </checkout>
+    <cadastrarendereco ng-if="viewFlag == 28"> </cadastrarendereco>
+    <alterarendereco ng-if="viewFlag == 29"> </alterarendereco>
+    <removerendereco ng-if="viewFlag == 30"> </removerendereco>
 
 
     <!-- Footer -->
@@ -189,7 +195,7 @@
         <div class="col-md-2 re-ft-grd">
             <h3>Meus Produtos</h3>
             <ul class="shot-links">
-                <li><a ng-click="appCtrl.goTo(minhaconta)" role="button">Minha Conta</a></li>
+                <li><a ng-click="appCtrl.goTo(minhaconta)" role="button">Meu Perfil</a></li>
                 <li><a ng-click="appCtrl.goTo(devolucao)" role="button">Devolução</a></li>
             </ul>
         </div>
