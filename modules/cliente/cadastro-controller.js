@@ -8,32 +8,24 @@ module.exports = function (schema, bcrypt, crypto){
       var account = req.body.account;
       var cliente = req.body.cliente;
 
-      Funcionario.find({where: {Email_Func: cliente.Email_Cli }}).then(function(funcionarioDb){
-        if(funcionarioDb) return res.json({success: false, message: 'Email já cadastrado.'});
+      // encrypta senha
+      bcrypt.hash(account.Senha, 4, function(err, hash) {
+        account.Senha = hash;
 
-        // encrypta senha
-        bcrypt.hash(account.Senha, 4, function(err, hash) {
-          account.Senha = hash;
-
-          Cliente
-            .findOrCreate({where: {$or: [{Email_Cli: cliente.Email_Cli}]}, defaults: cliente})
-            .spread(function(clienteDb, created) {
-
-              if(!created) return res.json({success: false, message: 'Cliente já cadastrado.'});
-
-              else{
-                Account
-                  .findOrCreate({where: {Login: account.Login}, defaults: account})
-                  .spread(function(accountDb, created) {
-
-                    if(!created) return res.json({success: false, message: 'Email já cadastrado.'});
-
-                    else{
-                      return res.json({success: true, message: 'Cliente cadastrado com sucesso!', response: {cliente: clienteDb}});
-                    }
-                  });
+        Account.find({where: {Login: account.Login}}).then(function(emailCadastrado){
+          if(emailCadastrado){
+            return res.json({success: false, message: 'Email já cadastrado.'});
+          } else {
+            Cliente.findOrCreate({where: {CPF_Cli: cliente.CPF_Cli}, defaults: cliente}).spread(function(clienteDb, created){
+              if(!created){
+                return res.json({success: false, message: 'CPF já cadastrado.'});
+              } else {
+                Account.create(account).then(function(accountDb){
+                  return res.json({success: true, message: 'Cliente cadastrado com sucesso!', response: {cliente: clienteDb}});
+                });
               }
             });
+          }
         });
       });
     },
