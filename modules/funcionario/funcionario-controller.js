@@ -9,36 +9,23 @@ module.exports = function (schema, bcrypt, crypto){
       var account = req.body.account;
       var funcionario = req.body.funcionario;
 
-      Cliente.find({where: {Email_Cli: funcionario.Email_Func }}).then(function(clienteDb){
-        if(clienteDb) return res.json({success: false, message: 'Email já cadastrado.'});
+      // encrypta senha
+      bcrypt.hash(account.Senha, 4, function(err, hash) {
+        account.Senha = hash;
 
-        // encrypta senha
-        bcrypt.hash(account.Senha, 4, function(err, hash) {
-          account.Senha = hash;
-
-          Funcionario
-            .findOrCreate({where: {$or: [{Email_Func: funcionario.Email_Func}]}, defaults: funcionario})
-            .spread(function(funcionarioDb, created) {
-
-              if(!created) return res.json({success: false, message: 'Funcionario já cadastrado.'});
-
-              else{
-                PedidoFuncionarioQnt.create({ID_Func: funcionarioDb.ID_Func, Qnt_Pedidos: 0}).then(function(db){
-                  account.ID_Func = funcionarioDb.ID_Func;
-
-                  Account
-                    .findOrCreate({where: {Login: account.Login}, defaults: account})
-                    .spread(function(accountDb, created) {
-
-                      if(!created) return res.json({success: false, message: 'Email já cadastrado.'});
-
-                      else{
-                        return res.json({success: true, message: 'Funcionario cadastrado com sucesso!', response: {funcionario: funcionarioDb}});
-                      }
-                    });
+        Account.find({where: {Login: account.Login}}).then(function(emailCadastrado){
+          if(emailCadastrado){
+            return res.json({success: false, message: 'Email já cadastrado.'});
+          } else {
+            Funcionario.create(funcionario).then(function(funcionarioDb){
+              PedidoFuncionarioQnt.create({ID_Func: funcionarioDb.ID_Func, Qnt_Pedidos: 0}).then(function(){
+                account.ID_Func = funcionarioDb.ID_Func;
+                Account.create(account).then(function(accountDb){
+                  return res.json({success: true, message: 'Funcionario cadastrado com sucesso!', response: {funcionario: funcionarioDb}});
                 });
-              }
+              });
             });
+          }
         });
       });
     },
@@ -70,14 +57,42 @@ module.exports = function (schema, bcrypt, crypto){
 
     editar: function (req, res){
       var funcionario = req.body.funcionario;
+      var account = req.body.account;
 
       var query = {where: {ID_Func: funcionario.ID_Func}};
 
-      Funcionario.update(funcionario, query).then(function(funcionarioDb){
-        Funcionario.findAll(query).then(function(funcionarios) {
-          return res.json({success: true, message: 'Funcionario editado com sucesso.', response: {funcionarios: funcionarios}});
+      if(account.Senha){
+        bcrypt.hash(account.Senha, 4, function(err, hash) {
+          account.Senha = hash;
+          Account.find({where:{Login: funcionario.Email_Func}}).then(function(accountDb){
+            if(accountDb){
+              return res.json({success: false, message: 'Email já cadastrado.'});
+            } else {
+              Funcionario.update(funcionario, query).then(function(){
+                Account.update(account, query).then(function(){
+                  Funcionario.find(query).then(function(funcionarioDb) {
+                    return res.json({success: true, message: 'Funcionario editado com sucesso.', response: {funcionario: funcionarioDb}});
+                  });
+                });
+              });
+            }
+          });
         });
-      });
+      } else {
+        Account.find({where:{Login: funcionario.Email_Func}}).then(function(accountDb){
+          if(accountDb){
+            return res.json({success: false, message: 'Email já cadastrado.'});
+          } else {
+            Funcionario.update(funcionario, query).then(function(){
+              Account.update(account, query).then(function(a){
+                Funcionario.find(query).then(function(funcionarioDb) {
+                    return res.json({success: true, message: 'Funcionario editado com sucesso.', response: {funcionario: funcionarioDb}});
+                });
+              });
+            });
+          }
+        }); 
+      }
     }
   }
 }
