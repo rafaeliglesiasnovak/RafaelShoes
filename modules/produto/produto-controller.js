@@ -16,10 +16,13 @@ module.exports = function (schema){
 
     get: function (req, res) {
       var ID_Prod = req.query.ID_Prod;
+      var Nome_Prod = req.query.Nome_Prod;
 
       query = {};
       if(ID_Prod){
-        query.where.ID_Prod = ID_Prod;
+        query.where = {ID_Prod: ID_Prod};
+      } else if (Nome_Prod){
+        query.where = {Nome_Prod: {$like: Nome_Prod + "%"}};
       }
 
       Produto.findAll(query).then(function(produtosDb) {
