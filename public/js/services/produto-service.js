@@ -9,14 +9,14 @@ app.factory('ProdutoService', [function() {
 
     return ProdutoService;
 
-    var produto = {};
+    var serviceProduto = {};
 
     function getProduto(){
-        return produto;
+        return serviceProduto;
     }
 
     function selectProduto(produto) {
-        produto = produto;
+        serviceProduto = produto;
     };
 
 }]);

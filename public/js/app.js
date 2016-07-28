@@ -36,7 +36,7 @@ angular.module('RafaelShoes', [
     };
 })
 
-.controller("appController", ["$rootScope", "CarinhoService",  function($rootScope, CarinhoService){
+.controller("appController", ["$rootScope", "CarrinhoService",  function($rootScope, CarinhoService){
 	var appCtrl = this;
 
 	$rootScope.api = "http://localhost:3000/"
@@ -75,9 +75,8 @@ angular.module('RafaelShoes', [
 
 
     $rootScope.addProduto = function(produto){
-        CarinhoService.addProduto(produto);
+        CarrinhoService.addProduto(produto);
     }
-
 
     appCtrl.goTo = function(id){
         $rootScope.viewFlag = id;
