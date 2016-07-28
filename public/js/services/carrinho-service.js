@@ -21,16 +21,20 @@ app.factory('CarrinhoService', ['$http', 'localStorageService', 'md5', function(
         if(!carrinho){
             carrinho = new Array();
         }
+        var preco = parseInt(produto.preco.slice(2));
+        var quantidade = parseInt(produto.quantidade);
+
+        produto.precoTotal = preco * quantidade;
         carrinho.push(produto);
     };
 
-    // function removeProduto(produto) {
-    //     for (var item : carrinho){
-    //         if(item.id == produto.id){
-    //             carrinho.splice( carrinho.indexof(item), 1 );
-    //         }
-    //     }
-    // }
+    function removeProduto(produto) {
+        for (var item in carrinho){
+            if(item.id == produto.id){
+                carrinho.splice( carrinho.indexof(item), 1 );
+            }
+        }
+    }
 
     function clearCarrinho(){
         carrinho = new Array();

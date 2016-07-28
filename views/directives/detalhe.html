@@ -27,7 +27,7 @@
                 <ul>
                     <li class="qty">
                         <h3>Tamanho</h3>
-                        <select class="form-control siz-chrt">
+                        <select class="form-control siz-chrt" ng-model="produto.tamanho">
                           <option>38</option>
                           <option>39</option>
                           <option>40</option>
@@ -37,7 +37,7 @@
                     </li>
                     <li class="qty">
                         <h4>Quantidade</h4>
-                        <select class="form-control qnty-chrt">
+                        <select class="form-control qnty-chrt" ng-model="produto.quantidade">
                           <option>1</option>
                           <option>2</option>
                           <option>3</option>
@@ -52,7 +52,7 @@
                 </div>
                 <ul>
                     <li class="ad-2-crt simpleCart_shelfItem">
-                        <a class="btn item_add" ng-click="adicionarAoCarrinho(produto)" href="#" role="button">Adicionar ao carrinho</a><span class=" item_price">R$190 </span>
+                        <a class="btn item_add" ng-click="adicionarAoCarrinho(produto)" href="#" role="button">Adicionar ao carrinho</a>
                         <a class="btn" ng-click="goToCarrinho(produto)" role="button" role="button">Comprar</a>
                     </li>
                 </ul>
