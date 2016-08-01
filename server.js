@@ -27,7 +27,11 @@ module.exports = function(){
 	// Arquivo de configuracoes
   	app.config 			= require('./config')();
 
-	//SQL
+	// https://github.com/nodemailer/nodemailer
+	var nodemailer = require('nodemailer');
+  	var transporter = nodemailer.createTransport('smtps://3rafaelshoes@gmail.com:rafaelrafaelrafael@smtp.gmail.com');
+
+	// http://docs.sequelizejs.com/en/latest/
 	var Sequelize = require('sequelize');
 	var sequelize = new Sequelize(app.config.db().db, app.config.db().user, app.config.db().psswrd, {
   		host: app.config.db().host,
@@ -107,7 +111,7 @@ module.exports = function(){
 	//Cadastro
 	var cadastro = {};
 	cadastro.controllers = {};
-	cadastro.controllers.cadastro = require(__dirname + '/modules/cadastro/cadastro-controller.js')(schema, app.bcrypt, app.crypto);
+	cadastro.controllers.cadastro = require(__dirname + '/modules/cadastro/cadastro-controller.js')(schema, app.bcrypt, app.crypto, transporter);
 
 	// Endereco
 	var endereco = {};
