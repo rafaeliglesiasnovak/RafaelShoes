@@ -10,14 +10,20 @@ app.directive('minhaconta', ["$rootScope", "localStorageService", "LoginService"
 
       $scope.usuario = {};
 
-      $scope.usuario.nome = localStorageService.get('nome').split(" ")[0];
-      $scope.usuario.sobrenome = localStorageService.get('nome').split(" ")[1];
       $scope.usuario.cpf = localStorageService.get('cpf');
-      $scope.usuario.celular = localStorageService.get('celular');
-      $scope.usuario.telefone = localStorageService.get('telefone');
-      $scope.usuario.nascimento = localStorageService.get('data_nascimento');
-      $scope.usuario.sexo = localStorageService.get('sexo');
-      $scope.usuario.email = localStorageService.get('email');
+      if(!$scope.usuario.cpf){
+        $rootScope.viewFlag = $rootScope.login;
+      }
+      else{
+        $scope.usuario.nome = localStorageService.get('nome').split(" ")[0];
+        $scope.usuario.sobrenome = localStorageService.get('nome').split(" ")[1];
+        $scope.usuario.celular = localStorageService.get('celular');
+        $scope.usuario.telefone = localStorageService.get('telefone');
+        $scope.usuario.nascimento = localStorageService.get('data_nascimento');
+        $scope.usuario.sexo = localStorageService.get('sexo');
+        $scope.usuario.email = localStorageService.get('email');
+      }
+
 
       $scope.goTo = function(id){
         $rootScope.viewFlag = id;
