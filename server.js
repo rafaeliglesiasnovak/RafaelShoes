@@ -143,6 +143,11 @@ module.exports = function(){
 	pedido.controllers = {};
 	pedido.controllers.pedido = require(__dirname + '/modules/pedido/pedido-controller.js')(schema);
 
+	// Contato
+	var contato = {};
+	contato.controllers = {};
+	contato.controllers.contato = require(__dirname + '/modules/contato/contato-controller.js')(transporter);
+
 	//Rotas
 	var routes = {};
 	routes.routes = require(__dirname + '/routes/router.js')(app.express, routes);
@@ -156,6 +161,7 @@ module.exports = function(){
 	routes.v1.carrinho = require(__dirname + '/routes/v1/carrinho.js')(carrinho);
 	routes.v1.funcionario = require(__dirname + '/routes/v1/funcionario.js')(funcionario);
 	routes.v1.pedido = require(__dirname + '/routes/v1/pedido.js')(pedido);
+	routes.v1.contato = require(__dirname + '/routes/v1/contato.js')(contato);
 	routes.view = {};
 	routes.view.view = require(__dirname + '/routes/view/view.js')(app.path);
 
