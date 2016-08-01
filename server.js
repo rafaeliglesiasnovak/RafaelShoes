@@ -27,7 +27,11 @@ module.exports = function(){
 	// Arquivo de configuracoes
   	app.config 			= require('./config')();
 
-	//SQL
+	// https://github.com/nodemailer/nodemailer
+	var nodemailer = require('nodemailer');
+  	var transporter = nodemailer.createTransport('smtps://3rafaelshoes@gmail.com:rafaelrafaelrafael@smtp.gmail.com');
+
+	// http://docs.sequelizejs.com/en/latest/
 	var Sequelize = require('sequelize');
 	var sequelize = new Sequelize(app.config.db().db, app.config.db().user, app.config.db().psswrd, {
   		host: app.config.db().host,
@@ -102,8 +106,12 @@ module.exports = function(){
 	//Cliente
 	var cliente = {};
 	cliente.controllers = {};
-	cliente.controllers.cadastro = require(__dirname + '/modules/cliente/cadastro-controller.js')(schema, app.bcrypt, app.crypto);
-	cliente.controllers.cliente = require(__dirname + '/modules/cliente/cliente-controller.js')(schema);
+	cliente.controllers.cliente = require(__dirname + '/modules/cliente/cliente-controller.js')(schema, app.bcrypt, app.crypto);
+
+	//Cadastro
+	var cadastro = {};
+	cadastro.controllers = {};
+	cadastro.controllers.cadastro = require(__dirname + '/modules/cadastro/cadastro-controller.js')(schema, app.bcrypt, app.crypto, transporter);
 
 	// Endereco
 	var endereco = {};
@@ -140,7 +148,7 @@ module.exports = function(){
 	routes.routes = require(__dirname + '/routes/router.js')(app.express, routes);
 	routes.v1 = {};
 	routes.v1.teste = require(__dirname + '/routes/v1/teste.js')(teste);
-	routes.v1.cadastro = require(__dirname + '/routes/v1/cadastro.js')(cliente);
+	routes.v1.cadastro = require(__dirname + '/routes/v1/cadastro.js')(cadastro);
 	routes.v1.cliente = require(__dirname + '/routes/v1/cliente.js')(cliente);
 	routes.v1.endereco = require(__dirname + '/routes/v1/endereco.js')(endereco);
 	routes.v1.usuario = require(__dirname + '/routes/v1/usuario.js')(usuario);

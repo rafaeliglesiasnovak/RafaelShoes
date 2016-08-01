@@ -1,14 +1,14 @@
-module.exports = function (moduleCliente){
+module.exports = function (moduleCadastro){
   
-  var controllers = moduleCliente.controllers;
+  var controllers = moduleCadastro.controllers;
 
   return function(router){
-    router.post("/cliente/cadastrar", function(req, res){
-    	controllers.cadastro.cadastrar(req, res);
+    router.get("/cadastro/get", function(req, res){
+    	controllers.cadastro.get(req, res);
     });
 
-    router.get("/cliente/cadastro", function(req, res){
-    	controllers.cadastro.get(req, res);
+    router.post("/cadastro/forgotsenha", function(req, res){
+    	controllers.cadastro.forgotPassword(req, res);
     });
   }
 
