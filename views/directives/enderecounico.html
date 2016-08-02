@@ -16,33 +16,33 @@
  						<form style="float: left;     width: 1200px;">
 							<ul>
 								<li class="text-info">CEP:</li>
-								<input type="text" required>
+								<input type="text" required ng-model="endereco.CEP_End">
 			                </ul>
 			                <ul>
 								<li class="text-info">Endereço: </li>
-								<input type="text">
+								<input type="text" ng-model="endereco.Log_End">
 							 </ul>				 
 							<ul>
 								<li class="text-info">Número: </li>
-								<li><input type="number"></li>
+								<li><input type="number" ng-model="endereco.Num_End"></li>
 							</ul>
 							<ul>
 								<li class="text-info">Complemento:</li>
-								<li><input type="text"></li>
+								<li><input type="text" ng-model="endereco.Comp_End"></li>
 							</ul>	
 			                <ul>
 			                    <li class="text-info">Cidade:</li>
-			                    <li><input type="text"></li>
+			                    <li><input type="text" ng-model="endereco.Cid_End"></li>
 			                </ul>			
 			                <ul>
 			                    <li class="text-info">Estado:</li>
-			                    <li><input type="text" step=".01"></li>
+			                    <li><input type="text" step=".01" ng-model="endereco.Est_End"></li>
 			                </ul>
 			            	<ul>
 			                    <li class="text-info">País:</li>
-			                    <li><input type="text" step=".01"></li>
+			                    <li><input type="text" step=".01" ng-model="endereco.Pais_End"></li>
 			                </ul>
-							<input type="submit" value="Alterar Endereço">
+							<input type="submit" value="Alterar Endereço" ng-click="alterar()">
 						</form>  
 					</div>
 				</div>

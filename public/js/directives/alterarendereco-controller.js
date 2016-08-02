@@ -23,7 +23,8 @@ app.directive('alterarendereco', ["$rootScope", "$http", "localStorageService", 
         $rootScope.viewFlag = 1;
       }
 
-      $scope.goTo = function(id){
+      $scope.goTo = function(id, index){
+        $rootScope.endereco = $scope.enderecos[index];
         $rootScope.viewFlag = id;
       }
   	},

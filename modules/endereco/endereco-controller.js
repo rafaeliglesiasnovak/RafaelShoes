@@ -47,7 +47,7 @@ module.exports = function (schema){
     },
 
     editar: function (req, res){
-      var endereco = req.body;
+      var endereco = req.body.endereco;
 
       var query = { where: { ID_End: endereco.ID_End } };
 
