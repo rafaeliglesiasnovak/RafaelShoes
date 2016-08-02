@@ -11,14 +11,14 @@
 	        <a role="button" class="btn btn-default" ng-click="logout()">LOGOUT</a>
 	        <div class="reg-form">
 				<div class="container">
-					<div class="reg">
-				        <p>Endereço 1:</p>
-                        <a role="button" class="btn btn-default">Remover Endereço</a>
-				        <p>Endereço 2:</p>
-                        <a role="button" class="btn btn-default">Remover Endereço</a>
-				        <p>Endereço 3:</p>  
-                        <a role="button" class="btn btn-default">Remover Endereço</a> 
-					</div>
+                    <div class="reg">
+                        <p ng-if="enderecos.length >= 1">Endereço 1: {{enderecos[0].Log_End}}, {{enderecos[0].Num_End}}, {{enderecos[0].Comp_End}}, {{enderecos[0].CEP_End}}, {{enderecos[0].Cid_End}}, {{enderecos[0].Est_End}}, {{enderecos[0].Pais_End}}</p>
+                        <a ng-if="enderecos.length >= 1" role="button" class="btn btn-default" ng-click="remover(enderecos[0].ID_End)">Remover Endereço</a>
+                        <p ng-if="enderecos.length >= 2">Endereço 2: {{enderecos[1].Log_End}}, {{enderecos[1].Num_End}}, {{enderecos[1].Comp_End}}, {{enderecos[1].CEP_End}}, {{enderecos[1].Cid_End}}, {{enderecos[1].Est_End}}, {{enderecos[1].Pais_End}}</p>
+                        <a ng-if="enderecos.length >= 2" role="button" class="btn btn-default" ng-click="remover(enderecos[1].ID_End)">Remover Endereço</a>
+                        <p ng-if="enderecos.length >= 3">Endereço 2: {{enderecos[2].Log_End}}, {{enderecos[2].Num_End}}, {{enderecos[2].Comp_End}}, {{enderecos[2].CEP_End}}, {{enderecos[2].Cid_End}}, {{enderecos[2].Est_End}}, {{enderecos[2].Pais_End}}</p>  
+                        <a ng-if="enderecos.length >= 3" role="button" class="btn btn-default" ng-click="remover(enderecos[2].ID_End)">Remover Endereço</a>
+                    </div>
 				</div>
         </div>
     </div>
