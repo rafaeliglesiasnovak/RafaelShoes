@@ -1,10 +1,11 @@
 var app = angular.module('RafaelShoes');
 
 // each function returns a promise object 
-app.factory('ProdutoService', [function() {
+app.factory('ProdutoService', ['$http', function($http) {
     var ProdutoService = {
         selectProduto : selectProduto,
-        getProduto : getProduto
+        getProduto : getProduto,
+        getProdutos : getProdutos
     };
 
     return ProdutoService;
@@ -18,5 +19,9 @@ app.factory('ProdutoService', [function() {
     function selectProduto(produto) {
         serviceProduto = produto;
     };
+
+    function getProdutos(){
+        return $http.get('/v1/produto/get');
+    }
 
 }]);

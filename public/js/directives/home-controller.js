@@ -23,40 +23,45 @@ app.directive('home', ["$rootScope", "localStorageService", "ProdutoService",
         $rootScope.viewFlag = id;
       }
 
-      var produto1 = {
-        nome: "Nike Air",
-        img: "images/grid3.jpg",
-        preco: "R$200.00"
-      };
-      var produto2 = {
-        nome: "Nike Air",
-        img: "images/grid4.jpg",
-        preco: "R$230.00"
-      };
-      var produto3 = {
-        nome: "Nike Air",
-        img: "images/grid5.jpg",
-        preco: "R$190.00"
-      };
-      var produto4 = {
-        nome: "Nike Air",
-        img: "images/grid6.jpg",
-        preco: "R$180.00"
-      };
-      var produto5 = {
-        nome: "Nike Air",
-        img: "images/grid7.jpg",
-        preco: "R$250.00"
-      };
-      var produto6 = {
-        nome: "Nike Air",
-        img: "images/grid8.jpg",
-        preco: "R$280.00"
-      };
+      var produtos = [];
+      var produtos1 = [];
+      var produtos2 = [];
 
-      $scope.produtos1 = [produto1, produto2, produto3];
+      ProdutoService.getProdutos()
+        .success(function(data){
+          console.log(data);
+            if(data.success == true){
+                produtos = data.response.produtos;
+                console.log(produtos);
 
-      $scope.produtos2 = [produto4, produto5, produto6];
+                if(produtos.length > 2){
+                  console.log('entrou');
+                  for(var i=0; i < 3; i ++){
+                    console.log('push');
+                    produtos1.push(produtos[i]);
+                  }
+                }
+
+                if(produtos.length > 5){
+                  for(var i=0; i < 3; i ++){
+                    produtos2.push(produtos[i + 3]);
+                  }
+                }
+
+                $scope.produtos1 = produtos1;
+                console.log(produtos1);
+
+                $scope.produtos2 = produtos2;
+            }
+            else{
+                console.dir("Erro get feed");
+            }
+        })
+        .error(function(err) {
+            console.dir("Erro get feed");
+        });
+
+      
   	},
     templateUrl: 'views/directives/home.html'
   };
