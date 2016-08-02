@@ -26,7 +26,7 @@ module.exports = function (schema){
 
       query = {};
       if(CPF_Cli){
-        query.where.CPF_Cli = CPF_Cli;
+        query.where = {CPF_Cli: CPF_Cli};
       }
 
       Endereco.findAll(query).then(function(enderecos) {

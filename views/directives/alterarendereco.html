@@ -12,13 +12,9 @@
 	        <div class="reg-form">
 				<div class="container">
 					<div class="reg">
-				        <p role="button" class="btn btn-default" ng-click="goTo(enderecounico)">Endereço 1</p>
-                        <br>
-                        <br>
-				        <p role="button" class="btn btn-default" ng-click="goTo(enderecounico)">Endereço 2</p>
-				        <br>
-                        <br>
-                        <p role="button" class="btn btn-default" ng-click="goTo(enderecounico)">Endereço 3</p>   
+                        <p ng-if="enderecos.length >= 1" role="button" class="btn btn-default" ng-click="goTo(enderecounico)">{{enderecos[0].Log_End}}, {{enderecos[0].Num_End}}, {{enderecos[0].Comp_End}}, {{enderecos[0].CEP_End}}, {{enderecos[0].Cid_End}}, {{enderecos[0].Est_End}}, {{enderecos[0].Pais_End}}</p>
+                        <p ng-if="enderecos.length >= 2" role="button" class="btn btn-default" ng-click="goTo(enderecounico)">{{enderecos[1].Log_End}}, {{enderecos[1].Num_End}}, {{enderecos[1].Comp_End}}, {{enderecos[1].CEP_End}}, {{enderecos[1].Cid_End}}, {{enderecos[1].Est_End}}, {{enderecos[1].Pais_End}}</p>
+                        <p ng-if="enderecos.length >= 3" role="button" class="btn btn-default" ng-click="goTo(enderecounico)">{{enderecos[2].Log_End}}, {{enderecos[2].Num_End}}, {{enderecos[2].Comp_End}}, {{enderecos[2].CEP_End}}, {{enderecos[2].Cid_End}}, {{enderecos[2].Est_End}}, {{enderecos[2].Pais_End}}</p>  
 					</div>
 				</div>
         </div>
