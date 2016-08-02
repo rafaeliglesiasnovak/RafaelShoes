@@ -75,6 +75,7 @@ angular.module('RafaelShoes', [
     $rootScope.cadastrarendereco = 28;
     $rootScope.alterarendereco = 29;
     $rootScope.removerendereco = 30;
+    $rootScope.enderecounico = 31;
 
 
     $rootScope.addProduto = function(produto){
