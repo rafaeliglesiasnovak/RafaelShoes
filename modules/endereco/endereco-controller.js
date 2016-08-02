@@ -26,7 +26,7 @@ module.exports = function (schema){
 
       query = {};
       if(CPF_Cli){
-        query.where.CPF_Cli = CPF_Cli;
+        query.where = {CPF_Cli: CPF_Cli};
       }
 
       Endereco.findAll(query).then(function(enderecos) {
@@ -47,7 +47,7 @@ module.exports = function (schema){
     },
 
     editar: function (req, res){
-      var endereco = req.body;
+      var endereco = req.body.endereco;
 
       var query = { where: { ID_End: endereco.ID_End } };
 

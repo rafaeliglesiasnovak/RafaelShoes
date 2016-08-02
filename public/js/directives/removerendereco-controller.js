@@ -1,15 +1,32 @@
 var app = angular.module('RafaelShoes');
 
-app.directive('removerendereco', ["$rootScope", function($rootScope) {
+app.directive('removerendereco', ["$rootScope", "$http", "localStorageService", function($rootScope, $http, localStorageService) {
   return {
   	restrict: 'E',
   	link: function($scope){
 
       $scope.rootScope = $rootScope;
 
-      $scope.cadastrar = function(){
-        // TODO: fazer sobreRafael
-        $rootScope.viewFlag = 1;
+      $scope.enderecos = [];
+
+      $scope.pegaEndereco = function(){
+        $http.get($rootScope.api + 'v1/endereco/get?CPF_Cli=' + localStorageService.get('cpf'))
+          .success(function(data){
+            $scope.enderecos = data.response.enderecos;
+          })
+      }
+
+      $scope.pegaEndereco();
+
+      $scope.remover = function(ID_End){
+        $http.post($rootScope.api + 'v1/endereco/deletar?ID_End=' + ID_End)
+          .success(function(data){
+            for(var i = 0; i <= $scope.enderecos.length; i++){
+              if($scope.enderecos[i].ID_End == ID_End){
+                $scope.enderecos.splice(i, 1);
+              }
+            }
+          });
       }
 
       $scope.goTo = function(id){
@@ -19,3 +36,5 @@ app.directive('removerendereco', ["$rootScope", function($rootScope) {
     templateUrl: 'views/directives/removerendereco.html'
   };
 }]);
+
+{{server}}
