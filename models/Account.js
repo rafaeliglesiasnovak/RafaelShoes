@@ -10,7 +10,7 @@ module.exports = function(Sequelize, sequelize, schema){
       autoIncrement: true
 		},
     CPF_Cli: {
-      type: Sequelize.INTEGER,
+      type: Sequelize.INTEGER(11),
       references: {
         model: Cliente,
         key: 'CPF_Cli'

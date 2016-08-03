@@ -46,7 +46,7 @@ module.exports = function (schema, bcrypt, crypto, transporter){
             if(error){
                 return console.log(error);
             }
-            console.log('Message sent: ' + info.response);
+            return res.json({success: true, message: 'Senha modificada.'});
           });
         })
       });  
