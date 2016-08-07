@@ -72,12 +72,29 @@ module.exports = function(){
 	schema.PedidoFuncionarioQnt = require(__dirname + '/models/Pedido_Funcionario_Qnt.js')(Sequelize, sequelize, schema);
 
 	// Schema Assotiations
-	schema.Pedido.hasOne(schema.NotaFiscal, {foreignKey: 'ID_Pedido'});
-	schema.Pedido.hasMany(schema.PedidoProduto, {foreignKey: 'ID_Pedido'});
+	//Account
+	schema.Cliente.hasOne(schema.Account, {foreignKey: 'CPF_Cli', onDelete: 'CASCADE'});
+	schema.Funcionario.hasOne(schema.Account, {foreignKey: 'ID_Func', onDelete: 'CASCADE'});
+	//Alerta
+	schema.Alerta.belongsTo(schema.Pedido, {foreignKey: 'ID_Pedido', onDelete: 'CASCADE'});
+	schema.Alerta.belongsTo(schema.Funcionario, {foreignKey: 'ID_Func', onDelete: 'CASCADE'});
+	//Carrinho_Produto
+	schema.CarrinhoProduto.belongsTo(schema.Cliente, {foreignKey: 'CPF_Cli', onDelete: 'CASCADE'});
+	//Endereço
+	schema.Endereco.belongsTo(schema.Cliente, {foreignKey: 'CPF_Cli', onDelete: 'CASCADE'});
+	//Nota_Fiscal
+	schema.NotaFiscal.belongsTo(schema.Pedido, {foreignKey: 'ID_Pedido', onDelete: 'CASCADE'});
+	//Pedido
+	schema.Pedido.belongsTo(schema.Cliente, {foreignKey: 'CPF_Cli', onDelete: 'CASCADE'});
+	schema.Pedido.belongsTo(schema.Funcionario, {foreignKey: 'ID_Func'});
+	//Pedido_Funcionario_Qnt
+	schema.PedidoFuncionarioQnt.belongsTo(schema.Funcionario, {foreignKey: 'ID_Func'});
+	//Pedido_Produto
+	schema.PedidoProduto.belongsTo(schema.Pedido, {foreignKey: 'ID_Pedido', onDelete: 'CASCADE'});
 
 	sequelize
-	  // .sync({force: true})
-	  .sync()
+	  .sync({force: true})
+	  // .sync()
 	  .then(function(err) {
 	    console.log('It worked!');
 	  }, function (err) { 
