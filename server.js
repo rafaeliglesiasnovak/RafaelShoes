@@ -93,8 +93,8 @@ module.exports = function(){
 	schema.PedidoProduto.belongsTo(schema.Pedido, {foreignKey: 'ID_Pedido', onDelete: 'CASCADE'});
 
 	sequelize
-	  .sync({force: true})
-	  // .sync()
+	  // .sync({force: true})
+	  .sync()
 	  .then(function(err) {
 	    console.log('It worked!');
 	  }, function (err) { 
