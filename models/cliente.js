@@ -1,7 +1,7 @@
 module.exports = function(Sequelize, sequelize){
 	var Cliente = sequelize.define('Cliente', {
 		CPF_Cli: {
-			type: Sequelize.INTEGER(11),
+			type: Sequelize.BIGINT(11),
 			primaryKey: true,
 			autoIncrement: false
 		},
