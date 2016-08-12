@@ -1,6 +1,7 @@
 var app = angular.module('RafaelShoes');
 
-app.directive('removerendereco', ["$rootScope", "$http", "localStorageService", function($rootScope, $http, localStorageService) {
+app.directive('removerendereco', ["$rootScope", "$http", "localStorageService", "LoginService", 
+    function($rootScope, $http, localStorageService, LoginService) {
   return {
   	restrict: 'E',
   	link: function($scope){
@@ -16,6 +17,10 @@ app.directive('removerendereco', ["$rootScope", "$http", "localStorageService", 
           })
       }
 
+      $scope.logout = function(){
+        LoginService.logout();
+      }
+      
       $scope.pegaEndereco();
 
       $scope.remover = function(ID_End){

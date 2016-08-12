@@ -1,6 +1,6 @@
 var app = angular.module('RafaelShoes');
 
-app.directive('alterarendereco', ["$rootScope", "$http", "localStorageService", function($rootScope, $http, localStorageService) {
+app.directive('alterarendereco', ["$rootScope", "$http", "localStorageService", "LoginService", function($rootScope, $http, localStorageService, LoginService) {
   return {
   	restrict: 'E',
   	link: function($scope){
@@ -23,6 +23,10 @@ app.directive('alterarendereco', ["$rootScope", "$http", "localStorageService", 
         $rootScope.viewFlag = 1;
       }
 
+      $scope.logout = function(){
+        LoginService.logout();
+      }
+      
       $scope.goTo = function(id, index){
         $rootScope.endereco = $scope.enderecos[index];
         $rootScope.viewFlag = id;

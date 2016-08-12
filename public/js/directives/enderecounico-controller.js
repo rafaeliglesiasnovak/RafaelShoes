@@ -1,6 +1,6 @@
 var app = angular.module('RafaelShoes');
 
-app.directive('enderecounico', ["$rootScope", "$http", function($rootScope, $http) {
+app.directive('enderecounico', ["$rootScope", "$http", "LoginService", function($rootScope, $http, LoginService) {
   return {
   	restrict: 'E',
   	link: function($scope){
@@ -17,6 +17,10 @@ app.directive('enderecounico', ["$rootScope", "$http", function($rootScope, $htt
           });
       }
 
+      $scope.logout = function(){
+        LoginService.logout();
+      }
+      
       $scope.goTo = function(id){
         $rootScope.viewFlag = id;
       }

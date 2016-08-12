@@ -1,11 +1,15 @@
 var app = angular.module('RafaelShoes');
 
-app.directive('adm', ["$rootScope", function($rootScope) {
+app.directive('adm', ["$rootScope", "LoginService", function($rootScope, LoginService) {
   return {
   	restrict: 'E',
   	link: function($scope){
 
       $scope.rootScope = $rootScope;
+
+      $scope.logout = function(){
+        LoginService.logout();
+      }
 
       $scope.cadastrar = function(){
         // TODO: fazer sobreRafael

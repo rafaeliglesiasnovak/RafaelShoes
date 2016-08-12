@@ -1,6 +1,6 @@
 var app = angular.module('RafaelShoes');
 
-app.directive('carrinho', ["$rootScope", "CarrinhoService", function($rootScope, CarrinhoService) {
+app.directive('carrinho', ["$rootScope", "CarrinhoService", "LoginService", function($rootScope, CarrinhoService, LoginService) {
   return {
   	restrict: 'E',
   	link: function($scope){
@@ -15,6 +15,10 @@ app.directive('carrinho', ["$rootScope", "CarrinhoService", function($rootScope,
         $rootScope.viewFlag = 1;
       }
 
+      $scope.logout = function(){
+        LoginService.logout();
+      }
+      
       $scope.goTo = function(id){
         $rootScope.viewFlag = id;
       }

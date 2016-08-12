@@ -12,7 +12,7 @@ app.directive('home', ["$rootScope", "localStorageService", "ProdutoService",
       if(email){
         $rootScope.isLogado = true;
       }
-
+      
       $scope.goToDetalhe = function(produto){
         // TODO: passar produto para service
         ProdutoService.selectProduto(produto);

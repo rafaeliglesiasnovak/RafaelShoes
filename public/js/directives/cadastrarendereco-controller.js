@@ -1,6 +1,7 @@
 var app = angular.module('RafaelShoes');
 
-app.directive('cadastrarendereco', ["$rootScope", "$http", "localStorageService", function($rootScope, $http, localStorageService) {
+app.directive('cadastrarendereco', ["$rootScope", "$http", "localStorageService", "LoginService", 
+    function($rootScope, $http, localStorageService, LoginService) {
   return {
   	restrict: 'E',
   	link: function($scope){
@@ -23,6 +24,10 @@ app.directive('cadastrarendereco', ["$rootScope", "$http", "localStorageService"
           })
       }
 
+      $scope.logout = function(){
+        LoginService.logout();
+      }
+      
       $scope.goTo = function(id){
         $rootScope.viewFlag = id;
       }

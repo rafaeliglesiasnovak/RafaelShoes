@@ -10,6 +10,10 @@ app.directive('cadastro', ["$rootScope", "LoginService", "CadastroService", "md5
 
       $scope.usuario = {};
 
+      $scope.logout = function(){
+        LoginService.logout();
+      }
+      
       $scope.cadastrar = function(){
         CadastroService.cadastrar($scope.usuario)
           .success(function(data) {

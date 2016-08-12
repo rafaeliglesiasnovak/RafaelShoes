@@ -7,6 +7,7 @@ app.directive('produtos', ["$rootScope", function($rootScope) {
 
       $scope.rootScope = $rootScope;
 
+      
       var produto1 = {
         nome: "Nike Air 1",
         img: "images/grid3.jpg",

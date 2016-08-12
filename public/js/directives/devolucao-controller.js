@@ -12,6 +12,7 @@ app.directive('devolucao', ["$rootScope", function($rootScope) {
         $rootScope.viewFlag = 1;
       }
 
+      
       $scope.goTo = function(id){
         $rootScope.viewFlag = id;
       }
