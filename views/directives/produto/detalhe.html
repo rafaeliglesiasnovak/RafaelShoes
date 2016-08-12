@@ -1,0 +1,67 @@
+<div class="head-bread">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a ng-click="goTo(home)" role="button">Home</a></li>
+            <li class="active">Detalhes</li>
+        </ol>
+    </div>
+</div>
+<div class="showcase-grid">
+    <div class="container">
+        <div class="col-md-8 showcase">
+            <div class="thumb-image"> <img src="images/produto/{{produto.Imagem_Prod}}" data-imagezoom="true" class="img-responsive"> </div>
+        </div>
+        <div class="col-md-4 showcase">
+            <div class="showcase-rt-top">
+                <div class="pull-left shoe-name">
+                    <h3>{{produto.Nome_Prod}}</h3>
+                    <h4>R$ {{produto.Preco_Prod | numberFixedLen:2}}</h4>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <hr class="featurette-divider">
+            <div class="shocase-rt-bot">
+                <div class="float-qty-chart">
+                <ul>
+                    <li class="qty">
+                        <h3>Tamanho</h3>
+                        <select class="form-control siz-chrt" ng-model="produto.tamanho">
+                          <option>38</option>
+                          <option>39</option>
+                          <option>40</option>
+                          <option>41</option>
+                          <option>42</option>
+                        </select>
+                    </li>
+                    <li class="qty">
+                        <h4>Quantidade</h4>
+                        <select class="form-control qnty-chrt" ng-model="produto.quantidade">
+                          <option>1</option>
+                          <option>2</option>
+                          <option>3</option>
+                          <option>4</option>
+                          <option>5</option>
+                          <option>6</option>
+                          <option>7</option>
+                        </select>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+                </div>
+                <ul>
+                    <li class="ad-2-crt simpleCart_shelfItem">
+                        <a class="btn item_add" ng-click="adicionarAoCarrinho(produto)" href="#" role="button">Adicionar ao carrinho</a>
+                        <a class="btn" ng-click="goToCarrinho(produto)" role="button" role="button">Comprar</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="showcase-last">
+                <h3>Detalhes do Produto</h3>
+                <ul>
+                    <li>{{produto.Desc_Prod}}</li>
+                </ul>
+            </div>
+        </div>
+<div class="clearfix"></div>
+    </div>
+</div>

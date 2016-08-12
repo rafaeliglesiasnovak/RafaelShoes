@@ -19,6 +19,6 @@ app.directive('detalhe', ["$rootScope", "ProdutoService", "CarrinhoService",
 
     	$scope.rootScope = $rootScope;
   	},
-    templateUrl: 'views/directives/detalhe.html'
+    templateUrl: 'views/directives/produto/detalhe.html'
   };
 }]);

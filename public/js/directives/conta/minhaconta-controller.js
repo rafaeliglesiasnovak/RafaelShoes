@@ -53,6 +53,6 @@ app.directive('minhaconta', ["$rootScope", "localStorageService", "LoginService"
           });
       }
   	},
-    templateUrl: 'views/directives/minhaconta.html'
+    templateUrl: 'views/directives/conta/minhaconta.html'
   };
 }]);

@@ -1,6 +1,6 @@
 var app = angular.module('RafaelShoes');
 
-app.directive('esquecisenha', ["$rootScope", function($rootScope) {
+app.directive('removercliente', ["$rootScope", "LoginService", function($rootScope, LoginService) {
   return {
   	restrict: 'E',
   	link: function($scope){
@@ -8,15 +8,18 @@ app.directive('esquecisenha', ["$rootScope", function($rootScope) {
       $scope.rootScope = $rootScope;
 
       $scope.cadastrar = function(){
-        // TODO: fazer esquecisenha
+        // TODO: fazer sobreRafael
         $rootScope.viewFlag = 1;
       }
 
+      $scope.logout = function(){
+        LoginService.logout();
+      }
       
       $scope.goTo = function(id){
         $rootScope.viewFlag = id;
       }
   	},
-    templateUrl: 'views/directives/esquecisenha.html'
+    templateUrl: 'views/directives/cliente/removercliente.html'
   };
 }]);

@@ -10,6 +10,6 @@ app.directive('itemcarrinho', ["$rootScope", "ProdutoService", function($rootSco
       
       // TODO: retirar do carrinho
   	},
-    templateUrl: 'views/directives/item-carrinho.html'
+    templateUrl: 'views/directives/carrinho/item-carrinho.html'
   };
 }]);

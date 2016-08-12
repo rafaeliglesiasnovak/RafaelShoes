@@ -1,17 +1,14 @@
 var app = angular.module('RafaelShoes');
 
-app.directive('carrinho', ["$rootScope", "CarrinhoService", "LoginService", function($rootScope, CarrinhoService, LoginService) {
+app.directive('alterarfuncionario', ["$rootScope", "LoginService", function($rootScope, LoginService) {
   return {
   	restrict: 'E',
   	link: function($scope){
 
       $scope.rootScope = $rootScope;
 
-      $scope.produtos = CarrinhoService.getCarrinho();
-      console.log($scope.produtos);
-
       $scope.cadastrar = function(){
-        // TODO: fazer carrinho
+        // TODO: fazer sobreRafael
         $rootScope.viewFlag = 1;
       }
 
@@ -23,6 +20,6 @@ app.directive('carrinho', ["$rootScope", "CarrinhoService", "LoginService", func
         $rootScope.viewFlag = id;
       }
   	},
-    templateUrl: 'views/directives/carrinho.html'
+    templateUrl: 'views/directives/funcionario/alterarfuncionario.html'
   };
 }]);

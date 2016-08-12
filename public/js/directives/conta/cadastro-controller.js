@@ -33,6 +33,6 @@ app.directive('cadastro', ["$rootScope", "LoginService", "CadastroService", "md5
         $rootScope.viewFlag = id;
       }
   	},
-    templateUrl: 'views/directives/cadastro.html'
+    templateUrl: 'views/directives/conta/cadastro.html'
   };
 }]);

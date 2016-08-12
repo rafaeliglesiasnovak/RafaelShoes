@@ -18,6 +18,6 @@ app.directive('itemproduto', ["$rootScope", "ProdutoService", function($rootScop
         $rootScope.viewFlag = id;
       }
   	},
-    templateUrl: 'views/directives/item-lista-produtos.html'
+    templateUrl: 'views/directives/produto/item-lista-produtos.html'
   };
 }]);
