@@ -1,11 +1,14 @@
 var app = angular.module('RafaelShoes');
 
-app.directive('alterarendereco', ["$rootScope", "$http", "localStorageService", "LoginService", function($rootScope, $http, localStorageService, LoginService) {
+app.directive('alterarendereco', ["$rootScope", "$http", "localStorageService", "LoginService", 
+    function($rootScope, $http, localStorageService, LoginService) {
   return {
   	restrict: 'E',
   	link: function($scope){
 
       $scope.rootScope = $rootScope;
+
+      $scope.nome = localStorageService.get('nome').split(" ")[0];
 
       $scope.enderecos = [];
 

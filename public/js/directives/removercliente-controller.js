@@ -1,12 +1,14 @@
 var app = angular.module('RafaelShoes');
 
-app.directive('removercliente', ["$rootScope", "LoginService", function($rootScope, LoginService) {
+app.directive('removercliente', ["$rootScope", "LoginService","localStorageService", function($rootScope, LoginService, localStorageService) {
   return {
   	restrict: 'E',
   	link: function($scope){
 
       $scope.rootScope = $rootScope;
 
+      $scope.nome = localStorageService.get('nome').split(" ")[0];
+      
       $scope.cadastrar = function(){
         // TODO: fazer sobreRafael
         $rootScope.viewFlag = 1;
