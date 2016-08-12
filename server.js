@@ -42,9 +42,6 @@ module.exports = function(){
     		min: 1,
     		idle: 100
   		},
-  		// dialectOptions: {
-    // 		ssl: app.config.db().ssl
-  		// },
   		quoteIdentifiers:false,
   		omitNull: true
 	});
@@ -158,7 +155,7 @@ module.exports = function(){
 	// Pedido
 	var pedido = {};
 	pedido.controllers = {};
-	pedido.controllers.pedido = require(__dirname + '/modules/pedido/pedido-controller.js')(schema);
+	pedido.controllers.pedido = require(__dirname + '/modules/pedido/pedido-controller.js')(schema, sequelize);
 
 	// Contato
 	var contato = {};

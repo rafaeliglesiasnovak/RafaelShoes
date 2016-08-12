@@ -15,8 +15,7 @@ module.exports = function (){
 				psswrd: 'root',
 				host: '0.tcp.ngrok.io',
 				port: '15140',
-				dialect: 'mysql',
-				ssl: 'Amazon RDS'
+				dialect: 'mysql'
 			};
 		},
 	};
