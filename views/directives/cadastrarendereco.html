@@ -19,11 +19,11 @@
 			                </ul>
 			                <ul>
 								<li class="text-info">Endereço: </li>
-								<input type="text" ng-model="endereco.Log_End">
+								<input type="text" required ng-model="endereco.Log_End">
 							 </ul>				 
 							<ul>
 								<li class="text-info">Número: </li>
-								<li><input type="number" ng-model="endereco.Num_End"></li>
+								<li><input type="number" required ng-model="endereco.Num_End"></li>
 							</ul>
 							<ul>
 								<li class="text-info">Complemento:</li>
@@ -31,11 +31,11 @@
 							</ul>	
 			                <ul>
 			                    <li class="text-info">Cidade:</li>
-			                    <li><input type="text" ng-model="endereco.Cid_End"></li>
+			                    <li><input type="text" required ng-model="endereco.Cid_End"></li>
 			                </ul>			
 			                <ul>
 			                    <li class="text-info">Estado:</li>
-			                    <li><select ng-model="endereco.Est_End">
+			                    <li><select ng-model="endereco.Est_End" required>
 									  <option value="AC">AC</option>
 									  <option value="AL">AL</option>
 									  <option value="AP">AP</option>
@@ -68,9 +68,9 @@
 			                </ul>
 			            	<ul>
 			                    <li class="text-info">País:</li>
-			                    <li><input type="text" step=".01" ng-model="endereco.Pais_End"></li>
+			                    <li><input type="text" required step=".01" ng-model="endereco.Pais_End"></li>
 			                </ul>
-							<input type="submit" value="Cadastrar Endereço" ng-click="goTo(minhaconta)">
+								<input type="submit" value="Cadastrar Endereço" ng-click=cadastrar()>
 						</form>  
 					</div>
 				</div>

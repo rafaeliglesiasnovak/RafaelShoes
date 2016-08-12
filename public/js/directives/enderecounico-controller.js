@@ -1,7 +1,7 @@
 var app = angular.module('RafaelShoes');
 
 app.directive('enderecounico', ["$rootScope", "LoginService","localStorageService", "$http", 
-    function($rootScope, LoginService, localStorageServicem, $http) {
+    function($rootScope, LoginService, localStorageService, $http) {
   return {
   	restrict: 'E',
   	link: function($scope){

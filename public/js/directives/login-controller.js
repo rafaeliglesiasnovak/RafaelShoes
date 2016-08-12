@@ -1,7 +1,7 @@
 var app = angular.module('RafaelShoes');
 
-app.directive('login', ['$rootScope', 'localStorageService', 'md5', 'LoginService',
-  function($rootScope, localStorageService, md5, LoginService) {
+app.directive('login', ['$rootScope', 'localStorageService', 'md5', 'LoginService', '$http',
+  function($rootScope, localStorageService, md5, LoginService, $http) {
   return {
   	restrict: 'E',
   	link: function($scope){
@@ -9,16 +9,27 @@ app.directive('login', ['$rootScope', 'localStorageService', 'md5', 'LoginServic
       $scope.rootScope = $rootScope;
 
       $scope.login = function(){
-        var credentials = {
-          // "Login": "2@hotmail.com",
-          // "Senha": "c81e728d9d4c2f636f067f89cc14862c"
-        }
+        var Senha = md5.createHash($scope.Senha);
+        $http.post($rootScope.api + 'v1/login/', {Login: $scope.Email, Senha: Senha})
+          .success(function(data){
+            if(data.success == false){
+              window.alert("Login invalido!");
+            } else {
+              var usuario = data.usuario;
 
-        credentials.Login = $scope.email;
-        credentials.Senha = md5.createHash($scope.senha || '');
+              localStorageService.set('cpf', usuario.CPF_Cli);
+              localStorageService.set('nome', usuario.Nome_Cli);
+              localStorageService.set('celular', usuario.Tel_Cel_Cli);
+              localStorageService.set('telefone', usuario.Tel_Res_Cli);
+              localStorageService.set('data_nascimento', usuario.Dt_Nascimento_Cli);
+              localStorageService.set('sexo', usuario.Sexo_Cli);
+              localStorageService.set('email', usuario.Email_Cli);
+              $rootScope.isLogado = true;
 
-        LoginService.login(credentials);
-        }
+              $rootScope.viewFlag = 1;
+            }
+          });
+      }
       
       $scope.goTo = function(id){
         $rootScope.viewFlag = id;
