@@ -1,9 +1,10 @@
-module.exports = function (schema){
+module.exports = function (schema, sequelize){
     var Pedido = schema.Pedido;
     var PedidoFuncionarioQnt = schema.PedidoFuncionarioQnt;
     var PedidoProduto = schema.PedidoProduto;
     var CarrinhoProduto = schema.CarrinhoProduto;
     var NotaFiscal = schema.NotaFiscal;
+    var Produto = schema.Produto;
 
   return {
     post: function(req, res){
@@ -30,7 +31,16 @@ module.exports = function (schema){
                                 PedidoProduto.bulkCreate(produtos).then(function(){
                                     CarrinhoProduto.destroy({ where : {CPF_Cli: pedido.CPF_Cli}})
                                         .then(function(carrinhoProdutoDb){
-                                          return res.json({success: true, message: 'Pedido Finalizado com sucesso.'});
+                                            var produtosUpdated = 0;
+                                            for(var j = 0; j < carrinhoProdutoDB.length; j++){
+                                                Produto.update({Estoque_Prod: sequelize.literal('Estoque_Prod -' + carrinhoProdutoDB[j].Qtd_Prod)}, {where: { ID_Prod: carrinhoProdutoDB[j].ID_Prod } })
+                                                    .then(function(produtoDb){
+                                                        produtosUpdated++;
+                                                        if(produtosUpdated == carrinhoProdutoDB.length){
+                                                            return res.json({success: true, message: 'Pedido Finalizado com sucesso.'});
+                                                        }
+                                                    });
+                                            }
                                         });
                                 });
                             });
