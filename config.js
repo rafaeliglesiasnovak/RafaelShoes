@@ -11,10 +11,10 @@ module.exports = function (){
 		db : function(){
 			return {
 				db: 'pcs2034',
-				user: 'rafael',
-				psswrd: 'rafaelshoes',
-				host: 'engsoft.cu6gpxc772wb.us-west-2.rds.amazonaws.com',
-				port: 3306,
+				user: 'root',
+				psswrd: 'root',
+				host: '0.tcp.ngrok.io',
+				port: '15140',
 				dialect: 'mysql',
 				ssl: 'Amazon RDS'
 			};

@@ -40,11 +40,11 @@ module.exports = function(){
   		pool: {
     		max: 5,
     		min: 1,
-    		idle: 1000
+    		idle: 100
   		},
-  		dialectOptions: {
-    		ssl: app.config.db().ssl
-  		},
+  		// dialectOptions: {
+    // 		ssl: app.config.db().ssl
+  		// },
   		quoteIdentifiers:false,
   		omitNull: true
 	});
