@@ -4,12 +4,13 @@
                 <div class="cart-item cyc">
                     <img src="{{produto.img}}" class="img-responsive" alt=""/>
                 </div>
-               <div class="cart-item-info">
+               <div class="cart-item-info" style="width:1000px">
                     <ul class="qty">
                         <li><p>Tamanho : {{produto.Produto.Tamanho_Prod}}</p></li>
-                        <li><p>Quantidade : {{produto.Qtd_Prod}}</p></li>
+                        <li><p>Quantidade : <input type="number" value={{produto.Qtd_Prod}} style="width: 35px;"> <button>salvar</button></p></li>
                         <li><p>Preço : {{produto.Produto.Preco_Prod}}</p></li>
                         <li><img src="images/produto/{{produto.Produto.Imagem_Prod}}" style="width: 100px; height:100%;"></li>
+                        <li><button>Delete</button>
                     </ul>
                     <div class="delivery">
                          <p>Preço Total: {{produto.Qtd_Prod * produto.Produto.Preco_Prod}}</p>
