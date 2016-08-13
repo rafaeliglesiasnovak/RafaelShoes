@@ -13,16 +13,14 @@ module.exports = function(Sequelize, sequelize, schema){
       type: Sequelize.INTEGER,
       references: {
         model: Pedido,
-        key: 'ID_Pedido',
-        deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
+        key: 'ID_Pedido'
       } 
     },
     ID_Func: {
       type: Sequelize.INTEGER,
       references: {
         model: Funcionario,
-        key: 'ID_Func',
-        deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE 
+        key: 'ID_Func'
       }
     }
 	});

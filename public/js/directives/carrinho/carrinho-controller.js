@@ -1,14 +1,33 @@
 var app = angular.module('RafaelShoes');
 
-app.directive('carrinho', ["$rootScope", "CarrinhoService", "LoginService", function($rootScope, CarrinhoService, LoginService) {
+app.directive('carrinho', ["$rootScope", "CarrinhoService", "LoginService", "$http", "localStorageService",
+  function($rootScope, CarrinhoService, LoginService, $http, localStorageService) {
   return {
   	restrict: 'E',
   	link: function($scope){
 
       $scope.rootScope = $rootScope;
 
-      $scope.produtos = CarrinhoService.getCarrinho();
-      console.log($scope.produtos);
+      reset = function(){
+        $scope.total = 0;
+
+        $http.get($rootScope.api + 'v1/carrinho/get?CPF_Cli=' + localStorageService.get('cpf'))
+          .success(function(data){
+            $scope.produtos = data.response.produtos;
+            for(var i = 0; i < $scope.produtos.length; i++){
+              $scope.total += $scope.produtos[i].Qtd_Prod * $scope.produtos[i].Produto.Preco_Prod;
+            }
+          })
+      }
+
+      reset();
+
+      $scope.limparCarrinho = function(){
+        $http.post($rootScope.api + 'v1/carrinho/limpar', {CPF_Cli: localStorageService.get('cpf')})
+          .success(function(data){
+            reset();
+          })
+      }
 
       $scope.cadastrar = function(){
         // TODO: fazer carrinho

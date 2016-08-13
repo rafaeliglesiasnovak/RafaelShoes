@@ -14,24 +14,21 @@ module.exports = function(Sequelize, sequelize, schema){
       type: Sequelize.BIGINT(11),
       references: {
         model: Cliente,
-        key: 'CPF_Cli',
-        deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
+        key: 'CPF_Cli'
       }
     },
     ID_End: {
       type: Sequelize.INTEGER,
       references: {
         model: Endereco,
-        key: 'ID_End',
-        deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE    
+        key: 'ID_End'  
       }
     },
     ID_Func: {
       type: Sequelize.INTEGER,
       references: {
         model: Funcionario,
-        key: 'ID_Func',
-        deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE 
+        key: 'ID_Func'
       }
     },
     Tipo_Entrega: Sequelize.STRING,

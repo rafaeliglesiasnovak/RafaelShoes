@@ -6,12 +6,13 @@
                 </div>
                <div class="cart-item-info">
                     <ul class="qty">
-                        <li><p>Tamanho : {{produto.tamanho}}</p></li>
-                        <li><p>Quantidade : {{produto.quantidade}}</p></li>
-                        <li><p>Preço : {{produto.preco}}</p></li>
+                        <li><p>Tamanho : {{produto.Produto.Tamanho_Prod}}</p></li>
+                        <li><p>Quantidade : {{produto.Qtd_Prod}}</p></li>
+                        <li><p>Preço : {{produto.Produto.Preco_Prod}}</p></li>
+                        <li><img src="images/produto/{{produto.Produto.Imagem_Prod}}" style="width: 100px; height:100%;"></li>
                     </ul>
                     <div class="delivery">
-                         <p>Preço Total: {{produto.precoTotal}}</p>
+                         <p>Preço Total: {{produto.Qtd_Prod * produto.Produto.Preco_Prod}}</p>
                          <div class="clearfix"></div>
                     </div>	
                </div>

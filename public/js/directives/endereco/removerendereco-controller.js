@@ -41,5 +41,3 @@ app.directive('removerendereco', ["$rootScope", "$http", "localStorageService", 
     templateUrl: 'views/directives/endereco/removerendereco.html'
   };
 }]);
-
-{{server}}

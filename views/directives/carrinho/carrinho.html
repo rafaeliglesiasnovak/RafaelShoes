@@ -14,17 +14,15 @@
                 <div class="price-details">
                     <h3>Detalhes</h3>
                     <span>Total</span>
-                    <span class="total1">6200.00</span>
+                    <span class="total1">R$ {{total}}</span>
                     <span>Cortesia</span>
                     <span class="total1">10%</span>
-                    <span>Taxa de Entrega</span>
-                    <span class="total1">150.00</span>
                     <div class="clearfix"></div>				 
                 </div>
                 <hr class="featurette-divider">
                 <ul class="total_price">
                    <li class="last_price"> <h4>TOTAL</h4></li>	
-                   <li class="last_price"><span>6150.00</span></li>
+                   <li class="last_price"><span>R$ {{total * 0.9}}</span></li>
                    <div class="clearfix"> </div>
                 </ul> 
                 <div class="clearfix"></div>
@@ -32,15 +30,7 @@
             </div>
             <div class="col-md-9 cart-items">
                 <h1>Meu Carrinho</h1>
-                <a href="javascript:;" class="simpleCart_empty">Limpar Carrinho</a>
-                    <script>$(document).ready(function(c) {
-                        $('.close1').on('click', function(c){
-                            $('.cart-header').fadeOut('slow', function(c){
-                                $('.cart-header').remove();
-                            });
-                            });	  
-                        });
-                   </script>
+                <a href="#" ng-click="limparCarrinho()" class="simpleCart_empty">Limpar Carrinho</a>
                 <div class="container"> 
                     <itemCarrinho ng-repeat="produto in produtos"></itemCarrinho>
                 </div>                    

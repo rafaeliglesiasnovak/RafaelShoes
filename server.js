@@ -77,6 +77,7 @@ module.exports = function(){
 	schema.Alerta.belongsTo(schema.Funcionario, {foreignKey: 'ID_Func', onDelete: 'CASCADE'});
 	//Carrinho_Produto
 	schema.CarrinhoProduto.belongsTo(schema.Cliente, {foreignKey: 'CPF_Cli', onDelete: 'CASCADE'});
+	schema.CarrinhoProduto.belongsTo(schema.Produto, {foreignKey: 'ID_Prod'});
 	//Endereço
 	schema.Endereco.belongsTo(schema.Cliente, {foreignKey: 'CPF_Cli', onDelete: 'CASCADE'});
 	//Nota_Fiscal

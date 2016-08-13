@@ -1,6 +1,7 @@
 module.exports = function (schema){
   var Cliente = schema.Cliente;
   var CarrinhoProduto = schema.CarrinhoProduto;
+  var Produto = schema.Produto;
 
   return {
     addItem: function(req, res){
@@ -29,7 +30,7 @@ module.exports = function (schema){
     get: function (req, res) {
       var CPF_Cli = req.query.CPF_Cli;
 
-      CarrinhoProduto.findAll({ where: { CPF_Cli: CPF_Cli } }).then(function(carrinhoProdutoDb){
+      CarrinhoProduto.findAll({ where: { CPF_Cli: CPF_Cli }, include: [Produto] }).then(function(carrinhoProdutoDb){
         if(carrinhoProdutoDb) return res.json({success: true, message: 'Produtos do carrinho encontrado com sucesso', response: {produtos: carrinhoProdutoDb}});
       
         else return res.json({success: false, message: 'Falha na busca de carrinho.'});
