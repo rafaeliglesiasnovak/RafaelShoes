@@ -8,16 +8,14 @@ module.exports = function(Sequelize, sequelize, schema){
         type: Sequelize.INTEGER,
         references: {
           model: Produto,
-          key: 'ID_Prod',
-          deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE 
+          key: 'ID_Prod'
         }
       },
       CPF_Cli: {
         type: Sequelize.BIGINT(11),
         references: {
           model: Cliente,
-          key: 'CPF_Cli',
-          deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE  
+          key: 'CPF_Cli' 
         }
       },
       Qtd_Prod: Sequelize.INTEGER

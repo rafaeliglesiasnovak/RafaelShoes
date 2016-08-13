@@ -7,8 +7,7 @@ module.exports = function(Sequelize, sequelize, schema){
       type: Sequelize.INTEGER,
       references: {
         model: Funcionario,
-        key: 'ID_Func',
-        deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
+        key: 'ID_Func'
       }
     },
     Qnt_Pedidos : Sequelize.INTEGER

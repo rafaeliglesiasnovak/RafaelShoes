@@ -12,8 +12,7 @@ module.exports = function(Sequelize, sequelize, schema){
       type: Sequelize.INTEGER,
       references: {
         model: Pedido,
-        key: 'ID_Pedido',
-        deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE  
+        key: 'ID_Pedido' 
       }
     },
     Data_Nota: Sequelize.DATE,

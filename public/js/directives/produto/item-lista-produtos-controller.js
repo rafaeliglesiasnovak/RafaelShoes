@@ -9,7 +9,6 @@ app.directive('itemproduto', ["$rootScope", "ProdutoService", function($rootScop
       $scope.rootScope = $rootScope;
       
       $scope.goToDetalhe = function(produto){
-        console.log(produto);
         ProdutoService.selectProduto(produto);
         $rootScope.viewFlag = $rootScope.detalhe;
       }
