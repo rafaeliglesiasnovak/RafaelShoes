@@ -7,6 +7,9 @@ app.directive('alterarendereco', ["$rootScope", "$http", "localStorageService", 
 
       $scope.rootScope = $rootScope;
 
+
+      $scope.nome = localStorageService.get('nome').split(" ")[0];
+
       $scope.enderecos = [];
 
       $scope.pegaEndereco = function(){

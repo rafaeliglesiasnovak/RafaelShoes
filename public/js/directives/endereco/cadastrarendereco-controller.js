@@ -8,6 +8,8 @@ app.directive('cadastrarendereco', ["$rootScope", "$http", "localStorageService"
 
       $scope.rootScope = $rootScope;
 
+      $scope.nome = localStorageService.get('nome').split(" ")[0];
+
       $scope.endereco = {};
 
       $scope.endereco.Est_End = "SP";

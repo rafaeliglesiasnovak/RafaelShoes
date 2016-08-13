@@ -14,26 +14,26 @@
 			<h3 style="text-align: left;">Rafael Shoes Cadastro</h3>
 			<p>Seja Bem Vindo!!! Por Favor, insira seus dados para concluir o cadastro.</p>
 			<p>Se você já é cadastrado <a role="button" ng-click=goTo(login)>clique aqui</a></p>
-			 <form style="float: left;     width: 1200px;">
+			 <form style="float: left;     width: 1200px;" ng-submit="cadastrar()">
 				<ul>
 					<li class="text-info">Nome: </li>
-					<input type="text" value="" ng-model="usuario.nome">
+					<input type="text" required value="" ng-model="usuario.nome">
                 </ul>
                 <ul>
 					<li class="text-info">Sobrenome: </li>
-					<input type="text" value="" ng-model="usuario.sobrenome">
+					<input type="text" required value="" ng-model="usuario.sobrenome">
 				 </ul>				 
 				<ul>
 					<li class="text-info">Email: </li>
-					<li><input type="text" value="" ng-model="usuario.email"></li>
+					<li><input type="text" required value="" ng-model="usuario.email"></li>
 				</ul>
 				<ul>
 					<li class="text-info">CPF: </li>
-					<li><input type="text" value="" ng-model="usuario.cpf"></li>
+					<li><input type="text" required value="" ng-model="usuario.cpf"></li>
 				</ul>
 				<ul>
 					<li class="text-info">Senha: </li>
-					<li><input type="password" value="" ng-model="usuario.senha"></li>
+					<li><input type="password" required value="" ng-model="usuario.senha"></li>
 				</ul>
 				<ul>
 					<li class="text-info">Número do Celular:</li>
@@ -45,7 +45,7 @@
                 </ul>			
                 <ul>
                     <li class="text-info">Data de Nascimento:</li>
-                    <li><input type="date" value="" ng-model="usuario.nascimento"></li>
+                    <li><input type="date" required value="" ng-model="usuario.nascimento"></li>
                 </ul>
                 <ul>
                     <li class="text-info">Sexo:</li>
@@ -53,7 +53,7 @@
                     <!-- Espaço no HTML --> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <!-- Espaço no HTML -->
                     <input type="radio" name="sexo" value="Feminino" ng-model="usuario.sexo" ng-value="Feminino"> Feminino   </li>
                 </ul>		
-				<input type="submit" value="Cadastrar" ng-click="cadastrar()">
+				<input type="submit" value="Cadastrar">
 				<p class="click">Clicando em Cadastrar você concorda com nossos Termos & Condições.</p> 
 			</form>
 		</div>

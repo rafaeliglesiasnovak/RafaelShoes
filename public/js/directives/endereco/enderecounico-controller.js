@@ -1,11 +1,14 @@
 var app = angular.module('RafaelShoes');
 
-app.directive('enderecounico', ["$rootScope", "$http", "LoginService", function($rootScope, $http, LoginService) {
+app.directive('enderecounico', ["$rootScope", "$http", "LoginService", "localStorageService", 
+    function($rootScope, $http, LoginService, localStorageService) {
   return {
   	restrict: 'E',
   	link: function($scope){
 
       $scope.rootScope = $rootScope;
+
+      $scope.nome = localStorageService.get('nome').split(" ")[0];
 
       $scope.endereco = $rootScope.endereco;
 
