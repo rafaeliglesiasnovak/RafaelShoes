@@ -51,12 +51,18 @@ angular.module('RafaelShoes', [
     };
 })
 
-.controller("appController", ["$rootScope", "CarrinhoService",  function($rootScope, CarinhoService){
+.controller("appController", ["$rootScope", "CarrinhoService", "localStorageService",  function($rootScope, CarinhoService, localStorageService){
 	var appCtrl = this;
 
 	$rootScope.api = "http://localhost:3000/"
 
-    $rootScope.viewFlag = 1;
+    if(localStorageService.get('home')){
+        $rootScope.viewFlag = localStorageService.get('home');
+    } else {
+        $rootScope.viewFlag = 1;
+    }
+
+    
     $rootScope.isLogado = false;
 
     // constantes das paginas
@@ -99,6 +105,10 @@ angular.module('RafaelShoes', [
 
     appCtrl.goTo = function(id){
         $rootScope.viewFlag = id;
+    }
+
+    appCtrl.goToHome = function(){
+        $rootScope.viewFlag = localStorageService.get('home');
     }
 
     appCtrl.goToCategoria = function(idProduto){

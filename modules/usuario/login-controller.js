@@ -2,6 +2,7 @@ module.exports = function (schema, bcrypt, jwt, config){
 
   var Account = schema.Account;
   var Cliente = schema.Cliente;
+  var Funcionario = schema.Funcionario;
 
   return {
     post: function (req, res) {
@@ -28,20 +29,22 @@ module.exports = function (schema, bcrypt, jwt, config){
               var tokenSecret = config.apiSecret();
               // cria token
               var token = jwt.sign(account.Login, tokenSecret);
-              
-              query = { where: {Email_Cli: Login} };
 
-              Cliente.findOne(query).then(function(cliente){
-                  if(cliente){
-                      return res.json({
-                      success : true,
-                      message : 'sucesso no login.',
-                      token : token,
-                      usuario: cliente
-                    });
-                  }
-                  else return res.json({success: false, message: 'Falha na autenticação. Usuário não encontrado.'});
-              });
+              if(account.Is_Cli) {
+
+                Cliente.findOne({ where: {Email_Cli: Login}, include: [Account] }).then(function(cliente){
+                    if(cliente){ return res.json({ success : true, message : 'sucesso no login.', token : token, usuario: cliente});
+                    }
+                    else return res.json({success: false, message: 'Falha na autenticação. Usuário não encontrado.'});
+                });
+              } else {
+                
+                Funcionario.findOne({ where: {Email_Func: Login}, include: [Account] }).then(function(funcionario){
+                    if(funcionario){ return res.json({ success : true, message : 'sucesso no login.', token : token, usuario: funcionario});
+                    }
+                    else return res.json({success: false, message: 'Falha na autenticação. Usuário não encontrado.'});
+                });
+              }
             }
           });
         }

@@ -5,6 +5,7 @@ module.exports = function(Sequelize, sequelize){
 	  		primaryKey: true,
 	      	autoIncrement: true
 		},
+		Tipo_Func: Sequelize.STRING,
 		Nome_Func: Sequelize.STRING,
 		Email_Func: Sequelize.STRING,
 		Cargo_Func: Sequelize.STRING
