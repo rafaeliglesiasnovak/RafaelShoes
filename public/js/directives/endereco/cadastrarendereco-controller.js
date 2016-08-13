@@ -10,6 +10,8 @@ app.directive('cadastrarendereco', ["$rootScope", "$http", "localStorageService"
 
       $scope.endereco = {};
 
+      $scope.endereco.Est_End = "SP";
+
       $scope.cadastrar = function(){
         $scope.endereco.CPF_Cli = localStorageService.get('cpf');
         var body ={endereco: $scope.endereco};
