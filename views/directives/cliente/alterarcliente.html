@@ -15,30 +15,26 @@
 				        <p>Editar Perfil</p>
 				        <form style="float: left;     width: 1200px;">
 							<ul>
-								<li class="text-info">Nome: </li>
-								<input type="text" value="usuario.nome" ng-model="usuario.nome">
-			                </ul>
-			                <ul>
-								<li class="text-info">Sobrenome: </li>
-								<input type="text" value="usuario.sobrenome" ng-model="usuario.sobrenome">
-							 </ul>				 
+								<li class="text-info">Nome Completo: </li>
+								<input type="text" value="usuario.nome" ng-model="cliente.Nome_Cli">
+			                </ul>			 
 							<ul>
 								<li class="text-info">Email: </li>
-								<li><input type="email" value="usuario.email" ng-model="usuario.email"></li>
+								<li><input type="email" value="usuario.email" ng-model="cliente.Email_Cli"></li>
 							</ul>
 							<ul>
 			                    <li class="text-info">Senha:</li>
-			                    <li><input type="password" value="usuario.senha" ng-model="usuario.senha"></li>
+			                    <li><input type="password" value="usuario.senha" ng-model="account.Senha"></li>
 			                </ul>
 							<ul>
 								<li class="text-info">Número do Celular:</li>
-								<li><input type="tel" value="usuario.celular" ng-model="usuario.celular"></li>
+								<li><input type="tel" value="usuario.celular" ng-model="cliente.Tel_Cel_Cli"></li>
 							</ul>	
 			                <ul>
 			                    <li class="text-info">Telefone Residencial:</li>
-			                    <li><input type="tel" value="usuario.telefone" ng-model="usuario.telefone"></li>
+			                    <li><input type="tel" value="usuario.telefone" ng-model="cliente.Tel_Res_Cli"></li>
 			                </ul>				
-							<input type="submit" value="Salvar Alterações" ng-click="goTo(minhaconta)">
+							<input type="submit" value="Salvar Alterações" ng-click="salvar()">
 						</form>
 					</div>
 				</div>
