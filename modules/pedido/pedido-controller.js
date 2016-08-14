@@ -17,7 +17,7 @@ module.exports = function (schema, sequelize){
                     pedido.ID_Func = PedidoFuncionarioQntDb.ID_Func;
                     var d = new Date();
                     pedido.Prazo_Entrega = d.setDate(d.getDate() + 7);
-                    pedido.Status_Pag = "Aguardando";
+                    pedido.Status_Pedido = "Aguardando Pagamento";
 
                     Pedido.create(pedido).then(function(pedidoDb){
                         NotaFiscal.create({ID_Pedido: pedidoDb.ID_Pedido,Data_Nota: new Date()}).then(function(notaDb){
