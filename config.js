@@ -17,6 +17,6 @@ module.exports = function (){
 				port: '15140',
 				dialect: 'mysql'
 			};
-		},
+		}
 	};
 }

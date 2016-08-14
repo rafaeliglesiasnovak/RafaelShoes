@@ -68,6 +68,7 @@ module.exports = function(){
 	schema.Account = require(__dirname + '/models/Account.js')(Sequelize, sequelize, schema);
 	schema.PedidoFuncionarioQnt = require(__dirname + '/models/Pedido_Funcionario_Qnt.js')(Sequelize, sequelize, schema);
 	schema.ProdutoTamanho = require(__dirname + '/models/Produto_Tamanho.js')(Sequelize, sequelize, schema);
+	schema.Cortesia = require(__dirname + '/models/Cortesia.js')(Sequelize, sequelize);
 
 	// Schema Assotiations
 	//Account
@@ -97,6 +98,12 @@ module.exports = function(){
 
 	sequelize
 	  // .sync({force: true})
+	  // .then(function(err) {
+	  //   console.log('It worked!');
+	  //   schema.Cortesia.create({Cortesia: true});
+	  // }, function (err) { 
+	  //   console.log('An error occurred while creating the table:', err);
+	  // });
 	  .sync()
 	  .then(function(err) {
 	    console.log('It worked!');
@@ -168,6 +175,11 @@ module.exports = function(){
 	contato.controllers = {};
 	contato.controllers.contato = require(__dirname + '/modules/contato/contato-controller.js')(transporter);
 
+	// Cortesia
+	var cortesia = {};
+	cortesia.controllers = {};
+	cortesia.controllers.cortesia = require(__dirname + '/modules/cortesia/cortesia-controller.js')(schema);
+
 	//Rotas
 	var routes = {};
 	routes.routes = require(__dirname + '/routes/router.js')(app.express, routes);
@@ -182,6 +194,7 @@ module.exports = function(){
 	routes.v1.funcionario = require(__dirname + '/routes/v1/funcionario.js')(funcionario);
 	routes.v1.pedido = require(__dirname + '/routes/v1/pedido.js')(pedido);
 	routes.v1.contato = require(__dirname + '/routes/v1/contato.js')(contato);
+	routes.v1.contato = require(__dirname + '/routes/v1/cortesia.js')(cortesia);
 	routes.view = {};
 	routes.view.view = require(__dirname + '/routes/view/view.js')(app.path);
 

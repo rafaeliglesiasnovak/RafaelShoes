@@ -51,7 +51,7 @@ angular.module('RafaelShoes', [
     };
 })
 
-.controller("appController", ["$rootScope", "CarrinhoService", "localStorageService",  function($rootScope, CarinhoService, localStorageService){
+.controller("appController", ["$rootScope", "CarrinhoService", "localStorageService", "$http",  function($rootScope, CarinhoService, localStorageService, $http){
 	var appCtrl = this;
 
 	$rootScope.api = "http://localhost:3000/"
@@ -67,6 +67,11 @@ angular.module('RafaelShoes', [
     } else {
         $rootScope.isLogado = false;
     }
+
+    $http.get($rootScope.api + 'v1/cortesia/get')
+        .success(function(data){
+            localStorageService.set('cortesia', data.cortesia);
+        });
 
     // constantes das paginas
     $rootScope.home = 1;
