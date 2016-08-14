@@ -15,17 +15,26 @@
  						<form style="float: left;     width: 1200px;">
 							<ul>
 								<li class="text-info">Nome:</li>
-								<input type="text" required>
+								<input type="text" required ng-model="Nome_Func">
 			                </ul>
 			                <ul>
 								<li class="text-info">Email:</li>
-								<input type="email" required>
+								<input type="email" required ng-model="Email_Func">
 							 </ul>				 
 							<ul>
 								<li class="text-info">Cargo:</li>
-								<li><input type="text" required></li>
+								<li><select required ng-model="Cargo_Func">
+									  <option value="Adm">Administrados</option>
+									  <option value="Sup">Supervisor</option>
+									  <option value="Func">Funcionário</option>
+									</select>
+								</li>
 							</ul>
-							<input type="submit" value="Cadastrar Funcionario" ng-click="editar()">
+							<ul>
+								<li class="text-info">Senha: </li>
+								<li><input type="password" required value="" ng-model="Senha"></li>
+							</ul>
+							<input type="submit" value="Cadastrar Funcionario" ng-click="cadastrar()">
 						</form>  
 					</div>
 				</div>
