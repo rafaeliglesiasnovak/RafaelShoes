@@ -154,7 +154,7 @@ module.exports = function(){
 	// Pedido
 	var pedido = {};
 	pedido.controllers = {};
-	pedido.controllers.pedido = require(__dirname + '/modules/pedido/pedido-controller.js')(schema, sequelize);
+	pedido.controllers.pedido = require(__dirname + '/modules/pedido/pedido-controller.js')(schema, sequelize, transporter);
 
 	// Contato
 	var contato = {};

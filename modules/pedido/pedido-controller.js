@@ -1,10 +1,11 @@
-module.exports = function (schema, sequelize){
+module.exports = function (schema, sequelize, transporter){
     var Pedido = schema.Pedido;
     var PedidoFuncionarioQnt = schema.PedidoFuncionarioQnt;
     var PedidoProduto = schema.PedidoProduto;
     var CarrinhoProduto = schema.CarrinhoProduto;
     var NotaFiscal = schema.NotaFiscal;
     var Produto = schema.Produto;
+    var Cliente = schema.Cliente;
 
   return {
     post: function(req, res){
@@ -21,33 +22,49 @@ module.exports = function (schema, sequelize){
 
                     Pedido.create(pedido).then(function(pedidoDb){
                         NotaFiscal.create({ID_Pedido: pedidoDb.ID_Pedido,Data_Nota: new Date()}).then(function(notaDb){
-                            CarrinhoProduto.findAll({where:{CPF_Cli: pedido.CPF_Cli}}).then(function(carrinhoProdutoDB){
+                            Cliente.find({where: {CPF_Cli: pedido.CPF_Cli}}).then(function(clienteDb){
+                                var mailOptions = {
+                                    from: '"RafaelShoes" <3rafaelshoes@gmail.com>',
+                                    to: clienteDb.Email_Cli,
+                                    subject: 'Nota fiscal do pedido ' + pedidoDb.ID_Pedido,
+                                    text: 'A nota fiscal do pedido ' + pedidoDb.ID_Pedido + ' é ' + notaDb.ID_Nota
+                                };
 
-                                var produtos = [];
-                                for(var i = 0; i < carrinhoProdutoDB.length; i++){
-                                    produtos.push({ID_Pedido:pedidoDb.ID_Pedido, ID_Prod: carrinhoProdutoDB[i].ID_Prod, Qtd_Prod: carrinhoProdutoDB[i].Qtd_Prod});
-                                }
+                                transporter.sendMail(mailOptions, function(error, info){
+                                    if(error){
+                                        return console.log(error);
+                                    }
+                                    console.log('Message sent: ' + info.response);
 
-                                PedidoProduto.bulkCreate(produtos).then(function(){
-                                    CarrinhoProduto.destroy({ where : {CPF_Cli: pedido.CPF_Cli}})
-                                        .then(function(carrinhoProdutoDb){
-                                            var produtosUpdated = 0;
-                                            for(var j = 0; j < carrinhoProdutoDB.length; j++){
-                                                Produto.update({Estoque_Prod: sequelize.literal('Estoque_Prod -' + carrinhoProdutoDB[j].Qtd_Prod)}, {where: { ID_Prod: carrinhoProdutoDB[j].ID_Prod } })
-                                                    .then(function(produtoDb){
-                                                        produtosUpdated++;
-                                                        if(produtosUpdated == carrinhoProdutoDB.length){
-                                                            return res.json({success: true, message: 'Pedido Finalizado com sucesso.'});
-                                                        }
-                                                    });
-                                            }
+                                    CarrinhoProduto.findAll({where:{CPF_Cli: pedido.CPF_Cli}}).then(function(carrinhoProdutoDB){
+
+                                        var produtos = [];
+                                        for(var i = 0; i < carrinhoProdutoDB.length; i++){
+                                            produtos.push({ID_Pedido:pedidoDb.ID_Pedido, ID_Prod: carrinhoProdutoDB[i].ID_Prod, Qtd_Prod: carrinhoProdutoDB[i].Qtd_Prod});
+                                        }
+
+                                        PedidoProduto.bulkCreate(produtos).then(function(){
+                                            CarrinhoProduto.destroy({ where : {CPF_Cli: pedido.CPF_Cli}})
+                                                .then(function(carrinhoProdutoDb){
+                                                    var produtosUpdated = 0;
+                                                    for(var j = 0; j < carrinhoProdutoDB.length; j++){
+                                                        Produto.update({Estoque_Prod: sequelize.literal('Estoque_Prod -' + carrinhoProdutoDB[j].Qtd_Prod)}, {where: { ID_Prod: carrinhoProdutoDB[j].ID_Prod } })
+                                                            .then(function(produtoDb){
+                                                                produtosUpdated++;
+                                                                if(produtosUpdated == carrinhoProdutoDB.length){
+                                                                    return res.json({success: true, message: 'Pedido Finalizado com sucesso.'});
+                                                                }
+                                                            });
+                                                    }
+                                                });
                                         });
+                                    });
                                 });
-                            });
+                            });  
                         });
-                    })
-                })
-        })
+                    });
+                });
+        });
     },
 
     get: function (req, res) {
