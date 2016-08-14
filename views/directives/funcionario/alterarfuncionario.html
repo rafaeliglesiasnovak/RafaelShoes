@@ -15,19 +15,24 @@
  						<form style="float: left;     width: 1200px;">
 							<ul>
 								<li class="text-info">ID Funcionario:</li>
-								<input type="text" required>
+								<input type="text" required ng-Model="ID_Func">
 			                </ul>
 			                <ul>
 								<li class="text-info">Nome:</li>
-								<input type="text" required>
+								<input type="text" ng-Model="Nome_Func">
 							 </ul>
 			                <ul>
 								<li class="text-info">Email:</li>
-								<input type="email" required>
+								<input type="email" ng-model="Email_Func">
 							 </ul>								 				 
 							<ul>
 								<li class="text-info">Cargo:</li>
-								<li><input type="text" required></li>
+								<li><select ng-model="Cargo_Func">
+									  <option value="Adm">Administrados</option>
+									  <option value="Sup">Supervisor</option>
+									  <option value="Func">Funcionário</option>
+									</select>
+								</li>
 							</ul>
 							<input type="submit" value="Alterar Funcionario" ng-click="editar()">
 						</form>  
