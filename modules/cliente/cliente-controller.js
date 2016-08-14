@@ -31,10 +31,13 @@ module.exports = function (schema, bcrypt, crypto){
     
     get: function (req, res) {
       var CPF_Cli = req.query.CPF_Cli;
+      var Email_CLi = req.query.Email_CLi;
 
       var query = {};
       if(CPF_Cli){
         query.where = {CPF_Cli: CPF_Cli};
+      } else if(Email_CLi){
+        query.where = {Email_CLi: {$like: Email_CLi + "%"}};
       }
 
       Cliente.findAll(query).then(function(clientes) {

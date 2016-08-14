@@ -1,7 +1,7 @@
 var app = angular.module('RafaelShoes');
 
-app.directive('buscarcliente', ["$rootScope", "LoginService", "localStorageService", 
-    function($rootScope, LoginService, localStorageService) {
+app.directive('buscarcliente', ["$rootScope", "LoginService", "localStorageService", "$http",
+    function($rootScope, LoginService, localStorageService, $http) {
   return {
   	restrict: 'E',
   	link: function($scope){
@@ -10,9 +10,11 @@ app.directive('buscarcliente', ["$rootScope", "LoginService", "localStorageServi
 
       $scope.nome = localStorageService.get('nome').split(" ")[0];
 
-      $scope.cadastrar = function(){
-        // TODO: fazer sobreRafael
-        $rootScope.viewFlag = 1;
+      $scope.buscar = function(){
+        $http.get($rootScope.api + 'v1/cliente/get?Email_CLi=' + $scope.email).
+          success(function(data){
+            $scope.clientes = data.response.clientes;
+          })
       }
 
       $scope.logout = function(){
