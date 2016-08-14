@@ -16,13 +16,15 @@
                     <span>Total</span>
                     <span class="total1">R$ {{total}}</span>
                     <span>Cortesia</span>
-                    <span class="total1">10%</span>
+                    <span ng-show="cortesia" class="total1">10%</span>
+                    <span ng-hide="cortesia" class="total1">0%</span>
                     <div class="clearfix"></div>				 
                 </div>
                 <hr class="featurette-divider">
                 <ul class="total_price">
-                   <li class="last_price"> <h4>TOTAL</h4></li>	
-                   <li class="last_price"><span>R$ {{total * 0.9}}</span></li>
+                   <li class="last_price"> <h4>TOTAL</h4></li>
+                   <li ng-show="cortesia" class="last_price"><span>R$ {{total * 0.9}}</span></li>
+                   <li ng-hide="cortesia" class="last_price"><span>R$ {{total}}</span></li>
                    <div class="clearfix"> </div>
                 </ul> 
                 <div class="clearfix"></div>

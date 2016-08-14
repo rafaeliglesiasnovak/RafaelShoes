@@ -17,7 +17,10 @@
 				        <a role="button" class="btn btn-default" ng-click="appCtrl.goTo(removerproduto)">Remover Produto</a>
 				        <a role="button" class="btn btn-default" ng-click="appCtrl.goTo(alterarproduto)">Alterar Produto</a>
 				        <p>Cortesias:</p>
-				        <a role="button" class="btn btn-default">Gerar Cortesia</a>
+				        <select ng-model="cortesia" ng-change="updateCortesia()">
+							<option ng-value="true" ng-selected="ifTrue()">Ligado</option>
+							<option ng-value="false" ng-selected="ifFalse()">Desligado</option>
+						</select>
 				        <p>Funcionario:</p>
 				        <a role="button" class="btn btn-default" ng-click="appCtrl.goTo(cadastrarfuncionario)">Cadastrar Funcionario</a>
 				        <a role="button" class="btn btn-default" ng-click="appCtrl.goTo(buscarfuncionario)">Buscar Funcionario</a>

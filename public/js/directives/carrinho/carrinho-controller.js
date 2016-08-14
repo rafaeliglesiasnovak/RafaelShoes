@@ -11,6 +11,8 @@ app.directive('carrinho', ["$rootScope", "CarrinhoService", "LoginService", "$ht
       $scope.reset = function(){
         $scope.total = 0;
 
+        $scope.cortesia = localStorageService.get('cortesia');
+
         $http.get($rootScope.api + 'v1/carrinho/get?CPF_Cli=' + localStorageService.get('cpf'))
           .success(function(data){
             $scope.produtos = data.response.produtos;

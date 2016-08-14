@@ -63,6 +63,9 @@ app.directive('checkout', ["$rootScope", "LoginService", "$http", "localStorageS
             for(var i = 0; i < produtos.length; i++){
               Total_Pedido += produtos[i].Qtd_Prod * produtos[i].Produto.Preco_Prod;
             }
+            if(localStorageService.get('cortesia')){
+              Total_Pedido = Total_Pedido*0.9;
+            }
             body.Total_Pedido = Total_Pedido;
             $http.post($rootScope.api + 'v1/pedido/post', body)
               .success(function(data){
