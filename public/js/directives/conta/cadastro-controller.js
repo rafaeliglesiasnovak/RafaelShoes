@@ -1,7 +1,7 @@
 var app = angular.module('RafaelShoes');
 
-app.directive('cadastro', ["$rootScope", "LoginService", "CadastroService", "md5",
-    function($rootScope, LoginService, CadastroService, md5) {
+app.directive('cadastro', ["$rootScope", "LoginService", "CadastroService", "md5", "$http", "localStorageService",
+    function($rootScope, LoginService, CadastroService, md5, $http, localStorageService) {
   return {
   	restrict: 'E',
   	link: function($scope){

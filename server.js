@@ -67,6 +67,7 @@ module.exports = function(){
 	schema.PedidoProduto = require(__dirname + '/models/Pedido_Produto.js')(Sequelize, sequelize, schema);
 	schema.Account = require(__dirname + '/models/Account.js')(Sequelize, sequelize, schema);
 	schema.PedidoFuncionarioQnt = require(__dirname + '/models/Pedido_Funcionario_Qnt.js')(Sequelize, sequelize, schema);
+	schema.ProdutoTamanho = require(__dirname + '/models/Produto_Tamanho.js')(Sequelize, sequelize, schema);
 
 	// Schema Assotiations
 	//Account
@@ -87,6 +88,8 @@ module.exports = function(){
 	schema.Pedido.hasMany(schema.PedidoProduto, {foreignKey: 'ID_Pedido', onDelete: 'CASCADE'});
 	//Pedido_Funcionario_Qnt
 	schema.PedidoFuncionarioQnt.belongsTo(schema.Funcionario, {foreignKey: 'ID_Func'});
+	//Produto
+	schema.Produto.hasMany(schema.ProdutoTamanho, {foreignKey: 'ID_Prod', onDelete: 'CASCADE'});
 
 	sequelize
 	  // .sync({force: true})

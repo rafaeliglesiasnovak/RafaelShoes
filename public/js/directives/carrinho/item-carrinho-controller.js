@@ -17,7 +17,8 @@ app.directive('itemcarrinho', ["$rootScope", "ProdutoService", "localStorageServ
         var body = {
           CPF_Cli: localStorageService.get('cpf'),
           ID_Prod: $scope.produto.ID_Prod,
-          Qtd_Prod: $scope.produto.Qtd_Prod
+          Qtd_Prod: $scope.produto.Qtd_Prod,
+          Tamanho_Prod: $scope.produto.Tamanho_Prod
         }
         $http.post($rootScope.api + 'v1/carrinho/edititem', body)
           .success(function(data){

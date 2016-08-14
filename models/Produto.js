@@ -8,14 +8,12 @@ module.exports = function(Sequelize, sequelize){
         Nome_Prod: Sequelize.STRING,
         Desc_Prod: Sequelize.STRING,
         Fornecedor_Prod: Sequelize.STRING,
-        Tamanho_Prod: Sequelize.INTEGER,
         Cor_Prod: Sequelize.STRING,
         Peso_Prod: Sequelize.FLOAT,
         Larg_Prod: Sequelize.FLOAT,
         Comp_Prod: Sequelize.FLOAT,
         Alt_Prod: Sequelize.FLOAT,
         Preco_Prod: Sequelize.FLOAT,
-        Estoque_Prod: Sequelize.INTEGER,
         Imagem_Prod: Sequelize.STRING
 	});
 

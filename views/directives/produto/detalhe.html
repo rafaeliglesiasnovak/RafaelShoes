@@ -26,11 +26,7 @@
                     <li class="qty">
                         <h3>Tamanho</h3>
                         <select class="form-control siz-chrt" ng-model="produto.tamanho">
-                          <option>38</option>
-                          <option>39</option>
-                          <option>40</option>
-                          <option>41</option>
-                          <option>42</option>
+                          <option ng-repeat="tamanho in produto.Produto_Tamanhos">{{tamanho.Tamanho_Prod}}</option>
                         </select>
                     </li>
                     <li class="qty">

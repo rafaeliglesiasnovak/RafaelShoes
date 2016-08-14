@@ -25,7 +25,7 @@ app.directive('carrinho', ["$rootScope", "CarrinhoService", "LoginService", "$ht
       $scope.limparCarrinho = function(){
         $http.post($rootScope.api + 'v1/carrinho/limpar', {CPF_Cli: localStorageService.get('cpf')})
           .success(function(data){
-            reset();
+            $scope.reset();
           })
       }
 

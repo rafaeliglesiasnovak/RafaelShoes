@@ -6,6 +6,7 @@ module.exports = function (schema, sequelize, transporter){
     var NotaFiscal = schema.NotaFiscal;
     var Produto = schema.Produto;
     var Cliente = schema.Cliente;
+    var ProdutoTamanho = schema.ProdutoTamanho;
 
   return {
     post: function(req, res){
@@ -40,7 +41,7 @@ module.exports = function (schema, sequelize, transporter){
 
                                         var produtos = [];
                                         for(var i = 0; i < carrinhoProdutoDB.length; i++){
-                                            produtos.push({ID_Pedido:pedidoDb.ID_Pedido, ID_Prod: carrinhoProdutoDB[i].ID_Prod, Qtd_Prod: carrinhoProdutoDB[i].Qtd_Prod});
+                                            produtos.push({ID_Pedido:pedidoDb.ID_Pedido, ID_Prod: carrinhoProdutoDB[i].ID_Prod, Qtd_Prod: carrinhoProdutoDB[i].Qtd_Prod, Tamanho_Prod: carrinhoProdutoDB[i].Tamanho_Prod});
                                         }
 
                                         PedidoProduto.bulkCreate(produtos).then(function(){
@@ -48,7 +49,7 @@ module.exports = function (schema, sequelize, transporter){
                                                 .then(function(carrinhoProdutoDb){
                                                     var produtosUpdated = 0;
                                                     for(var j = 0; j < carrinhoProdutoDB.length; j++){
-                                                        Produto.update({Estoque_Prod: sequelize.literal('Estoque_Prod -' + carrinhoProdutoDB[j].Qtd_Prod)}, {where: { ID_Prod: carrinhoProdutoDB[j].ID_Prod } })
+                                                        ProdutoTamanho.update({Estoque_Prod: sequelize.literal('Estoque_Prod -' + carrinhoProdutoDB[j].Qtd_Prod)}, {where: {ID_Prod: carrinhoProdutoDB[j].ID_Prod, Tamanho_Prod: carrinhoProdutoDB[j].Tamanho_Prod}})
                                                             .then(function(produtoDb){
                                                                 produtosUpdated++;
                                                                 if(produtosUpdated == carrinhoProdutoDB.length){
