@@ -79,7 +79,7 @@ module.exports = function(){
 	schema.Alerta.belongsTo(schema.Funcionario, {foreignKey: 'ID_Func', onDelete: 'CASCADE'});
 	//Carrinho_Produto
 	schema.CarrinhoProduto.belongsTo(schema.Cliente, {foreignKey: 'CPF_Cli', onDelete: 'CASCADE'});
-	schema.CarrinhoProduto.belongsTo(schema.Produto, {foreignKey: 'ID_Prod'});
+	schema.CarrinhoProduto.belongsTo(schema.Produto, {foreignKey: 'ID_Prod', onDelete: 'CASCADE'});
 	//Endereço
 	schema.Endereco.belongsTo(schema.Cliente, {foreignKey: 'CPF_Cli', onDelete: 'CASCADE'});
 	//Funcionario
@@ -95,8 +95,11 @@ module.exports = function(){
 	schema.PedidoProduto.belongsTo(schema.Produto, {foreignKey: 'ID_Prod', onDelete: 'CASCADE'});
 	//Produto
 	schema.Produto.hasMany(schema.ProdutoTamanho, {foreignKey: 'ID_Prod', onDelete: 'CASCADE'});
+	schema.Produto.hasMany(schema.CarrinhoProduto, {foreignKey: 'ID_Prod', onDelete: 'CASCADE'});
+	schema.Produto.hasMany(schema.PedidoProduto, {foreignKey: 'ID_Prod', onDelete: 'CASCADE'});
 
 	sequelize
+
 	  // .sync({force: true})
 	  // .then(function(err) {
 	  //   console.log('It worked!');
@@ -104,6 +107,7 @@ module.exports = function(){
 	  // }, function (err) { 
 	  //   console.log('An error occurred while creating the table:', err);
 	  // });
+	  
 	  .sync()
 	  .then(function(err) {
 	    console.log('It worked!');
