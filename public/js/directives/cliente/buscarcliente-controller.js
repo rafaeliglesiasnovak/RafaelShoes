@@ -11,9 +11,15 @@ app.directive('buscarcliente', ["$rootScope", "LoginService", "localStorageServi
       $scope.nome = localStorageService.get('nome').split(" ")[0];
 
       $scope.buscar = function(){
-        $http.get($rootScope.api + 'v1/cliente/get?Email_CLi=' + $scope.email).
+        $http.get($rootScope.api + 'v1/cliente/get?Email_CLi=' + $scope.Email_Cli).
           success(function(data){
-            $scope.clientes = data.response.clientes;
+            var clientes = data.response.clientes;
+            window.alert("Cliente encontrado:\n" +
+                          "Nome: " + clientes[0].Nome_Cli +
+                          "\nCPF: " + clientes[0].CPF_Cli +
+                          "\nEmail: " + clientes[0].Email_Cli +
+                          "\nTel Cel: " + clientes[0].Tel_Cel_Cli +
+                          "\nTel Res: " + clientes[0].Tel_Res_Cli);
           })
       }
 
