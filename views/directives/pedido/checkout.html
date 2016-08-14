@@ -1,0 +1,37 @@
+    <div class="head-bread">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><a ng-click="appCtrl.goTo(home)" role="button">Home</a></li>
+                <li><a ng-click="appCtrl.goTo(carrinho)" role="button">Carrinho</a></li>
+                <li class="active">Checkout</li>
+            </ol>
+        </div>
+        <div class="container">
+	        <div>Olá {{nome}}</div>
+	        <a role="button" class="btn btn-default" ng-click="logout()">LOGOUT</a>
+	        <div class="reg-form">
+				<div class="container">
+					<div class="reg">
+                        <form ng-submit=fechar()>
+    				        <p>Selecione Endereço:</p>
+                            <div ng-if="enderecos.length > 0" ng-repeat="endereco in enderecos">
+                                <input required name="endereco" style="margin-left:25px" type="radio" ng-click="selecionaEnd(endereco)"> {{endereco.Log_End}}, {{endereco.Num_End}}, {{endereco.Comp_End}}, {{endereco.CEP_End}}, {{endereco.Cid_End}}, {{endereco.Est_End}}, {{endereco.Pais_End}} (Frete de {{endereco.Frete_Pedido}})
+                            </div>
+                            <a ng-hide="enderecos.length > 0" style="margin-left:25px" role="button" class="btn btn-default" ng-click="appCtrl.goTo(cadastrarendereco)">Cadastrar Endereço</a>
+
+    				        <p>Selecione tipo de entrega:</p>
+    				        <input required style="margin-left:25px" type="radio" ng-model="Tipo_Entrega" value="Total" ng-checked="true"> Total
+                        	<input style="margin-left:25px" type="radio" ng-model="Tipo_Entrega" value="Parcial"> Parcial
+
+    				        <p>Pagamento:</p>
+                            <input required style="margin-left:25px" type="radio" value="Boleto" ng-model="Forma_Pag" ng-checked="true">Boleto
+                            <input style="margin-left:25px" type="radio" value="Cartao" ng-model="Forma_Pag">Cartão
+
+                            <p></p>
+                            <input ng-hide="enderecos.length == 0" style="margin-left:100px" type="submit" value="Fechar Pedido" role="button" class="btn btn-default">
+                        </form>
+					</div>
+				</div>
+        </div>
+    </div>
+

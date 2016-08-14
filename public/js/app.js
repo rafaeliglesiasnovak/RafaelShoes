@@ -62,8 +62,11 @@ angular.module('RafaelShoes', [
         $rootScope.viewFlag = 1;
     }
 
-    
-    $rootScope.isLogado = false;
+    if(localStorageService.get('logado')){
+        $rootScope.isLogado = true;
+    } else {
+        $rootScope.isLogado = false;
+    }
 
     // constantes das paginas
     $rootScope.home = 1;
