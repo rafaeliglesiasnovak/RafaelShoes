@@ -79,7 +79,7 @@ module.exports = function (schema, bcrypt, crypto){
         });
       } else {
         Account.find({where:{Login: cliente.Email_Cli}}).then(function(accountDb){
-          if(accountDb){
+          if(accountDb && accountDb.CPF_Cli != cliente.CPF_Cli){
             return res.json({success: false, message: 'Email já cadastrado.'});
           } else {
             Cliente.update(cliente, query).then(function(){

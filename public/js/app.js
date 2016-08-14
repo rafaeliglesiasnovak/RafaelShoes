@@ -107,8 +107,8 @@ angular.module('RafaelShoes', [
         $rootScope.viewFlag = id;
     }
 
-    appCtrl.goToHome = function(){
-        $rootScope.viewFlag = localStorageService.get('home');
+    appCtrl.goToConta = function(){
+        $rootScope.viewFlag = localStorageService.get('conta');
     }
 
     appCtrl.goToCategoria = function(idProduto){

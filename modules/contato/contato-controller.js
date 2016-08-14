@@ -6,6 +6,8 @@ module.exports = function (transporter){
       var Email = req.body.Email;
       var Mensagem = req.body.Mensagem;
 
+      console.log(req.body);
+
       var mailOptions = {
         from: '"Contato RafaelShoes" <3rafaelshoes@gmail.com>',
         // from: '"Contato RafaelShoes" <brandao.rafael@hotmail.com>',

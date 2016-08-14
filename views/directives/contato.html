@@ -10,15 +10,15 @@
     <div class="container">
         <h3>Fale Conosco</h3>
         <div class="contact-content">
-            <form>
-                <input type="text" class="textbox" value="Nome" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Nome';}"><br>
-                <input type="text" class="textbox" value="E-Mail" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-Mail';}"><br>
+            <form name="myForm">
+                <input type="text" class="textbox" name="Nome" ng-focus="blank('Nome')" ng-blur="return('Nome')" required ng-model="Nome"><br>
+                <input type="text" class="textbox" name="Email" ng-focus="blank('Email')" ng-blur="return('Email')" required ng-model="Email"><br>
                     <div class="clear"> </div>
                 <div>
-                    <textarea value="Message:" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Mensagem ';}">Mensagem</textarea><br>
+                    <textarea ng-focus="blank('Mensagem')" name="Mensagem" ng-blur="return('Mensagem')" required ng-model="Mensagem">Mensagem</textarea><br>
                 </div>	
                <div class="submit"> 
-                    <input class="btn btn-default cont-btn" type="submit" value="Enviar" ng-click="goTo(home)"/>
+                    <input class="btn btn-default cont-btn" type="submit" value="Enviar" ng-click="enviar()"/>
               </div>
             </form>
             <div class="map">
