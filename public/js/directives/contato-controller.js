@@ -30,7 +30,7 @@ app.directive('contato', ["$rootScope", "$http", function($rootScope, $http) {
               window.alert("Mensagem enviada!");
               $rootScope.viewFlag = 1;
             })
-          }
+        }
       }
 
       $scope.blank = function(texto){

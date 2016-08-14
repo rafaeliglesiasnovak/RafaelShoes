@@ -1,19 +1,40 @@
-    <div class="head-bread">
-        <div class="container">
-            <ol class="breadcrumb">
-                <li><a ng-click="appCtrl.goTo(home)" role="button">Home</a></li>
-                <li><a ng-click="appCtrl.goTo(minhaconta)" role="button">Minha Conta</a></li>
-                <li class="active">Meus Pedidos</li>
-            </ol>
-        </div>
-        <div class="container">
-	        <div>Olá {{nome}}</div>
-	        <a role="button" class="btn btn-default" ng-click="logout()">LOGOUT</a>
-	        <div class="reg-form">
-				<div class="container">
-					<div class="reg">
-				        <p>Meus Pedidos:</p>   
-					</div>
-				</div>
+<div class="head-bread">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a ng-click="appCtrl.goTo(home)" role="button">Home</a></li>
+            <li><a ng-click="appCtrl.goTo(minhaconta)" role="button">Minha Conta</a></li>
+            <li class="active">Meus Pedidos</li>
+        </ol>
+    </div>
+    <div class="container">
+        <div>Olá, {{nome}}</div>
+        <a role="button" class="btn btn-default" ng-click="logout()">LOGOUT</a>
+        <div class="reg-form">
+            <div class="container">
+                <div class="reg">
+                    <h4 style="float:left;">Meus Pedidos:</h4>
+                    <div ng-repeat="pedido in pedidos">
+                        <form style="float: left;     width: 1200px;">
+                        <ul style="margin-top:10px; margin-bottom: 0px ; width: 33%"
+                            class="text-info">Número do Pedido: {{pedido.ID_Pedido}}
+                        </ul>
+                        <ul style="margin-top:0px; margin-bottom: 0px ; width: 33%"
+                            class="text-info">Status: {{pedido.Status_Pedido}}
+                        </ul>
+                        <ul style="margin-top:0px; margin-bottom: 0px ; width: 33%"
+                            class="text-info">Total: {{pedido.Total_Pedido}}
+                        </ul>
+                        <div ng-repeat="produto in pedido.Pedido_Produtos">
+                            <ul style="margin-top:0px; margin-bottom: 0px ; width: 33%"
+                            class="text-info">Produto: {{produto.Produto.Nome_Prod}}</ul>                                               
+                            <ul style="margin-top:0px; margin-bottom: 0px ; width: 33%"
+                                class="text-info">Quantidade:  {{produto.Qtd_Prod}}</ul>
+                            <ul style="margin-top:0px; margin-bottom: 0px ; width: 33%"
+                                class="text-info">Preço: {{produto.Produto.Preco_Prod}}</ul>
+                        </div>
+                    </div>  
+                </div>
+            </div>
         </div>
     </div>
+</div>

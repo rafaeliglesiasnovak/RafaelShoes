@@ -7,7 +7,7 @@
             </ol>
         </div>
         <div class="container">
-	        <div>Olá {{nome}}</div>
+	        <div>Olá, {{nome}}</div>
 	        <a role="button" class="btn btn-default" ng-click="logout()">LOGOUT</a>
 	        <div class="reg-form">
 				<div class="container">
@@ -20,12 +20,12 @@
                             <a ng-hide="enderecos.length > 0" style="margin-left:25px" role="button" class="btn btn-default" ng-click="appCtrl.goTo(cadastrarendereco)">Cadastrar Endereço</a>
 
     				        <p>Selecione tipo de entrega:</p>
-    				        <input required style="margin-left:25px" type="radio" ng-model="Tipo_Entrega" value="Total" ng-checked="true"> Total
-                        	<input style="margin-left:25px" type="radio" ng-model="Tipo_Entrega" value="Parcial"> Parcial
+    				        <input required name="Tipo_Entrega" style="margin-left:25px" type="radio" ng-model="Tipo_Entrega" value="Total" ng-checked="true"> Total
+                        	<input name="Tipo_Entrega" style="margin-left:25px" type="radio" ng-model="Tipo_Entrega" value="Parcial"> Parcial
 
     				        <p>Pagamento:</p>
-                            <input required style="margin-left:25px" type="radio" value="Boleto" ng-model="Forma_Pag" ng-checked="true">Boleto
-                            <input style="margin-left:25px" type="radio" value="Cartao" ng-model="Forma_Pag">Cartão
+                            <input name="Forma_Pag" required style="margin-left:25px" type="radio" value="Boleto" ng-model="Forma_Pag" ng-checked="true">Boleto
+                            <input name="Forma_Pag"  style="margin-left:25px" type="radio" value="Cartao" ng-model="Forma_Pag">Cartão
 
                             <p></p>
                             <input ng-hide="enderecos.length == 0" style="margin-left:100px" type="submit" value="Fechar Pedido" role="button" class="btn btn-default">

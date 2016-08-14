@@ -88,6 +88,8 @@ module.exports = function(){
 	schema.Pedido.hasMany(schema.PedidoProduto, {foreignKey: 'ID_Pedido', onDelete: 'CASCADE'});
 	//Pedido_Funcionario_Qnt
 	schema.PedidoFuncionarioQnt.belongsTo(schema.Funcionario, {foreignKey: 'ID_Func'});
+	//Pedido_Produto
+	schema.PedidoProduto.belongsTo(schema.Produto, {foreignKey: 'ID_Prod', onDelete: 'CASCADE'});
 	//Produto
 	schema.Produto.hasMany(schema.ProdutoTamanho, {foreignKey: 'ID_Prod', onDelete: 'CASCADE'});
 

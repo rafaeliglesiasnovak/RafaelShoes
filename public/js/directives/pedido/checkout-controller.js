@@ -48,17 +48,29 @@ app.directive('checkout', ["$rootScope", "LoginService", "$http", "localStorageS
       }
 
       $scope.fechar = function(){
+        var Total_Pedido = 0;
         body.ID_End = $scope.ID_End;
         body.Frete_Pedido = $scope.Frete_Pedido;
+        body.Total_Pedido = $scope.Total_Pedido;
         if($scope.Tipo_Entrega)
           body.Tipo_Entrega = $scope.Tipo_Entrega;
         if($scope.Forma_Pag)
           body.Forma_Pag = $scope.Forma_Pag;
 
-        $http.post($rootScope.api + 'v1/pedido/post', body)
+        $http.get($rootScope.api + 'v1/carrinho/get?CPF_Cli=' + localStorageService.get('cpf'))
           .success(function(data){
-            $rootScope.viewFlag = 25;
+            var produtos = data.response.produtos;
+            for(var i = 0; i < produtos.length; i++){
+              Total_Pedido += produtos[i].Qtd_Prod * produtos[i].Produto.Preco_Prod;
+            }
+            body.Total_Pedido = Total_Pedido;
+            $http.post($rootScope.api + 'v1/pedido/post', body)
+              .success(function(data){
+                $rootScope.viewFlag = 25;
+              })
           })
+
+        
       }
 
       $scope.logout = function(){

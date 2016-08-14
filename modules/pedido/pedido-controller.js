@@ -37,7 +37,7 @@ module.exports = function (schema, sequelize, transporter){
                                     }
                                     console.log('Message sent: ' + info.response);
 
-                                    CarrinhoProduto.findAll({where:{CPF_Cli: pedido.CPF_Cli}}).then(function(carrinhoProdutoDB){
+                                    CarrinhoProduto.findAll({where:{CPF_Cli: pedido.CPF_Cli}, include: [Produto]}).then(function(carrinhoProdutoDB){
 
                                         var produtos = [];
                                         for(var i = 0; i < carrinhoProdutoDB.length; i++){
@@ -72,7 +72,7 @@ module.exports = function (schema, sequelize, transporter){
         var CPF_Cli = req.query.CPF_Cli;
         var ID_Func = req.query.ID_Func;
 
-        query = {include: [NotaFiscal, PedidoProduto]};
+        query = {include: [NotaFiscal, {model: PedidoProduto,include: [Produto]}]};
         if(CPF_Cli){
             query.where = {CPF_Cli: CPF_Cli};
         } else if(ID_Func){
