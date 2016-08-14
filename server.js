@@ -81,13 +81,15 @@ module.exports = function(){
 	schema.CarrinhoProduto.belongsTo(schema.Produto, {foreignKey: 'ID_Prod'});
 	//Endereço
 	schema.Endereco.belongsTo(schema.Cliente, {foreignKey: 'CPF_Cli', onDelete: 'CASCADE'});
+	//Funcionario
+	schema.Funcionario.hasOne(schema.PedidoFuncionarioQnt, {foreignKey: 'ID_Func', onDelete: 'CASCADE'});
 	//Pedido
 	schema.Pedido.belongsTo(schema.Cliente, {foreignKey: 'CPF_Cli', onDelete: 'CASCADE'});
 	schema.Pedido.belongsTo(schema.Funcionario, {foreignKey: 'ID_Func'});
 	schema.Pedido.hasOne(schema.NotaFiscal, {foreignKey: 'ID_Pedido', onDelete: 'CASCADE'});
 	schema.Pedido.hasMany(schema.PedidoProduto, {foreignKey: 'ID_Pedido', onDelete: 'CASCADE'});
 	//Pedido_Funcionario_Qnt
-	schema.PedidoFuncionarioQnt.belongsTo(schema.Funcionario, {foreignKey: 'ID_Func'});
+	schema.PedidoFuncionarioQnt.belongsTo(schema.Funcionario, {foreignKey: 'ID_Func', onDelete: 'CASCADE'});
 	//Pedido_Produto
 	schema.PedidoProduto.belongsTo(schema.Produto, {foreignKey: 'ID_Prod', onDelete: 'CASCADE'});
 	//Produto

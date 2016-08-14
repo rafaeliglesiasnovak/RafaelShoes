@@ -33,10 +33,13 @@ module.exports = function (schema, bcrypt, crypto){
 
     get: function (req, res) {
       var ID_Func = req.query.ID_Func;
+      var Email_Func = req.query.Email_Func;
 
       var query = {};
       if(ID_Func){
         query.where = {ID_Func: ID_Func};
+      } else if(Email_Func){
+        query.where = {Email_Func: {$like: Email_Func + "%"}};
       }
 
       Funcionario.findAll(query).then(function(funcionarios) {
