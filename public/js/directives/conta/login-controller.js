@@ -22,15 +22,17 @@ app.directive('login', ['$rootScope', 'localStorageService', 'md5', 'LoginServic
               localStorageService.set('email', usuario.Email_Cli);
               localStorageService.set('home', 1);
               localStorageService.set('conta', 9);
+              localStorageService.set('logado', true);
               $rootScope.viewFlag = 1;
               $rootScope.isLogado = true;
 
             } else {
               if(usuario.Tipo_Func == 'Func'){
                 localStorageService.set('home', 23);
-              localStorageService.set('conta', 23);
+                localStorageService.set('conta', 23);
                 localStorageService.set('nome', usuario.Nome_Func);
                 localStorageService.set('email', usuario.Email_Func);
+                localStorageService.set('logado', true);
                 $rootScope.viewFlag = 23;
                 $rootScope.isLogado = true;
 
@@ -39,6 +41,7 @@ app.directive('login', ['$rootScope', 'localStorageService', 'md5', 'LoginServic
               localStorageService.set('conta', 11);
                 localStorageService.set('nome', usuario.Nome_Func);
                 localStorageService.set('email', usuario.Email_Func);
+                localStorageService.set('logado', true);
                 $rootScope.viewFlag = 11;
                 $rootScope.isLogado = true;
 
@@ -47,6 +50,7 @@ app.directive('login', ['$rootScope', 'localStorageService', 'md5', 'LoginServic
               localStorageService.set('conta', 22);
                 localStorageService.set('nome', usuario.Nome_Func);
                 localStorageService.set('email', usuario.Email_Func);
+                localStorageService.set('logado', true);
                 $rootScope.viewFlag = 22;
                 $rootScope.isLogado = true;
 

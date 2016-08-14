@@ -36,7 +36,8 @@ module.exports = function(Sequelize, sequelize, schema){
     Forma_Entrega: Sequelize.STRING,
     Status_Pag: Sequelize.STRING,
     Forma_Pag: Sequelize.STRING,
-    Status_Pedido: Sequelize.STRING
+    Status_Pedido: Sequelize.STRING,
+    Frete_Pedido: Sequelize.INTEGER
 	});
 
 	return Pedido;

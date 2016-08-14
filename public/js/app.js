@@ -62,8 +62,11 @@ angular.module('RafaelShoes', [
         $rootScope.viewFlag = 1;
     }
 
-    
-    $rootScope.isLogado = false;
+    if(localStorageService.get('logado')){
+        $rootScope.isLogado = true;
+    } else {
+        $rootScope.isLogado = false;
+    }
 
     // constantes das paginas
     $rootScope.home = 1;
@@ -108,7 +111,11 @@ angular.module('RafaelShoes', [
     }
 
     appCtrl.goToConta = function(){
-        $rootScope.viewFlag = localStorageService.get('conta');
+        if($rootScope.isLogado){
+            $rootScope.viewFlag = localStorageService.get('conta');
+        } else {
+            $rootScope.viewFlag = 3;
+        }
     }
 
     appCtrl.goToCategoria = function(idProduto){
