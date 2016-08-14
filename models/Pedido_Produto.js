@@ -18,7 +18,8 @@ module.exports = function(Sequelize, sequelize, schema){
         key: 'ID_Prod'
       }
     },
-    Qtd_Prod: Sequelize.INTEGER
+    Qtd_Prod: Sequelize.INTEGER,
+    Tamanho_Prod: Sequelize.INTEGER
 	});
 
 	return Pedido_Produto;

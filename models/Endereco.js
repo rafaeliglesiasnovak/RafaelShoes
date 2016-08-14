@@ -15,7 +15,7 @@ module.exports = function(Sequelize, sequelize, schema){
         key: 'CPF_Cli'  
       }
     },
-    CEP_End: Sequelize.INTEGER,
+    CEP_End: Sequelize.STRING,
     Num_End: Sequelize.INTEGER,
     Comp_End: Sequelize.STRING,
     Log_End: Sequelize.STRING,

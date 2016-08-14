@@ -1,16 +1,34 @@
 module.exports = function (schema){
   var Produto = schema.Produto;
+  var ProdutoTamanho = schema.ProdutoTamanho;
 
   return {
     post: function(req, res){
-      var produto = req.body;
-      produto.Imagem_Prod = req.file.filename;
+      var produto = {
+        Nome_Prod: req.body.Nome_Prod,
+        Desc_Prod: req.body.Desc_Prod,
+        Fornecedor_Prod: req.body.Fornecedor_Prod,
+        Cor_Prod: req.body.Cor_Prod,
+        Peso_Prod: req.body.Peso_Prod,
+        Larg_Prod: req.body.Larg_Prod,
+        Comp_Prod: req.body.Comp_Prod,
+        Alt_Prod: req.body.Alt_Prod,
+        Preco_Prod: req.body.Preco_Prod,
+        Imagem_Prod: req.file.filename
+      }
+
 
       Produto.create(produto).then(function(produtoDb) {
 
-        if(produtoDb) return res.json({success: true, message: 'Produto criado com sucesso!', response: {produto: produtoDb}});
+        for(var i = 0; i < req.body.tamanhos.length; i++){
+          req.body.tamanhos[i].ID_Prod = produtoDb.ID_Prod;
+        }
+
+        ProdutoTamanho.bulkCreate(req.body.tamanhos).then(function(){
+          if(produtoDb) return res.json({success: true, message: 'Produto criado com sucesso!', response: {produto: produtoDb}});
         
-        else return res.json({success: false, message: 'Falha no registro do produto.'});
+          else return res.json({success: false, message: 'Falha no registro do produto.'});
+        });
       });
     },
 
@@ -18,7 +36,7 @@ module.exports = function (schema){
       var ID_Prod = req.query.ID_Prod;
       var Nome_Prod = req.query.Nome_Prod;
 
-      query = {};
+      query = {include: [ProdutoTamanho]};
       if(ID_Prod){
         query.where = {ID_Prod: ID_Prod};
       } else if (Nome_Prod){

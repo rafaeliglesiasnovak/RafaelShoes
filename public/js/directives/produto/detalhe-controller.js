@@ -9,12 +9,14 @@ app.directive('detalhe', ["$rootScope", "ProdutoService", "CarrinhoService", "$h
       $scope.produto = ProdutoService.getProduto();
 
       $scope.produto.quantidade = "1";
+      $scope.produto.tamanho = $scope.produto.Produto_Tamanhos[0].Tamanho_Prod;
 
       $scope.adicionarAoCarrinho = function(produto){
         var body = {
           ID_Prod: produto.ID_Prod,
           CPF_Cli: localStorageService.get('cpf'),
-          Qtd_Prod: parseInt(produto.quantidade)
+          Qtd_Prod: parseInt(produto.quantidade),
+          Tamanho_Prod: produto.tamanho
         }
         $http.post($rootScope.api + 'v1/carrinho/additem', body)
           .success(function(data){
@@ -30,7 +32,8 @@ app.directive('detalhe', ["$rootScope", "ProdutoService", "CarrinhoService", "$h
         var body = {
           ID_Prod: produto.ID_Prod,
           CPF_Cli: localStorageService.get('cpf'),
-          Qtd_Prod: parseInt(produto.quantidade)
+          Qtd_Prod: parseInt(produto.quantidade),
+          Tamanho_Prod: produto.tamanho
         }
         $http.post($rootScope.api + 'v1/carrinho/additem', body)
           .success(function(data){
