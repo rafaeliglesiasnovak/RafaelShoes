@@ -45,7 +45,7 @@ app.directive('cadastro', ["$rootScope", "LoginService", "CadastroService", "md5
               $rootScope.isLogado = true;
 
             } else {
-              if(usuario.Tipo_Func == 'Func'){
+              if(usuario.Cargo_Func == 'Func'){
                 localStorageService.set('home', 23);
                 localStorageService.set('conta', 23);
                 localStorageService.set('nome', usuario.Nome_Func);
@@ -54,7 +54,7 @@ app.directive('cadastro', ["$rootScope", "LoginService", "CadastroService", "md5
                 $rootScope.viewFlag = 23;
                 $rootScope.isLogado = true;
 
-              } else if (usuario.Tipo_Func == 'Adm') {
+              } else if (usuario.Cargo_Func == 'Adm') {
                 localStorageService.set('home', 11);
               localStorageService.set('conta', 11);
                 localStorageService.set('nome', usuario.Nome_Func);
@@ -63,7 +63,7 @@ app.directive('cadastro', ["$rootScope", "LoginService", "CadastroService", "md5
                 $rootScope.viewFlag = 11;
                 $rootScope.isLogado = true;
 
-              } else if (usuario.Tipo_Func == 'Sup'){
+              } else if (usuario.Cargo_Func == 'Sup'){
                 localStorageService.set('home', 22);
               localStorageService.set('conta', 22);
                 localStorageService.set('nome', usuario.Nome_Func);

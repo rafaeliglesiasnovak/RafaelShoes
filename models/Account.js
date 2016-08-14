@@ -23,7 +23,7 @@ module.exports = function(Sequelize, sequelize, schema){
         key: 'ID_Func'
       }
     },
-    Tipo_Func: Sequelize.STRING,
+    Cargo_Func: Sequelize.STRING,
     Login: Sequelize.STRING,
     Senha: Sequelize.STRING,    
     Is_Cli: Sequelize.BOOLEAN
