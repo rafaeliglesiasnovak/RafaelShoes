@@ -27,7 +27,6 @@ app.directive('removercliente', ["$rootScope", "LoginService", "localStorageServ
                 })
             }
           })
-        
       }
 
       $scope.logout = function(){
