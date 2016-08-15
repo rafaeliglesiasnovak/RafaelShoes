@@ -1,7 +1,7 @@
 var app = angular.module('RafaelShoes');
 
-app.directive('funcionario', ["$rootScope", "LoginService", "localStorageService", 
-    function($rootScope, LoginService, localStorageService) {
+app.directive('funcionario', ["$rootScope", "LoginService", "localStorageService", "$http",
+    function($rootScope, LoginService, localStorageService, $http) {
   return {
   	restrict: 'E',
   	link: function($scope){
@@ -10,9 +10,20 @@ app.directive('funcionario', ["$rootScope", "LoginService", "localStorageService
 
       $scope.nome = localStorageService.get('nome').split(" ")[0];
 
-      $scope.cadastrar = function(){
-        // TODO: fazer sobreRafael
-        $rootScope.viewFlag = 1;
+      var reset = function(){
+        $http.get($rootScope.api + 'v1/pedido/get?ID_Func=' + localStorageService.get('id'))
+          .success(function(data){
+            $scope.pedidos = data.response.pedidos;
+          })
+      }
+
+      reset();
+
+      $scope.modificarStatus = function(ID, Status){
+        $http.post($rootScope.api + 'v1/pedido/editar', {ID_Pedido: ID, Status_Pedido: Status})
+          .success(function(data){
+            reset();
+          });
       }
 
       $scope.logout = function(){

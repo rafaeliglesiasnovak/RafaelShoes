@@ -76,7 +76,7 @@ module.exports = function (schema, sequelize, transporter){
         if(CPF_Cli){
             query.where = {CPF_Cli: CPF_Cli};
         } else if(ID_Func){
-            query.where = {ID_Func: ID_Func};
+            query.where = {ID_Func: ID_Func, Status_Pedido: 'Aguardando Pagamento'};
             query.order = [['Status_Pedido', 'ASC']];
         }
 
