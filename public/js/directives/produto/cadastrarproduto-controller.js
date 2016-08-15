@@ -25,24 +25,30 @@ app.directive('cadastrarproduto', ["$rootScope", "LoginService", "localStorageSe
       }
 
       $scope.cadastrar = function(){
-        var body = {
-          Nome_Prod: $scope.Nome_Prod,
-          Desc_Prod: $scope.Desc_Prod,
-          Fornecedor_Prod: $scope.Fornecedor_Prod,
-          Peso_Prod: $scope.Peso_Prod,
-          Larg_Prod: $scope.Larg_Prod,
-          Comp_Prod: $scope.Comp_Prod,
-          Alt_Prod: $scope.Alt_Prod,
-          Preco_Prod: $scope.Preco_Prod,
-          Cor_Prod: $scope.Cor_Prod,
-          tamanhos: $scope.tamanhos
-        }
+        var fd = new FormData();
+        fd.append('Nome_Prod', $scope.Nome_Prod);
+        fd.append('Desc_Prod', $scope.Desc_Prod);
+        fd.append('Fornecedor_Prod', $scope.Fornecedor_Prod);
+        fd.append('Peso_Prod', $scope.Peso_Prod);
+        fd.append('Larg_Prod', $scope.Larg_Prod);
+        fd.append('Comp_Prod', $scope.Comp_Prod);
+        fd.append('Alt_Prod', $scope.Alt_Prod);
+        fd.append('Preco_Prod', $scope.Preco_Prod);
+        fd.append('Cor_Prod', $scope.Cor_Prod);
+        fd.append('Nome_Prod', $scope.Nome_Prod);
+        fd.append('tamanhos', $scope.tamanhos);
+        fd.append('produto', $scope.produto);
 
-        $http.post($rootScope.api + 'v1/produto/cadastrar', body)
-          .success(function(data){
-            window.alert("Produto cadastrado com sucesso!");
-            $rootScope.viewFlag = localStorageService.get('home');
-          })
+        var xhr = new XMLHttpRequest();
+
+        xhr.open("POST", $rootScope.api + 'v1/produto/cadastrar');
+        xhr.send(fd);
+
+        // $http.post($rootScope.api + 'v1/produto/cadastrar', fd, {transformRequest: angular.identity, headers: {'Content-Type': undefined} })
+        //   .success(function(data){
+        //     window.alert("Produto cadastrado com sucesso!");
+        //     $rootScope.viewFlag = localStorageService.get('home');
+        //   })
       }
 
       $scope.logout = function(){
