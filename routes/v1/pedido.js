@@ -6,9 +6,11 @@ module.exports = function (moduleFuncionario){
     router.post("/pedido/post", function(req, res){
     	controllers.pedido.post(req, res);
     });
-
     router.get("/pedido/get", function(req, res){
-    	controllers.pedido.get(req, res);
+        controllers.pedido.get(req, res);
+    });
+    router.get("/pedido/getsup", function(req, res){
+        controllers.pedido.getSup(req, res);
     });
     router.delete("/pedido/deletar", function(req, res){
     	controllers.pedido.delete(req, res);

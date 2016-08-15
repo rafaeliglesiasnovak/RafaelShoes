@@ -76,10 +76,17 @@ module.exports = function (schema, sequelize, transporter){
         if(CPF_Cli){
             query.where = {CPF_Cli: CPF_Cli};
         } else if(ID_Func){
-            query.where = {ID_Func: ID_Func};
+            query.where = {ID_Func: ID_Func, Status_Pedido: 'Aguardando Pagamento'};
+            query.order = [['Status_Pedido', 'ASC']];
         }
 
         Pedido.findAll(query).then(function(pedidoDb){
+            return res.json({success: true, message: 'Pedidos encontrados com sucesso.', response: {pedidos: pedidoDb}});
+        })
+    },
+
+    getSup: function(req, res) {
+        Pedido.findAll({where: {Status_Pedido: 'Aguardando Pagamento'}}).then(function(pedidoDb){
             return res.json({success: true, message: 'Pedidos encontrados com sucesso.', response: {pedidos: pedidoDb}});
         })
     },

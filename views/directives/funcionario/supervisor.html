@@ -1,20 +1,32 @@
 <div class="head-bread">
-        <div class="container">
-            <ol class="breadcrumb">
-                <li><a ng-click="appCtrl.goTo(home)" role="button">Home</a></li>
-                <li class="active">Supervisor</li>
-            </ol>
-        </div>
-        <div class="container">
-	        <div>Olá, {{nome}}</div>
-	        <a role="button" class="btn btn-default" ng-click="logout()">LOGOUT</a>
-	        <div class="reg-form">
-				<div class="container">
-					<div class="reg">
-				        <input type="text" class="textbox" style="width: 250px; height:15px;" value="E-Mail" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-Mail';}">
-                        <button> Gerar Alerta </button>
-                        <p>Pedidos em Aberto:</p>   
-					</div>
-				</div>
-        </div>
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a ng-click="appCtrl.goTo(home)" role="button">Home</a></li>
+            <li class="active">Supervisor</li>
+        </ol>
     </div>
+    <div class="container">
+        <div>Olá, {{nome}}</div>
+        <a role="button" class="btn btn-default" ng-click="logout()">LOGOUT</a>
+        <div class="reg-form">
+            <div class="container">
+                <div class="reg">
+                    <p>Pedidos em Aberto:</p>
+                    <div ng-repeat="pedido in pedidos">
+                        <ul style="margin-top:10px; margin-bottom: 0px ; width: 25%" class="text-info">
+                            Número do Pedido: {{pedido.ID_Pedido}}
+                        </ul>
+                        <ul style="margin-top:0px; margin-bottom: 0px ; width: 25%" class="text-info">
+                            Status: {{pedido.Status_Pedido}}
+                        </ul>
+                        <ul style="margin-top:0px; margin-bottom: 0px ; width: 25%" class="text-info">
+                            Total: {{pedido.Total_Pedido}}
+                        </ul>
+                        <ul style="margin-top:0px; margin-bottom: 0px ; width: 25%">
+                            <button ng-click="enviarAlerta(pedido)"> Gerar Alerta </button>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>

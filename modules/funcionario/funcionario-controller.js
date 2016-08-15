@@ -19,12 +19,19 @@ module.exports = function (schema, bcrypt, crypto){
             return res.json({success: false, message: 'Email já cadastrado.'});
           } else {
             Funcionario.create(funcionario).then(function(funcionarioDb){
-              PedidoFuncionarioQnt.create({ID_Func: funcionarioDb.ID_Func, Qnt_Pedidos: 0}).then(function(){
+              if(funcionarioDb.Cargo_Func == 'Func'){
+                PedidoFuncionarioQnt.create({ID_Func: funcionarioDb.ID_Func, Qnt_Pedidos: 0}).then(function(){
+                  account.ID_Func = funcionarioDb.ID_Func;
+                  Account.create(account).then(function(accountDb){
+                    return res.json({success: true, message: 'Funcionario cadastrado com sucesso!', response: {funcionario: funcionarioDb}});
+                  });
+                });
+              } else {
                 account.ID_Func = funcionarioDb.ID_Func;
                 Account.create(account).then(function(accountDb){
                   return res.json({success: true, message: 'Funcionario cadastrado com sucesso!', response: {funcionario: funcionarioDb}});
                 });
-              });
+              }
             });
           }
         });

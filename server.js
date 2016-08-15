@@ -179,6 +179,11 @@ module.exports = function(){
 	contato.controllers = {};
 	contato.controllers.contato = require(__dirname + '/modules/contato/contato-controller.js')(transporter);
 
+	// Alerta
+	var alerta = {};
+	alerta.controllers = {};
+	alerta.controllers.alerta = require(__dirname + '/modules/alerta/alerta-controller.js')(transporter);
+
 	// Cortesia
 	var cortesia = {};
 	cortesia.controllers = {};
@@ -198,7 +203,8 @@ module.exports = function(){
 	routes.v1.funcionario = require(__dirname + '/routes/v1/funcionario.js')(funcionario);
 	routes.v1.pedido = require(__dirname + '/routes/v1/pedido.js')(pedido);
 	routes.v1.contato = require(__dirname + '/routes/v1/contato.js')(contato);
-	routes.v1.contato = require(__dirname + '/routes/v1/cortesia.js')(cortesia);
+	routes.v1.cortesia = require(__dirname + '/routes/v1/cortesia.js')(cortesia);
+	routes.v1.alerta = require(__dirname + '/routes/v1/alerta.js')(alerta);
 	routes.view = {};
 	routes.view.view = require(__dirname + '/routes/view/view.js')(app.path);
 

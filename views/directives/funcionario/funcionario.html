@@ -1,4 +1,4 @@
-    <div class="head-bread">
+<div class="head-bread">
         <div class="container">
             <ol class="breadcrumb">
                 <li><a ng-click="appCtrl.goTo(home)" role="button">Home</a></li>
@@ -6,18 +6,47 @@
             </ol>
         </div>
         <div class="container">
-	        <div>Olá, {{nome}}</div>
-	        <a role="button" class="btn btn-default" ng-click="logout()">LOGOUT</a>
-	        <div class="reg-form">
-				<div class="container">
-					<div class="reg">
+            <div>Olá, {{nome}}</div>
+            <a role="button" class="btn btn-default" ng-click="logout()">LOGOUT</a>
+            <div class="reg-form">
+                <div class="container">
+                    <div class="reg">
                         <p>Produtos:</p>
                         <a role="button" class="btn btn-default" ng-click="appCtrl.goTo(cadastrarproduto)">Cadastrar Produto</a>
                         <a role="button" class="btn btn-default" ng-click="appCtrl.goTo(buscarproduto)">Buscar Produto</a>
                         <a role="button" class="btn btn-default" ng-click="appCtrl.goTo(removerproduto)">Remover Produto</a>
                         <a role="button" class="btn btn-default" ng-click="appCtrl.goTo(alterarproduto)">Alterar Produto</a>
-				        <p>Pedidos em aberto:</p>   
-					</div>
-				</div>
+                        
+                        <p>Pedidos em aberto:</p>
+                        <div ng-repeat="pedido in pedidos">
+                            <form style="float: left;     width: 1200px;">
+                            <ul style="margin-top:10px; margin-bottom: 0px ; width: 22%"
+                                class="text-info">Número do Pedido: {{pedido.ID_Pedido}}
+                            </ul>
+                            <ul style="margin-top:0px; margin-bottom: 0px ; width: 4%"
+                                class="text-info">Status:
+                            </ul>
+                            <select ng-change="modificarStatus(pedido.ID_Pedido, pedido.Status_Pedido)" ng-model="pedido.Status_Pedido" style="margin-top:0px; margin-bottom: 0px ; width: 13%">
+                                          <option selected value="Aguardando Pagamento">Aguardando Pagamento</option>
+                                          <option value="Em Transporte">Em Transporte</option>
+                                          <option value="Entregue">Entregue</option>
+                                          <option value="Cancelado">Cancelado</option>
+                            </select>
+                            <ul style="margin-left: 56px; margin-top:0px; margin-bottom: 0px ; width: 22%"
+                                class="text-info">Total: {{pedido.Total_Pedido}}
+                            </ul>
+                            <button>Salvar</button>
+                            <div ng-repeat="produto in pedido.Pedido_Produtos">
+                                <ul style="margin-top:0px; margin-bottom: 0px ; width: 22%"
+                                class="text-info">Produto: {{produto.Produto.Nome_Prod}}</ul>                                               
+                                <ul style="margin-top:0px; margin-bottom: 0px ; width: 22%"
+                                    class="text-info">Quantidade:  {{produto.Qtd_Prod}}</ul>
+                                <ul style="margin-top:0px; margin-bottom: 0px ; width: 13%"
+                                    class="text-info">Preço: {{produto.Produto.Preco_Prod}}</ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
         </div>
     </div>
