@@ -15,9 +15,16 @@
  						<form style="float: left;     width: 1200px;">
 							<ul>
 								<li class="text-info">Nome:</li>
-								<input type="text" required>
+								<input type="text" required ng-model="Nome_Prod">
 			                </ul>
-							<input type="submit" value="Buscar Produto">
+							<input type="submit" value="Buscar Produto" ng-click="buscar()">
+						</form>  
+ 						<form style="float: left;     width: 1200px;">
+							<ul>
+								<li class="text-info">ID:</li>
+								<input type="text" required ng-model="ID_Prod">
+			                </ul>
+							<input type="submit" value="Editar Produto" ng-click="editar()">
 						</form>  
 					</div>
 				</div>

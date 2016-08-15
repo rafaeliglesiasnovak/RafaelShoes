@@ -62,13 +62,26 @@ module.exports = function (schema){
 
     editar: function (req, res){
       var produto = req.body;
-      produto.Imagem_Prod = req.file.filename;
+      if(req.file){
+        produto.Imagem_Prod = req.file.filename;
+      }
+
+      console.log(produto);
 
       var query = { where: { ID_Prod: produto.ID_Prod } };
 
-        Produto.update(produto, query).then(function(produto){
+        Produto.update(produto, query).then(function(produtoDB){
           Produto.findAll(query).then(function(produtoDb) {
-            return res.json({success: true, message: 'Produto editado com sucesso.', response: {produto: produtoDb}});
+            var aux = 0;
+            for(var i = 0; i < produto.Produto_Tamanhos.length; i++){
+              ProdutoTamanho.update(produto.Produto_Tamanhos[i], {where: {ID_Prod: produto.ID_Prod, Tamanho_Prod: produto.Produto_Tamanhos[i].Tamanho_Prod}})
+                .then(function(data){
+                  aux++;
+                  if(aux == produto.Produto_Tamanhos.length){
+                    return res.json({success: true, message: 'Produto editado com sucesso.', response: {produto: produtoDb}});
+                  }
+                })
+            }
           });
         });
     }

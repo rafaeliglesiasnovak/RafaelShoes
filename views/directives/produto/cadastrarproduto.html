@@ -12,56 +12,66 @@
 	        <div class="reg-form">
 				<div class="container">
 					<div class="reg">
- 						<form style="float: left;     width: 1200px;">
+ 						<form style="float: left;     width: 1200px;" ng-submit="cadastrar()">
 							<ul>
 								<li class="text-info">Nome:</li>
-								<input type="text" required>
+								<input type="text" required ng-model="Nome_Prod">
 			                </ul>
 			                <ul>
 								<li class="text-info">Descrição: </li>
-								<input type="text">
+								<input type="text" required ng-model="Desc_Prod">
 							 </ul>				 
 							<ul>
 								<li class="text-info">Fornecedor: </li>
-								<li><input type="text"></li>
-							</ul>
-							<ul>
-								<li class="text-info">Tamanho:</li>
-								<li><input type="number"></li>
+								<li><input type="text" required ng-model="Fornecedor_Prod"></li>
 							</ul>	
 			                <ul>
 			                    <li class="text-info">Cor:</li>
-			                    <li><input type="text"></li>
+			                    <li><input type="text" required ng-model="Cor_Prod"></li>
 			                </ul>			
 			                <ul>
 			                    <li class="text-info">Peso:</li>
-			                    <li><input type="number" step=".01"></li>
+			                    <li><input type="number" required step=".01" ng-model="Peso_Prod"></li>
 			                </ul>
 			            	<ul>
 			                    <li class="text-info">Largura:</li>
-			                    <li><input type="number" step=".01"></li>
+			                    <li><input type="number" required step=".01" ng-model="Larg_Prod"</li>
 			                </ul>
 			                <ul>
 			                    <li class="text-info">Comprimento:</li>
-			                    <li><input type="number" step=".01"></li>
+			                    <li><input type="number" required step=".01" ng-model="Comp_Prod"></li>
 			                </ul>
 			                <ul>
 			                    <li class="text-info">Altura:</li>
-			                    <li><input type="number" step=".01"></li>
+			                    <li><input type="number" required step=".01" ng-model="Alt_Prod"></li>
 			                </ul>	
 			                <ul>
 			                    <li class="text-info">Preço:</li>
-			                    <li><input type="number" step=".01"></li>
-			                </ul>	
-			                <ul>
-			                    <li class="text-info">Estoque:</li>
-			                    <li><input type="number"></li>
+			                    <li><input type="number" required step=".01" ng-model="Preco_Prod"></li>
 			                </ul>
 			                <ul>
 			                    <li class="text-info">Imagem:</li>
-			                    <li><input type="file" accept="image/*"></li>
+			                    <li><input type="file" required file-model="produto"></li>
 			                </ul>
-							<input type="submit" value="Cadastrar Produto" ng-click="editar()">
+			                <div ng-repeat="tamanho in tamanhos">
+								<ul>
+									<li class="text-info">Tamanho:</li>
+									<li><input required type="number" ng-model="tamanho.Tamanho_Prod"></li>
+								</ul>
+				                <ul>
+				                    <li class="text-info">Estoque:</li>
+				                    <li>
+				                    	<input required type="number" ng-model="tamanho.Estoque_Prod">
+				                    	<button ng-if="tamanho === tamanhos[tamanhos.length - 1]" style="margin-left: 30px" ng-click="adicionarTamanho()">
+				                    		+
+				                    	</button>
+				                    	<button ng-if="tamanhos.length > 1" style="margin-left: 30px" ng-click="removerTamanho(tamanho)">
+				                    		-
+				                    	</button>
+				                    </li>
+				                </ul>
+				            </div>
+							<input type="submit" value="Cadastrar Produto">
 						</form>  
 					</div>
 				</div>
