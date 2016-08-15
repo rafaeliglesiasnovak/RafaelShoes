@@ -60,6 +60,7 @@ app.directive('login', ['$rootScope', 'localStorageService', 'md5', 'LoginServic
 
                 }
               }
+              $rootScope.carrinho = [];
             } else {
               window.alert("Falha no Login. Atenção ao usuário e senha");
             }
