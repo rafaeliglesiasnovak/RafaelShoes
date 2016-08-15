@@ -31,6 +31,7 @@ app.directive('login', ['$rootScope', 'localStorageService', 'md5', 'LoginServic
                 if(usuario.Cargo_Func == 'Func'){
                   localStorageService.set('home', 23);
                   localStorageService.set('conta', 23);
+                  localStorageService.set('id', usuario.ID_Func);
                   localStorageService.set('nome', usuario.Nome_Func);
                   localStorageService.set('email', usuario.Email_Func);
                   localStorageService.set('logado', true);
@@ -40,6 +41,7 @@ app.directive('login', ['$rootScope', 'localStorageService', 'md5', 'LoginServic
                 } else if (usuario.Cargo_Func == 'Adm') {
                   localStorageService.set('home', 11);
                 localStorageService.set('conta', 11);
+                  localStorageService.set('id', usuario.ID_Func);
                   localStorageService.set('nome', usuario.Nome_Func);
                   localStorageService.set('email', usuario.Email_Func);
                   localStorageService.set('logado', true);
@@ -49,6 +51,7 @@ app.directive('login', ['$rootScope', 'localStorageService', 'md5', 'LoginServic
                 } else if (usuario.Cargo_Func == 'Sup'){
                   localStorageService.set('home', 22);
                 localStorageService.set('conta', 22);
+                  localStorageService.set('id', usuario.ID_Func);
                   localStorageService.set('nome', usuario.Nome_Func);
                   localStorageService.set('email', usuario.Email_Func);
                   localStorageService.set('logado', true);
