@@ -73,6 +73,8 @@ angular.module('RafaelShoes', [
             localStorageService.set('cortesia', data.cortesia);
         });
 
+    $rootScope.carrinho = [];
+
     // constantes das paginas
     $rootScope.home = 1;
     $rootScope.detalhe = 2;

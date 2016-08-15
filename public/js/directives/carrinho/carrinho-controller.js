@@ -13,22 +13,34 @@ app.directive('carrinho', ["$rootScope", "CarrinhoService", "LoginService", "$ht
 
         $scope.cortesia = localStorageService.get('cortesia');
 
-        $http.get($rootScope.api + 'v1/carrinho/get?CPF_Cli=' + localStorageService.get('cpf'))
-          .success(function(data){
-            $scope.produtos = data.response.produtos;
-            for(var i = 0; i < $scope.produtos.length; i++){
-              $scope.total += $scope.produtos[i].Qtd_Prod * $scope.produtos[i].Produto.Preco_Prod;
-            }
-          })
+        if(localStorageService.get('logado')){
+          $http.get($rootScope.api + 'v1/carrinho/get?CPF_Cli=' + localStorageService.get('cpf'))
+            .success(function(data){
+              $scope.produtos = data.response.produtos;
+              for(var i = 0; i < $scope.produtos.length; i++){
+                $scope.total += $scope.produtos[i].Qtd_Prod * $scope.produtos[i].Produto.Preco_Prod;
+              }
+            })
+        } else {
+          $scope.produtos = $rootScope.carrinho;
+          for(var i = 0; i < $scope.produtos.length; i++){
+            $scope.total += $scope.produtos[i].Qtd_Prod * $scope.produtos[i].Produto.Preco_Prod;
+          }
+        }
       }
 
       $scope.reset();
 
       $scope.limparCarrinho = function(){
-        $http.post($rootScope.api + 'v1/carrinho/limpar', {CPF_Cli: localStorageService.get('cpf')})
-          .success(function(data){
+        if(localStorageService.get('logado')){
+          $http.post($rootScope.api + 'v1/carrinho/limpar', {CPF_Cli: localStorageService.get('cpf')})
+            .success(function(data){
+              $scope.reset();
+            })
+          } else {
+            $rootScope.carrinho = [];
             $scope.reset();
-          })
+          }
       }
 
       $scope.cadastrar = function(){
