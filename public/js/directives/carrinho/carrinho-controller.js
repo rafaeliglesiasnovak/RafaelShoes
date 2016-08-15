@@ -23,7 +23,6 @@ app.directive('carrinho', ["$rootScope", "CarrinhoService", "LoginService", "$ht
             })
         } else {
           $scope.produtos = $rootScope.carrinhoProduto;
-          console.log($scope.produtos);
           for(var i = 0; i < $scope.produtos.length; i++){
             $scope.total += $scope.produtos[i].Qtd_Prod * $scope.produtos[i].Produto.Preco_Prod;
           }
