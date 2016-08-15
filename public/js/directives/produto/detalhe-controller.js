@@ -9,7 +9,7 @@ app.directive('detalhe', ["$rootScope", "ProdutoService", "CarrinhoService", "$h
       $scope.produto = ProdutoService.getProduto();
 
       $scope.produto.quantidade = "1";
-      $scope.produto.tamanho = $scope.produto.Produto_Tamanhos[0].Tamanho_Prod;
+      $scope.produto.tamanho = $scope.produto.Produto_Tamanhos[0].Tamanho_Prod.toString();
 
       $scope.adicionarAoCarrinho = function(produto){
         var body = {
