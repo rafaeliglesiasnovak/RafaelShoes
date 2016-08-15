@@ -14,7 +14,7 @@ module.exports = function (){
 				user: 'root',
 				psswrd: 'root',
 				host: '0.tcp.ngrok.io',
-				port: '15140',
+				port: '13059',
 				dialect: 'mysql'
 			};
 		}

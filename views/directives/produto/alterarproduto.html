@@ -14,57 +14,63 @@
 					<div class="reg">
  						<form style="float: left;     width: 1200px;">
 							<ul>
-								<li class="text-info">ID Produto:</li>
-								<input type="text" required>
+								<li class="text-info">ID:</li>
+								<input type="text" required ng-model="produto.ID_Prod">
+			                </ul>
+							<ul>
+								<li class="text-info">Nome:</li>
+								<input type="text" required ng-model="produto.Nome_Prod">
 			                </ul>
 			                <ul>
-								<li class="text-info">Nome: </li>
-								<input type="text">
-							 </ul>				 
-							<ul>
 								<li class="text-info">Descrição: </li>
-								<input type="text">
+								<input type="text" required ng-model="produto.Desc_Prod">
 							 </ul>				 
 							<ul>
 								<li class="text-info">Fornecedor: </li>
-								<li><input type="text"></li>
-							</ul>
-							<ul>
-								<li class="text-info">Tamanho:</li>
-								<li><input type="number"></li>
+								<li><input type="text" required ng-model="produto.Fornecedor_Prod"></li>
 							</ul>	
 			                <ul>
 			                    <li class="text-info">Cor:</li>
-			                    <li><input type="text"></li>
+			                    <li><input type="text" required ng-model="produto.Cor_Prod"></li>
 			                </ul>			
 			                <ul>
 			                    <li class="text-info">Peso:</li>
-			                    <li><input type="number" step=".01"></li>
+			                    <li><input type="number" required step=".01" ng-model="produto.Peso_Prod"></li>
 			                </ul>
 			            	<ul>
 			                    <li class="text-info">Largura:</li>
-			                    <li><input type="number" step=".01"></li>
+			                    <li><input type="number" required step=".01" ng-model="produto.Larg_Prod"</li>
 			                </ul>
 			                <ul>
 			                    <li class="text-info">Comprimento:</li>
-			                    <li><input type="number" step=".01"></li>
+			                    <li><input type="number" required step=".01" ng-model="produto.Comp_Prod"></li>
 			                </ul>
 			                <ul>
 			                    <li class="text-info">Altura:</li>
-			                    <li><input type="number" step=".01"></li>
+			                    <li><input type="number" required step=".01" ng-model="produto.Alt_Prod"></li>
 			                </ul>	
 			                <ul>
 			                    <li class="text-info">Preço:</li>
-			                    <li><input type="number" step=".01"></li>
-			                </ul>	
-			                <ul>
-			                    <li class="text-info">Estoque:</li>
-			                    <li><input type="number"></li>
+			                    <li><input type="number" required step=".01" ng-model="produto.Preco_Prod"></li>
 			                </ul>
-			                <ul>
-			                    <li class="text-info">Imagem:</li>
-			                    <li><input type="file" accept="image/*"></li>
-			                </ul>
+			                <div ng-repeat="tamanho in produto.Produto_Tamanhos">
+								<ul>
+									<li class="text-info">Tamanho:</li>
+									<li><input required type="number" ng-model="tamanho.Tamanho_Prod"></li>
+								</ul>
+				                <ul>
+				                    <li class="text-info">Estoque:</li>
+				                    <li>
+				                    	<input required type="number" ng-model="tamanho.Estoque_Prod">
+				                    	<button ng-if="tamanho === tamanhos[tamanhos.length - 1]" style="margin-left: 30px" ng-click="adicionarTamanho()">
+				                    		+
+				                    	</button>
+				                    	<button ng-if="tamanhos.length > 1" style="margin-left: 30px" ng-click="removerTamanho(tamanho)">
+				                    		-
+				                    	</button>
+				                    </li>
+				                </ul>
+				            </div>
 							<input type="submit" value="Alterar Produto" ng-click="editar()">
 						</form>  
 					</div>

@@ -12,10 +12,15 @@
 				<div class="container">
 					<div class="reg">
 				        <p>Produtos:</p>
-				        <a role="button" class="btn btn-default" ng-click="appCtrl.goTo(cadastrarproduto)">Cadastrar Produto</a>
-				        <a role="button" class="btn btn-default" ng-click="appCtrl.goTo(buscarproduto)">Buscar Produto</a>
-				        <a role="button" class="btn btn-default" ng-click="appCtrl.goTo(removerproduto)">Remover Produto</a>
-				        <a role="button" class="btn btn-default" ng-click="appCtrl.goTo(alterarproduto)">Alterar Produto</a>
+				        <a role="button" class="btn btn-default" ng-click="appCtrl.goTo(cadastrarproduto)">
+				        	Cadastrar Produto
+				        </a>
+				        <a role="button" class="btn btn-default" ng-click="appCtrl.goTo(buscarproduto)">
+				        	Buscar Produto
+				        </a>
+				        <a role="button" class="btn btn-default" ng-click="appCtrl.goTo(removerproduto)">
+				        	Remover Produto
+				        </a>
 				        <p>Cortesias:</p>
 				        <select ng-model="cortesia" ng-change="updateCortesia()">
 							<option ng-value="true" ng-selected="ifTrue()">Ligado</option>
